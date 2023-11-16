@@ -1,0 +1,50 @@
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 10px 0 10px 0;
+  padding: 5px 0 0 0;
+  border: #b0b0b0 2px solid;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgb(40, 40, 40);
+}
+
+.project-card h1 {
+  margin: 0 0 -20px 10px;
+  text-align: left;
+  font-size: 25pt;
+}
+.project-card .subheader {
+  text-align: left;
+  font-size: 14pt;
+  margin-left: 10px;
+  color: #a1a1a1;
+}
+.bar {
+  height: 5px;
+  position: relative;
+  margin-top: -5px;
+  max-height: 100%;
+}
+
+.bar-wrapper {
+  width: 100%;
+  max-height: max-content;
+  background-color: #dadada;
+}
+
+.body_container {
+  margin: 0% 0% 0% 0%;
+  padding: 0% 0% 0% 0%;
+}
+
+#mbta_mapper {
+  background: linear-gradient(to left, rgba(86, 86, 86, 0), rgb(20, 20, 20) 90%),
+    url("../img/train.png") right center no-repeat;
+  /* background: url("../img/train.png") no-repeat left center; */
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-position: fixed;
+}
