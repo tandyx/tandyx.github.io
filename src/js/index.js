@@ -1,5 +1,21 @@
 window.addEventListener("load", function () {
   const username = "tandy-c";
+  const localHosts = ["localhost", "", "127.0.0.1"];
+  if (!localHosts.includes(window.location.hostname)) {
+    removeHTMLEnd(...localHosts);
+  }
+
+  document.addEventListener("click", function (event) {
+    // Check if the clicked element is not inside the navbar
+    if (!event.target.closest(".nav")) {
+      // Close the hamburger menu
+      let menuToggle = document.getElementById("menu-toggle");
+      if (menuToggle.checked) {
+        menuToggle.checked = false;
+      }
+    }
+  });
+
   readJSON("../src/config/lang_colors.json").then((colorJson) => {
     document.querySelectorAll("[data-repo]").forEach((el) => {
       createBar(el.id, username, el.dataset.repo, colorJson);
@@ -7,15 +23,27 @@ window.addEventListener("load", function () {
   });
 });
 
+/**
+ * Removes the .html from the end of the href of all anchor tags
+ * @param  {...string} hostnames - The hostnames to exclude
+ * @returns {void}
+ */
+function removeHTMLEnd(...hostnames) {
+  for (let anchor of document.querySelectorAll("a[href]")) {
+    if (hostnames.includes(anchor.href.host)) continue;
+    anchor.href = anchor.href.replace(".html", "");
+  }
+}
+
+/**
+ * Creates a bar chart of the languages used in a repo
+ * @param {string} containerId - The id of the element to put the bar chart in
+ * @param {string} username - The username of the repo owner
+ * @param {string} reponame - The name of the repo
+ * @param {object} colorJson - A json object of the colors to use for each language
+ * @returns {void}
+ */
 function createBar(containerId, username, reponame, colorJson) {
-  /**
-   * Creates a bar chart of the languages used in a repo
-   * @param {string} containerId - The id of the element to put the bar chart in
-   * @param {string} username - The username of the repo owner
-   * @param {string} reponame - The name of the repo
-   * @param {object} colorJson - A json object of the colors to use for each language
-   * @returns {void}
-   */
   const container = document.getElementById(containerId);
   const langPromise = getRepoLangs(username, reponame);
   langPromise.then((languages) => {
@@ -34,7 +62,7 @@ function createBar(containerId, username, reponame, colorJson) {
       bar.className = "bar";
       bar.style.width = `${languages[lang]}%`;
       bar.style.left = `${totalWidth - languages[lang]}%`;
-      bar.style.backgroundColor = colorJson[lang] || "#3333";
+      bar.style.backgroundColor = colorJson[lang] || "#474747";
       bar.style.zIndex = zIndex;
 
       const tooltip = bar.appendChild(document.createElement("span"));
@@ -43,7 +71,9 @@ function createBar(containerId, username, reponame, colorJson) {
       tooltip.style.width = totalWidth;
       tooltip.style.zIndex = zIndex + 1;
       const tooltipText = tooltip.appendChild(document.createElement("span"));
-      tooltipText.textContent = `${lang} ${languages[lang].toFixed(2)}%`;
+      tooltipText.textContent = `${lang.toLowerCase()} ${languages[
+        lang
+      ].toFixed(2)}%`;
       tooltipText.className = "tooltiptext";
 
       //bar.style.backgroundColor = "red";
@@ -51,12 +81,12 @@ function createBar(containerId, username, reponame, colorJson) {
     });
   });
 }
+/**
+ * Gets a c style property from an element
+ * @param {string} id - The element to get the style from
+ * @param {string} styleProp - The style property to get
+ */
 function getStyle(id, styleProp) {
-  /**
-   * Gets a c style property from an element
-   * @param {string} id - The element to get the style from
-   * @param {string} styleProp - The style property to get
-   */
   let x = document.getElementById(id);
   let y;
   if (x.style[styleProp]) return x.style[styleProp];
@@ -70,15 +100,14 @@ function getStyle(id, styleProp) {
   }
   return y;
 }
-
+/**
+ * Gets the languages used in a repo
+ * @param {string} username - The username of the repo owner
+ * @param {string} reponame - The name of the repo
+ * @param {string} key - The github api key
+ * @returns {Promise} - A promise that resolves to an object of languages and their percentages
+ */
 async function getRepoLangs(username, reponame, key = null) {
-  /**
-   * Gets the languages used in a repo
-   * @param {string} username - The username of the repo owner
-   * @param {string} reponame - The name of the repo
-   * @param {string} key - The github api key
-   * @returns {Promise} - A promise that resolves to an object of languages and their percentages
-   */
   {
     const ls = await fetch(
       "https://api.github.com/repos/" +
@@ -106,12 +135,12 @@ async function getRepoLangs(username, reponame, key = null) {
   }
 }
 
+/**
+ * Reads a json file
+ * @param {string} file - The path to the json file
+ * @returns {Promise} - A promise that resolves to the json object
+ */
 async function readJSON(file) {
-  /**
-   * Reads a json file
-   * @param {string} file - The path to the json file
-   * @returns {Promise} - A promise that resolves to the json object
-   */
   const ls = await fetch(file);
   const colorJson = await ls.json();
   return colorJson;

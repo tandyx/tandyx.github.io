@@ -3,18 +3,19 @@
   flex-direction: column;
   justify-content: center;
 
-  margin: 10px 0 10px 0;
+  margin: 30px 0 30px 0;
   padding: 5px 0 0 0;
-  border: #b0b0b0 2px solid;
-  border-radius: 20px;
+  border: #8d8d8d 2px solid;
+  border-radius: 10px;
   overflow: hidden;
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(30, 30, 30);
 }
 
 .project-card h1 {
   margin: 0 0 -20px 10px;
   text-align: left;
-  font-size: 25pt;
+  font-size: 40pt;
+  font-weight: bold;
 }
 .project-card .subheader {
   text-align: left;
@@ -35,13 +36,12 @@
   background-color: #dadada;
 }
 
-.body_container {
-  margin: 0% 0% 0% 0%;
-  padding: 0% 0% 0% 0%;
-}
-
 #mbta_mapper {
-  background: linear-gradient(to left, rgba(86, 86, 86, 0), rgb(20, 20, 20) 90%),
+  background: linear-gradient(
+      to right,
+      rgb(30, 30, 30, 0.7),
+      rgba(86, 86, 86, 0)
+    ),
     url("../img/train.png") right center no-repeat;
   /* background: url("../img/train.png") no-repeat left center; */
   background-size: cover;

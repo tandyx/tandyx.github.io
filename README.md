@@ -1,7 +1,3 @@
-# My Personal Website
+# My Personal Website 2.0
 
-Currently deployed to: [https://tandy-c.github.io/website/](https://tandy-c.github.io/website/)
-
-External Libraries:
-
-- [TypeIt](https://typeitjs.com/): Typing animation
+Work in progress.
