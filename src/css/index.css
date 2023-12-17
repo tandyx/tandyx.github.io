@@ -4,7 +4,7 @@
   --accent-alt: #d000ff;
   --northeastern-red: #c8102e;
   --text: #f2f2f2;
-  --background: rgb(17, 17, 17);
+  --background: rgb(3, 3, 10);
   --grey-text: #262626;
 }
 
@@ -40,26 +40,32 @@
   }
 }
 
+html {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
 html,
 body {
-  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 body {
   font-family: "netto", "Helvetica", "Calibri", "Lato", "sans-serif";
-  margin: 0;
-  padding: 0;
+  width: 100%;
   height: 100%;
-  box-sizing: border-box;
   background-color: var(--background);
+  /* display: block; */
+  /* box-sizing: border-box; */
   color: var(--text);
   font-size: 16pt;
-  /* padding: 0% 15% 0% 15%; */
-  overflow-x: hidden;
+  height: 100vh;
 }
 
 body.titlepage {
-  padding: 0;
   background: linear-gradient(
       rgba(0, 0, 0, 0.1) 0%,
       rgba(0, 0, 0, 0.1) 5%,
@@ -71,6 +77,7 @@ body.titlepage {
   background-attachment: fixed;
   background-position: center;
   position: relative;
+  /* overflow-y: hidden; */
 }
 
 .mainContainer hr {
@@ -154,6 +161,7 @@ h1 {
 
 .mainContainer li:hover::before {
   border-color: transparent var(--accent);
+  text-decoration: underline;
 }
 
 .mainContainer li:active::before {
@@ -184,7 +192,7 @@ h1 {
 
 footer {
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   margin-top: 10px;
   height: 2.5rem;
   width: 100%;
@@ -226,8 +234,9 @@ a:visited {
 }
 
 .body_container {
-  margin: 0% 0% 0% 0%;
-  padding: 10px 15%;
+  margin: 10px 15%;
+  /* padding: 10px 15%;
+  overflow: hidden; */
 }
 
 ::-webkit-scrollbar {
@@ -263,3 +272,16 @@ a:visited {
 /* ::-webkit-scrollbar-track-piece {
     background-color: rgba(0, 0, 0, 0.95);
 } */
+
+.projContainer > h1 {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.centered {
+  text-align: center;
+  margin: auto;
+}

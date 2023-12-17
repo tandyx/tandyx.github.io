@@ -17,11 +17,14 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #222222;
+  /* background-color: #141414; */
+  -webkit-backdrop-filter: blur(50px); /* Safari 9+ */
+  backdrop-filter: blur(50px);
   height: var(--navbar-height);
   padding: 1em;
   font-weight: bolder;
   font-size: 20pt;
+  z-index: 1000;
 }
 
 nav a,
