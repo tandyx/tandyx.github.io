@@ -1,7 +1,7 @@
 :root {
   --navbar-height: 65px;
   --text: #f2f2f2;
-  --grey-accent: #444;
+  --grey-accent: #525252;
 }
 
 * {
@@ -39,7 +39,7 @@ nav a:visited:hover {
 .titleLogo:hover {
   color: var(--text);
   cursor: pointer;
-  background-color: var(--grey-accent);
+  background-color: var(--accent-dark);
 }
 
 .menu li:active,
@@ -150,7 +150,7 @@ nav a:visited:hover {
     border: 0;
   }
   #menu-toggle:checked ~ .menu li {
-    border: 1px solid var(--grey-accent);
+    /* border: 1px solid var(--grey-accent); */
     height: 2.5em;
     padding: 0.5em;
   }
@@ -160,8 +160,8 @@ nav a:visited:hover {
     margin: 0;
     padding: 0.5em 0;
     width: 100%;
-    color: black;
-    background-color: var(--text);
+    color: var(--text);
+    background-color: #1a1a1a;
   }
   .menu > li:not(:last-child) {
     border-bottom: 1px solid var(--grey-accent);

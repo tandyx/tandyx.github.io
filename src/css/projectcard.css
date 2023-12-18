@@ -1,3 +1,7 @@
+:root {
+  --margin-left: 10px;
+}
+
 .project-card {
   display: flex;
   flex-direction: column;
@@ -12,17 +16,38 @@
 }
 
 .project-card h1 {
-  margin: 0 0 -20px 10px;
+  margin: 0 0 -5px var(--margin-left);
   text-align: left;
-  font-size: 40pt;
+  font-size: 35pt;
   font-weight: bold;
 }
 .project-card .subheader {
   text-align: left;
   font-size: 14pt;
-  margin-left: 10px;
   color: #a1a1a1;
 }
+.project-card p,
+.project-card ul,
+.project-card a {
+  margin-left: var(--margin-left);
+}
+
+.project-card .link-wrapper {
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--text);
+}
+.project-card .link-wrapper a {
+  color: var(--text);
+}
+
+.project-card .link-wrapper a:hover {
+  color: var(--accent);
+}
+
 .bar {
   height: 5px;
   position: relative;
@@ -34,6 +59,7 @@
   width: 100%;
   max-height: max-content;
   background-color: #dadada;
+  margin-top: 10px;
 }
 
 #mbta_mapper {
@@ -47,4 +73,9 @@
   background-size: cover;
   /* background-attachment: fixed; */
   background-position: fixed;
+}
+
+.project-card:hover {
+  border: var(--accent) 2px solid;
+  cursor: pointer;
 }

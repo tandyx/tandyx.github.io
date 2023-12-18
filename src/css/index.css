@@ -9,16 +9,18 @@
 }
 
 @font-face {
-  font-family: "Lato";
-  src: url("../font/Lato-Black.ttf") format("truetype");
-}
-
-@font-face {
   font-family: "netto";
   letter-spacing: 3.5px;
   font-weight: 100;
-  /* src: url("../font/netto.ttf") format("truetype"); */
-  src: url("../font/netto.otf") format("opentype");
+  src: url("../font/netto.otf") format("opentype"),
+    url("../font/netto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../font/fontawesome-webfont.ttf?v=4.7.0") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @keyframes fadeIn {
@@ -40,6 +42,15 @@
   }
 }
 
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   height: 100vh;
   width: 100%;
@@ -54,7 +65,7 @@ body {
 }
 
 body {
-  font-family: "netto", "Helvetica", "Calibri", "Lato", "sans-serif";
+  font-family: "netto", "Helvetica", "Calibri", "sans-serif";
   width: 100%;
   height: 100%;
   background-color: var(--background);
@@ -92,7 +103,7 @@ body.titlepage {
 
 .neuAccent,
 .neuAccent:visited {
-  color: var(--text) !important;
+  color: inherit;
 }
 
 .neuAccent:hover,
@@ -140,6 +151,17 @@ body.titlepage {
 h1 {
   /* text-align: center; */
   font-size: 60pt;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 50pt;
+}
+
+h2 {
+  font-size: 40pt;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -273,9 +295,9 @@ a:visited {
     background-color: rgba(0, 0, 0, 0.95);
 } */
 
-.projContainer > h1 {
+/* .projContainer > h1 {
   text-align: center;
-}
+} */
 
 .hidden {
   display: none;
@@ -284,4 +306,10 @@ a:visited {
 .centered {
   text-align: center;
   margin: auto;
+}
+
+.subheader {
+  text-align: left;
+  color: #a1a1a1;
+  margin: 5px 0px;
 }
