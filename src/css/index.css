@@ -128,25 +128,6 @@ body.titlepage {
   padding: 0;
 }
 
-@media screen and (max-width: 768px) {
-  body.titlepage {
-    padding: 0% 5% 0% 5%;
-  }
-
-  .mainContainer {
-    border: none;
-    max-width: 90%;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-  .mainContainer ul,
-  .mainContainer ol,
-  .mainContainer li {
-    padding: 0;
-    text-wrap: none;
-  }
-}
-
 .mainContainer h1,
 h1 {
   /* text-align: center; */
@@ -312,4 +293,27 @@ a:visited {
   text-align: left;
   color: #a1a1a1;
   margin: 5px 0px;
+}
+
+@media screen and (max-width: 768px) {
+  body.titlepage {
+    padding: 0% 5% 0% 5%;
+  }
+
+  .body_container {
+    margin: 10px 5%;
+  }
+
+  .mainContainer {
+    border: none;
+    max-width: 90%;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .mainContainer ul,
+  .mainContainer ol,
+  .mainContainer li {
+    padding: 0;
+    text-wrap: none;
+  }
 }
