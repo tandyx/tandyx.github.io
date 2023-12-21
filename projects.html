@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/tooltip.css" />
     <link rel="stylesheet" href="src/css/index.css" />
     <link rel="stylesheet" href="src/css/projectcard.css" />
     <link rel="stylesheet" href="src/css/navbar.css" />
@@ -42,21 +41,119 @@
         <h2>personal projects</h2>
         <p class="subheader">projects i've worked on in my free time</p>
         <hr />
-        <div>
-          <div id="mbta_mapper" class="project-card no-highlight">
+        <div id="mbta_mapper" class="project-card-container">
+          <div id="mbta_mapper_card" class="project-card no-highlight">
             <h1>mbta mapper</h1>
             <p class="subheader">web app for tracking the t</p>
-            <span class="link-wrapper">
-              <a href="https://mbtamapper.com" target="_blank" rel="noopener"
-                ><i class="fa">&#xf0c1;</i></a
+            <span class="link-wrapper"
               ><a
+                href="https://mbtamapper.com"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="visit site"
+                ><i class="fa">&#xf0c1;</i></a
+              >
+              <a
                 href="https://github.com/tandy-c/mbta_mapper"
                 target="_blank"
                 rel="noopener"
+                data-tooltip="view source"
                 ><i class="fa">&#xf09b;</i></a
-              ></span
-            >
+              >
+            </span>
             <div id="mbtab" class="bar-wrapper" data-repo="mbta_mapper"></div>
+          </div>
+          <div id="mbta_mapper_content" class="project-card-content">
+            <p>
+              I used to work for Keolis; our team developed the backend of a web
+              app that mapped out the MBTA's Commuter Rail service that Keolis
+              ran in real-time. It was an internal app that I became reliant on
+              to commute into Boston, and I knew that I'd lose access to it when
+              I left the company, so I made my own public-facing version. I now
+              use it to commute!
+            </p>
+
+            <iframe
+              src="https://mbtamapper.com/commuter_rail"
+              loading="lazy"
+              class="centered"
+              title="mbta mapper site"
+            ></iframe>
+          </div>
+        </div>
+
+        <div id="teams_bot" class="project-card-container">
+          <div id="teams_bot_card" class="project-card no-highlight">
+            <h1>teams bot</h1>
+            <p class="subheader">automated microsoft teams messages</p>
+            <span class="link-wrapper">
+              <a
+                href="https://github.com/tandy-c/msteamsbot"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="view source"
+                ><i class="fa">&#xf09b;</i></a
+              >
+            </span>
+            <div
+              id="msteamsbar"
+              class="bar-wrapper"
+              data-repo="msteamsbot"
+            ></div>
+          </div>
+          <div id="teams_bot_content" class="project-card-content">
+            <p>
+              Northeastern's college of engineering tutoring center requires
+              that office hours begins with a specific teams message. I created
+              a Python program that sends a message to a microsoft teams channel
+              at a specific time or interval to automate myself out of that
+              process.
+            </p>
+            <img
+              src="src/img/teams_sc.png"
+              alt="msteamsbot screenshot"
+              class="centered"
+            />
+          </div>
+        </div>
+
+        <div id="linprog" class="project-card-container">
+          <div id="linprog_card" class="project-card no-highlight">
+            <h1>linear programming site</h1>
+            <p class="subheader">site to solve linear optimization problems</p>
+            <span class="link-wrapper">
+              <a
+                href="https://mbtamapper.com"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="visit site"
+                ><i class="fa">&#xf0c1;</i></a
+              ><a
+                href="https://github.com/tandy-c/linear_programmer"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="view source"
+                ><i class="fa">&#xf09b;</i></a
+              >
+            </span>
+            <div
+              id="linprogbar"
+              class="bar-wrapper"
+              data-repo="linear_programmer"
+            ></div>
+          </div>
+          <div id="linprog_content" class="project-card-content">
+            <p>
+              A site I created in about a week to teach myself flask forms so
+              that I could more readily help database students with flask and
+              deploying their site.
+            </p>
+            <iframe
+              src="https://tandyc.pythonanywhere.com/"
+              loading="lazy"
+              class="centered"
+              title="mbta mapper site"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -71,80 +168,6 @@
           <p class="subheader">operations research final project</p>
           <div id="orbar" class="bar-wrapper" data-repo="ie4515-final"></div>
         </div> -->
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Esse debitis dolorem, numquam dicta velit illum
-          libero neque, saepe mollitia fuga ipsam consequuntur repudiandae natus
-          dolorum facere obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Esse debitis dolorem, numquam dicta
-          velit illum libero neque, saepe mollitia fuga ipsam consequuntur
-          repudiandae natus dolorum facere obcaecati nemo, rerum cum. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Esse debitis dolorem, numquam dicta velit illum
-          libero neque, saepe mollitia fuga ipsam consequuntur repudiandae natus
-          dolorum facere obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Esse debitis dolorem, numquam dicta
-          velit illum libero neque, saepe mollitia fuga ipsam consequuntur
-          repudiandae natus dolorum facere obcaecati nemo, rerum cum. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Esse debitis dolorem, numquam dicta velit illum
-          libero neque, saepe mollitia fuga ipsam consequuntur repudiandae natus
-          dolorum facere obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Esse debitis dolorem, numquam dicta
-          velit illum libero neque, saepe mollitia fuga ipsam consequuntur
-          repudiandae natus dolorum facere obcaecati nemo, rerum cum. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Esse debitis dolorem, numquam dicta velit illum
-          libero neque, saepe mollitia fuga ipsam consequuntur repudiandae natus
-          dolorum facere obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Esse debitis dolorem, numquam dicta
-          velit illum libero neque, saepe mollitia fuga ipsam consequuntur
-          repudiandae natus dolorum facere obcaecati nemo, rerum cum. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Esse debitis dolorem, numquam dicta velit illum
-          libero neque, saepe mollitia fuga ipsam consequuntur repudiandae natus
-          dolorum facere obcaecati nemo, rerum cum. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Esse debitis dolorem, numquam dicta
-          velit illum libero neque, saepe mollitia fuga ipsam consequuntur
-          repudiandae natus dolorum facere obcaecati nemo, rerum cum. Lorem
-          ipsum dolor sit, amet consectetur adipisicing elit. Esse debitis
-          dolorem, numquam dicta velit illum libero neque, saepe mollitia fuga
-          ipsam consequuntur repudiandae natus dolorum facere obcaecati nemo,
-          rerum cum. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Esse debitis dolorem, numquam dicta velit illum libero neque, saepe
-          mollitia fuga ipsam consequuntur repudiandae natus dolorum facere
-          obcaecati nemo, rerum cum.
-        </p>
       </section>
     </main>
     <footer>

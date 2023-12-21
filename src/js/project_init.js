@@ -7,6 +7,10 @@ window.addEventListener("load", function () {
       });
     });
   }
+
+  for (const projectId of ["mbta_mapper", "teams_bot", "linprog"]) {
+    addProjectEvents(projectId);
+  }
 });
 
 /**
@@ -38,17 +42,20 @@ function createBar(containerId, username, reponame, colorJson) {
       bar.style.left = `${totalWidth - languages[lang]}%`;
       bar.style.backgroundColor = colorJson[lang] || "#474747";
       bar.style.zIndex = zIndex;
+      bar.dataset.tooltip = `${lang.toLowerCase()} ${languages[lang].toFixed(
+        2
+      )}%`;
 
-      const tooltip = bar.appendChild(document.createElement("span"));
+      // const tooltip = bar.appendChild(document.createElement("span"));
       // tooltip.textContent = `${lang} ${languages[lang].toFixed(2)}%`;
-      tooltip.className = "tooltip";
-      tooltip.style.width = totalWidth;
-      tooltip.style.zIndex = zIndex + 1;
-      const tooltipText = tooltip.appendChild(document.createElement("span"));
-      tooltipText.textContent = `${lang.toLowerCase()} ${languages[
-        lang
-      ].toFixed(2)}%`;
-      tooltipText.className = "tooltiptext";
+      // tooltip.className = "tooltip";
+      // tooltip.style.width = totalWidth;
+      // tooltip.style.zIndex = zIndex + 1;
+      // const tooltipText = tooltip.appendChild(document.createElement("span"));
+      // tooltipText.textContent = `${lang.toLowerCase()} ${languages[
+      //   lang
+      // ].toFixed(2)}%`;
+      // tooltipText.className = "tooltiptext";
 
       //bar.style.backgroundColor = "red";
       container.appendChild(bar);
@@ -101,4 +108,26 @@ async function readJSON(file) {
   const ls = await fetch(file);
   const colorJson = await ls.json();
   return colorJson;
+}
+
+function addProjectEvents(id) {
+  const projectWrapper = document.getElementById(id);
+  if (!projectWrapper) return;
+
+  projectWrapper.addEventListener("click", function (event) {
+    // Check if the clicked element is not inside the navbar
+    for (const e of projectWrapper.getElementsByClassName(
+      "project-card-content"
+    )) {
+      if (getStyle(e.id, "display") === "none") {
+        e.style.display = "block";
+        console.log(e);
+        console.log("block");
+      } else {
+        e.style.display = "none";
+        console.log(e);
+        console.log("none");
+      }
+    }
+  });
 }

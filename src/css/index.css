@@ -76,6 +76,19 @@ body {
   height: 100vh;
 }
 
+table,
+td,
+th {
+  border-collapse: collapse;
+  border: 2px solid var(--text);
+  padding: 0 20px 0 0;
+}
+
+thead {
+  border-bottom: 2px solid var(--text);
+  background-color: var(--accent-dark);
+}
+
 body.titlepage {
   background: linear-gradient(
       rgba(0, 0, 0, 0.1) 0%,
@@ -287,6 +300,17 @@ a:visited {
 .centered {
   text-align: center;
   margin: auto;
+}
+
+.centeredalt {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .subheader {
