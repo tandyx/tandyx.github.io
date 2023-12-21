@@ -116,7 +116,7 @@ body.titlepage {
 
 .neuAccent,
 .neuAccent:visited {
-  color: inherit;
+  color: #a1a1a1 !important;
 }
 
 .neuAccent:hover,
@@ -337,7 +337,6 @@ a:visited {
   .mainContainer ul,
   .mainContainer ol,
   .mainContainer li {
-    padding: 0;
     text-wrap: none;
   }
 }
