@@ -48,9 +48,10 @@ function getStyle(id, styleProp) {
 function removeHTMLFrom(...hostnames) {
   for (let anchor of document.querySelectorAll("a[href]")) {
     if (hostnames.includes(anchor.href.host)) continue;
-    for (const replace of ["index", ".html"]) {
-      anchor.href = anchor.href.replace(replace, "");
-      console.log(anchor.href);
+    if (anchor.href === "index.html") {
+      anchor.href = anchor.href.replace("index.html", "");
+    } else {
+      anchor.href = anchor.href.replace(".html", "");
     }
   }
 }

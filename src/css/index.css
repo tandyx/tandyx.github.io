@@ -104,6 +104,7 @@ body.titlepage {
   background-attachment: fixed;
   background-position: center;
   position: relative;
+  overflow-x: hidden;
   /* overflow-y: hidden; */
 }
 

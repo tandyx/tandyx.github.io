@@ -11,6 +11,12 @@ window.addEventListener("load", function () {
     "linprog",
     "tandypack",
     "pwsh",
+    "ie4522",
+    "ie4515",
+    "ie4510",
+    "ie3425",
+    "ie2310",
+    "ge1502",
   ]) {
     addProjectEvents(projectId);
   }
@@ -103,23 +109,15 @@ function addProjectEvents(id) {
     )) {
       if (getStyle(e.id, "display") === "none") {
         e.style.display = "block";
-        console.log(e);
-        console.log("block");
       } else {
         e.style.display = "none";
-        console.log(e);
-        console.log("none");
       }
     }
     for (const e of projectWrapper.getElementsByClassName("norepo")) {
-      if (getStyle(e.id, "display") === "none") {
-        e.style.display = "block";
-        console.log(e);
-        console.log("block");
+      if (getStyle(e.id, "visibility") === "hidden") {
+        e.style.visibility = "visible";
       } else {
-        e.style.display = "none";
-        console.log(e);
-        console.log("none");
+        e.style.visibility = "hidden";
       }
     }
   });

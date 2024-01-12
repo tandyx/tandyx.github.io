@@ -8,7 +8,7 @@
 }
 
 .project-card h1 {
-  margin: 0 0 -5px var(--margin-left);
+  margin: 5px 0 -5px var(--margin-left);
   text-align: left;
   font-size: 35pt;
   font-weight: bold;
@@ -17,7 +17,7 @@
   text-align: left;
   font-size: 14pt;
   color: #a1a1a1;
-  margin: 5px 0 20px var(--margin-left);
+  margin: 5px 0 10px var(--margin-left);
 }
 
 .project-card p,
@@ -118,7 +118,7 @@
   margin-top: 10px;
   height: 5px;
   &.norepo {
-    display: none;
+    visibility: hidden;
     height: 2px;
     /* height: 10px; */
   }
@@ -177,4 +177,5 @@
 .project-card-content img {
   max-height: 400px;
   width: 75%;
+  border-radius: 10px;
 }
