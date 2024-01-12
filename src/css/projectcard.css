@@ -17,7 +17,9 @@
   text-align: left;
   font-size: 14pt;
   color: #a1a1a1;
+  margin: 5px 0 20px var(--margin-left);
 }
+
 .project-card p,
 .project-card ul,
 .project-card a {
@@ -112,8 +114,14 @@
 .bar-wrapper {
   width: 100%;
   max-height: max-content;
-  background-color: #dadada;
+  background-color: #8d8d8d;
   margin-top: 10px;
+  height: 5px;
+  &.norepo {
+    display: none;
+    height: 2px;
+    /* height: 10px; */
+  }
 }
 
 #mbta_mapper_card {
@@ -136,17 +144,21 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .project-card-container:hover {
   border: var(--accent) 2px solid;
   cursor: pointer;
+  .norepo {
+    background-color: var(--accent);
+  }
 }
 
 .project-card-content {
   padding: var(--margin-left);
   display: none;
+  font-size: 14pt;
   /* display: none; */
 }
 

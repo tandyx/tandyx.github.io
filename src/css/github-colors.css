@@ -1,0 +1,1353 @@
+/*adopted from 
+https://github.com/simonecorsi/github-languages-colors/blob/main/src/gh-backgrounds.css
+*/
+
+.ABAP {
+  background-color: #e8274b;
+}
+.ABAP-CDS {
+  background-color: #555e25;
+}
+.AGS-Script {
+  background-color: #b9d9ff;
+}
+.AIDL {
+  background-color: #34eb6b;
+}
+.AL {
+  background-color: #3aa2b5;
+}
+.AMPL {
+  background-color: #e6efbb;
+}
+.ANTLR {
+  background-color: #9dc3ff;
+}
+.APL {
+  background-color: #5a8164;
+}
+.ASL {
+  background-color: #000000;
+}
+.ASPNET {
+  background-color: #9400ff;
+}
+.ATS {
+  background-color: #1ac620;
+}
+.ActionScript {
+  background-color: #882b0f;
+}
+.Ada {
+  background-color: #02f88c;
+}
+.Agda {
+  background-color: #315665;
+}
+.Alloy {
+  background-color: #64c800;
+}
+.Alpine-Abuild {
+  background-color: #0d597f;
+}
+.AngelScript {
+  background-color: #c7d7dc;
+}
+.Apex {
+  background-color: #1797c0;
+}
+.Apollo-Guidance-Computer {
+  background-color: #0b3d91;
+}
+.AppleScript {
+  background-color: #101f1f;
+}
+.Arc {
+  background-color: #aa2afe;
+}
+.AspectJ {
+  background-color: #a957b0;
+}
+.Assembly {
+  background-color: #6e4c13;
+}
+.Asymptote {
+  background-color: #ff0000;
+}
+.Augeas {
+  background-color: #9cc134;
+}
+.AutoHotkey {
+  background-color: #6594b9;
+}
+.AutoIt {
+  background-color: #1c3552;
+}
+.Awk {
+  background-color: #c30e9b;
+}
+.BASIC {
+  background-color: #ff0000;
+}
+.Ballerina {
+  background-color: #ff5000;
+}
+.Batchfile {
+  background-color: #c1f12e;
+}
+.Beef {
+  background-color: #a52f4e;
+}
+.Befunge {
+  background-color: #000000;
+}
+.Berry {
+  background-color: #15a13c;
+}
+.Bicep {
+  background-color: #519aba;
+}
+.Bison {
+  background-color: #6a463f;
+}
+.BitBake {
+  background-color: #00bce4;
+}
+.BlitzBasic {
+  background-color: #00ffae;
+}
+.BlitzMax {
+  background-color: #cd6400;
+}
+.Bluespec {
+  background-color: #12223c;
+}
+.Boo {
+  background-color: #d4bec1;
+}
+.Boogie {
+  background-color: #c80fa0;
+}
+.Brainfuck {
+  background-color: #2f2530;
+}
+.BrighterScript {
+  background-color: #66aabb;
+}
+.Brightscript {
+  background-color: #662d91;
+}
+.C {
+  background-color: #555555;
+}
+.C {
+  background-color: #178600;
+}
+.C {
+  background-color: #f34b7d;
+}
+.C2hs-Haskell {
+  background-color: #000000;
+}
+.CAP-CDS {
+  background-color: #0092d1;
+}
+.CLIPS {
+  background-color: #00a300;
+}
+.CMake {
+  background-color: #da3434;
+}
+.COBOL {
+  background-color: #000000;
+}
+.CUE {
+  background-color: #5886e1;
+}
+.CWeb {
+  background-color: #00007a;
+}
+.Cadence {
+  background-color: #00ef8b;
+}
+.Cairo {
+  background-color: #ff4a48;
+}
+.CameLIGO {
+  background-color: #3be133;
+}
+.Capn-Proto {
+  background-color: #c42727;
+}
+.CartoCSS {
+  background-color: #000000;
+}
+.Ceylon {
+  background-color: #dfa535;
+}
+.Chapel {
+  background-color: #8dc63f;
+}
+.Charity {
+  background-color: #000000;
+}
+.ChucK {
+  background-color: #3f8000;
+}
+.Cirru {
+  background-color: #ccccff;
+}
+.Clarion {
+  background-color: #db901e;
+}
+.Clarity {
+  background-color: #5546ff;
+}
+.Classic-ASP {
+  background-color: #6a40fd;
+}
+.Clean {
+  background-color: #3f85af;
+}
+.Click {
+  background-color: #e4e6f3;
+}
+.Clojure {
+  background-color: #db5855;
+}
+.CodeQL {
+  background-color: #140f46;
+}
+.CoffeeScript {
+  background-color: #244776;
+}
+.ColdFusion {
+  background-color: #ed2cd6;
+}
+.ColdFusion-CFC {
+  background-color: #ed2cd6;
+}
+.Common-Lisp {
+  background-color: #3fb68b;
+}
+.Common-Workflow-Language {
+  background-color: #b5314c;
+}
+.Component-Pascal {
+  background-color: #b0ce4e;
+}
+.Cool {
+  background-color: #000000;
+}
+.Coq {
+  background-color: #d0b68c;
+}
+.Crystal {
+  background-color: #000100;
+}
+.Csound {
+  background-color: #1a1a1a;
+}
+.Csound-Document {
+  background-color: #1a1a1a;
+}
+.Csound-Score {
+  background-color: #1a1a1a;
+}
+.Cuda {
+  background-color: #3a4e3a;
+}
+.Curry {
+  background-color: #531242;
+}
+.Cycript {
+  background-color: #000000;
+}
+.Cython {
+  background-color: #fedf5b;
+}
+.D {
+  background-color: #ba595e;
+}
+.DIGITAL-Command-Language {
+  background-color: #000000;
+}
+.DM {
+  background-color: #447265;
+}
+.DTrace {
+  background-color: #000000;
+}
+.Dafny {
+  background-color: #ffec25;
+}
+.Dart {
+  background-color: #00b4ab;
+}
+.DataWeave {
+  background-color: #003a52;
+}
+.DenizenScript {
+  background-color: #fbee96;
+}
+.Dhall {
+  background-color: #dfafff;
+}
+.Dockerfile {
+  background-color: #384d54;
+}
+.Dogescript {
+  background-color: #cca760;
+}
+.Dylan {
+  background-color: #6c616e;
+}
+.E {
+  background-color: #ccce35;
+}
+.ECL {
+  background-color: #8a1267;
+}
+.ECLiPSe {
+  background-color: #001d9d;
+}
+.EQ {
+  background-color: #a78649;
+}
+.Earthly {
+  background-color: #2af0ff;
+}
+.Eiffel {
+  background-color: #4d6977;
+}
+.Elixir {
+  background-color: #6e4a7e;
+}
+.Elm {
+  background-color: #60b5cc;
+}
+.Emacs-Lisp {
+  background-color: #c065db;
+}
+.EmberScript {
+  background-color: #fff4f3;
+}
+.Erlang {
+  background-color: #b83998;
+}
+.Euphoria {
+  background-color: #ff790b;
+}
+.F {
+  background-color: #b845fc;
+}
+.F {
+  background-color: #572e30;
+}
+.FLUX {
+  background-color: #88ccff;
+}
+.Factor {
+  background-color: #636746;
+}
+.Fancy {
+  background-color: #7b9db4;
+}
+.Fantom {
+  background-color: #14253c;
+}
+.Faust {
+  background-color: #c37240;
+}
+.Fennel {
+  background-color: #fff3d7;
+}
+.Filebench-WML {
+  background-color: #f6b900;
+}
+.Filterscript {
+  background-color: #000000;
+}
+.Fluent {
+  background-color: #ffcc33;
+}
+.Forth {
+  background-color: #341708;
+}
+.Fortran {
+  background-color: #4d41b1;
+}
+.Fortran-Free-Form {
+  background-color: #4d41b1;
+}
+.FreeBasic {
+  background-color: #867db1;
+}
+.FreeMarker {
+  background-color: #0050b2;
+}
+.Frege {
+  background-color: #00cafe;
+}
+.Futhark {
+  background-color: #5f021f;
+}
+.G-code {
+  background-color: #d08cf2;
+}
+.GAML {
+  background-color: #ffc766;
+}
+.GAMS {
+  background-color: #f49a22;
+}
+.GAP {
+  background-color: #0000cc;
+}
+.GCC-Machine-Description {
+  background-color: #ffcfab;
+}
+.GDB {
+  background-color: #000000;
+}
+.GDScript {
+  background-color: #355570;
+}
+.GLSL {
+  background-color: #5686a5;
+}
+.GSC {
+  background-color: #ff6800;
+}
+.Game-Maker-Language {
+  background-color: #71b417;
+}
+.Genero {
+  background-color: #63408e;
+}
+.Genie {
+  background-color: #fb855d;
+}
+.Genshi {
+  background-color: #951531;
+}
+.Gentoo-Ebuild {
+  background-color: #9400ff;
+}
+.Gentoo-Eclass {
+  background-color: #9400ff;
+}
+.Gherkin {
+  background-color: #5b2063;
+}
+.Gleam {
+  background-color: #ffaff3;
+}
+.Glyph {
+  background-color: #c1ac7f;
+}
+.Gnuplot {
+  background-color: #f0a9f0;
+}
+.Go {
+  background-color: #00add8;
+}
+.Golo {
+  background-color: #88562a;
+}
+.Gosu {
+  background-color: #82937f;
+}
+.Grace {
+  background-color: #615f8b;
+}
+.Grammatical-Framework {
+  background-color: #ff0000;
+}
+.Groovy {
+  background-color: #4298b8;
+}
+.Groovy-Server-Pages {
+  background-color: #4298b8;
+}
+.HCL {
+  background-color: #000000;
+}
+.HLSL {
+  background-color: #aace60;
+}
+.Hack {
+  background-color: #878787;
+}
+.Harbour {
+  background-color: #0e60e3;
+}
+.Haskell {
+  background-color: #5e5086;
+}
+.Haxe {
+  background-color: #df7900;
+}
+.HiveQL {
+  background-color: #dce200;
+}
+.HolyC {
+  background-color: #ffefaf;
+}
+.Hy {
+  background-color: #7790b2;
+}
+.HyPhy {
+  background-color: #000000;
+}
+.IDL {
+  background-color: #a3522f;
+}
+.IGOR-Pro {
+  background-color: #0000cc;
+}
+.Idris {
+  background-color: #b30000;
+}
+.ImageJ-Macro {
+  background-color: #99aaff;
+}
+.Inform-7 {
+  background-color: #000000;
+}
+.Inno-Setup {
+  background-color: #264b99;
+}
+.Io {
+  background-color: #a9188d;
+}
+.Ioke {
+  background-color: #078193;
+}
+.Isabelle {
+  background-color: #fefe00;
+}
+.Isabelle-ROOT {
+  background-color: #fefe00;
+}
+.J {
+  background-color: #9eedff;
+}
+.JFlex {
+  background-color: #dbca00;
+}
+.JSONiq {
+  background-color: #40d47e;
+}
+.Janet {
+  background-color: #0886a5;
+}
+.Jasmin {
+  background-color: #d03600;
+}
+.Java {
+  background-color: #b07219;
+}
+.Java-Server-Pages {
+  background-color: #2a6277;
+}
+.JavaScript {
+  background-color: #f1e05a;
+}
+.JavaScriptERB {
+  background-color: #f1e05a;
+}
+.JetBrains-MPS {
+  background-color: #21d789;
+}
+.Jison {
+  background-color: #56b3cb;
+}
+.Jison-Lex {
+  background-color: #56b3cb;
+}
+.Jolie {
+  background-color: #843179;
+}
+.Jsonnet {
+  background-color: #0064bd;
+}
+.Julia {
+  background-color: #a270ba;
+}
+.KRL {
+  background-color: #28430a;
+}
+.Kaitai-Struct {
+  background-color: #773b37;
+}
+.KakouneScript {
+  background-color: #6f8042;
+}
+.Kotlin {
+  background-color: #a97bff;
+}
+.LFE {
+  background-color: #4c3023;
+}
+.LLVM {
+  background-color: #185619;
+}
+.LOLCODE {
+  background-color: #cc9900;
+}
+.LSL {
+  background-color: #3d9970;
+}
+.LabVIEW {
+  background-color: #fede06;
+}
+.Lasso {
+  background-color: #999999;
+}
+.Lean {
+  background-color: #000000;
+}
+.Lex {
+  background-color: #dbca00;
+}
+.LigoLANG {
+  background-color: #0e74ff;
+}
+.LilyPond {
+  background-color: #9ccc7c;
+}
+.Limbo {
+  background-color: #000000;
+}
+.Literate-Agda {
+  background-color: #315665;
+}
+.Literate-CoffeeScript {
+  background-color: #244776;
+}
+.Literate-Haskell {
+  background-color: #5e5086;
+}
+.LiveScript {
+  background-color: #499886;
+}
+.Logos {
+  background-color: #000000;
+}
+.Logtalk {
+  background-color: #295b9a;
+}
+.LookML {
+  background-color: #652b81;
+}
+.LoomScript {
+  background-color: #000000;
+}
+.Lua {
+  background-color: #000080;
+}
+.M {
+  background-color: #000000;
+}
+.M4 {
+  background-color: #000000;
+}
+.M4Sugar {
+  background-color: #000000;
+}
+.MATLAB {
+  background-color: #e16737;
+}
+.MAXScript {
+  background-color: #00a6a6;
+}
+.MLIR {
+  background-color: #5ec8db;
+}
+.MQL4 {
+  background-color: #62a8d6;
+}
+.MQL5 {
+  background-color: #4a76b8;
+}
+.MUF {
+  background-color: #000000;
+}
+.Macaulay2 {
+  background-color: #d8ffff;
+}
+.Makefile {
+  background-color: #427819;
+}
+.Mako {
+  background-color: #7e858d;
+}
+.Mathematica {
+  background-color: #dd1100;
+}
+.Max {
+  background-color: #c4a79c;
+}
+.Mercury {
+  background-color: #ff2b2b;
+}
+.Meson {
+  background-color: #007800;
+}
+.Metal {
+  background-color: #8f14e9;
+}
+.MiniD {
+  background-color: #000000;
+}
+.Mint {
+  background-color: #02b046;
+}
+.Mirah {
+  background-color: #c7a938;
+}
+.Modelica {
+  background-color: #de1d31;
+}
+.Modula-2 {
+  background-color: #10253f;
+}
+.Modula-3 {
+  background-color: #223388;
+}
+.Module-Management-System {
+  background-color: #000000;
+}
+.Monkey {
+  background-color: #000000;
+}
+.Monkey-C {
+  background-color: #8d6747;
+}
+.Moocode {
+  background-color: #000000;
+}
+.MoonScript {
+  background-color: #ff4585;
+}
+.Motoko {
+  background-color: #fbb03b;
+}
+.Motorola-68K-Assembly {
+  background-color: #005daa;
+}
+.Move {
+  background-color: #4a137a;
+}
+.Myghty {
+  background-color: #000000;
+}
+.NASL {
+  background-color: #000000;
+}
+.NCL {
+  background-color: #28431f;
+}
+.NSIS {
+  background-color: #000000;
+}
+.NWScript {
+  background-color: #111522;
+}
+.Nasal {
+  background-color: #1d2c4e;
+}
+.Nearley {
+  background-color: #990000;
+}
+.Nemerle {
+  background-color: #3d3c6e;
+}
+.NetLinx {
+  background-color: #0aa0ff;
+}
+.NetLinxERB {
+  background-color: #747faa;
+}
+.NetLogo {
+  background-color: #ff6375;
+}
+.NewLisp {
+  background-color: #87aed7;
+}
+.Nextflow {
+  background-color: #3ac486;
+}
+.Nim {
+  background-color: #ffc200;
+}
+.Nit {
+  background-color: #009917;
+}
+.Nix {
+  background-color: #7e7eff;
+}
+.Nu {
+  background-color: #c9df40;
+}
+.NumPy {
+  background-color: #9c8af9;
+}
+.OCaml {
+  background-color: #3be133;
+}
+.ObjectScript {
+  background-color: #424893;
+}
+.Objective-C {
+  background-color: #438eff;
+}
+.Objective-C {
+  background-color: #6866fb;
+}
+.Objective-J {
+  background-color: #ff0c5a;
+}
+.Odin {
+  background-color: #60affe;
+}
+.Omgrofl {
+  background-color: #cabbff;
+}
+.Opa {
+  background-color: #000000;
+}
+.Opal {
+  background-color: #f7ede0;
+}
+.Open-Policy-Agent {
+  background-color: #7d9199;
+}
+.OpenCL {
+  background-color: #ed2e2d;
+}
+.OpenEdge-ABL {
+  background-color: #5ce600;
+}
+.OpenQASM {
+  background-color: #aa70ff;
+}
+.OpenRC-runscript {
+  background-color: #000000;
+}
+.OpenSCAD {
+  background-color: #e5cd45;
+}
+.Ox {
+  background-color: #000000;
+}
+.Oxygene {
+  background-color: #cdd0e3;
+}
+.Oz {
+  background-color: #fab738;
+}
+.P4 {
+  background-color: #7055b5;
+}
+.PEGjs {
+  background-color: #234d6b;
+}
+.PHP {
+  background-color: #4f5d95;
+}
+.PLSQL {
+  background-color: #dad8d8;
+}
+.PLpgSQL {
+  background-color: #336790;
+}
+.POV-Ray-SDL {
+  background-color: #6bac65;
+}
+.Pan {
+  background-color: #cc0000;
+}
+.Papyrus {
+  background-color: #6600cc;
+}
+.Parrot {
+  background-color: #f3ca0a;
+}
+.Parrot-Assembly {
+  background-color: #000000;
+}
+.Parrot-Internal-Representation {
+  background-color: #000000;
+}
+.Pascal {
+  background-color: #e3f171;
+}
+.Pawn {
+  background-color: #dbb284;
+}
+.Pep8 {
+  background-color: #c76f5b;
+}
+.Perl {
+  background-color: #0298c3;
+}
+.PicoLisp {
+  background-color: #6067af;
+}
+.PigLatin {
+  background-color: #fcd7de;
+}
+.Pike {
+  background-color: #005390;
+}
+.PogoScript {
+  background-color: #d80074;
+}
+.Pony {
+  background-color: #000000;
+}
+.Portugol {
+  background-color: #f8bd00;
+}
+.PowerBuilder {
+  background-color: #8f0f8d;
+}
+.PowerShell {
+  background-color: #012456;
+}
+.Processing {
+  background-color: #0096d8;
+}
+.Procfile {
+  background-color: #3b2f63;
+}
+.Prolog {
+  background-color: #74283c;
+}
+.Promela {
+  background-color: #de0000;
+}
+.Propeller-Spin {
+  background-color: #7fa2a7;
+}
+.Puppet {
+  background-color: #302b6d;
+}
+.PureBasic {
+  background-color: #5a6986;
+}
+.PureScript {
+  background-color: #1d222d;
+}
+.Python {
+  background-color: #3572a5;
+}
+.Python-console {
+  background-color: #3572a5;
+}
+.Q {
+  background-color: #fed659;
+}
+.QML {
+  background-color: #44a51c;
+}
+.QMake {
+  background-color: #000000;
+}
+.Qt-Script {
+  background-color: #00b841;
+}
+.Quake {
+  background-color: #882233;
+}
+.R {
+  background-color: #198ce7;
+}
+.REALbasic {
+  background-color: #000000;
+}
+.REXX {
+  background-color: #d90e09;
+}
+.RPC {
+  background-color: #000000;
+}
+.RPGLE {
+  background-color: #2bde21;
+}
+.Racket {
+  background-color: #3c5caa;
+}
+.Ragel {
+  background-color: #9d5200;
+}
+.Raku {
+  background-color: #0000fb;
+}
+.Rascal {
+  background-color: #fffaa0;
+}
+.ReScript {
+  background-color: #ed5051;
+}
+.Reason {
+  background-color: #ff5847;
+}
+.ReasonLIGO {
+  background-color: #ff5847;
+}
+.Rebol {
+  background-color: #358a5b;
+}
+.Red {
+  background-color: #f50000;
+}
+.Redcode {
+  background-color: #000000;
+}
+.RenPy {
+  background-color: #ff7f7f;
+}
+.RenderScript {
+  background-color: #000000;
+}
+.Ring {
+  background-color: #2d54cb;
+}
+.RobotFramework {
+  background-color: #00c0b5;
+}
+.Rouge {
+  background-color: #cc0088;
+}
+.RouterOS-Script {
+  background-color: #de3941;
+}
+.Ruby {
+  background-color: #701516;
+}
+.Rust {
+  background-color: #dea584;
+}
+.SAS {
+  background-color: #b34936;
+}
+.SMT {
+  background-color: #000000;
+}
+.SQF {
+  background-color: #3f3f3f;
+}
+.SQLPL {
+  background-color: #e38c00;
+}
+.SWIG {
+  background-color: #000000;
+}
+.Sage {
+  background-color: #000000;
+}
+.SaltStack {
+  background-color: #646464;
+}
+.Scala {
+  background-color: #c22d40;
+}
+.Scheme {
+  background-color: #1e4aec;
+}
+.Scilab {
+  background-color: #ca0f21;
+}
+.Self {
+  background-color: #0579aa;
+}
+.ShaderLab {
+  background-color: #222c37;
+}
+.Shell {
+  background-color: #89e051;
+}
+.ShellSession {
+  background-color: #000000;
+}
+.Shen {
+  background-color: #120f14;
+}
+.Sieve {
+  background-color: #000000;
+}
+.Singularity {
+  background-color: #64e6ad;
+}
+.Slash {
+  background-color: #007eff;
+}
+.Slice {
+  background-color: #003fa2;
+}
+.SmPL {
+  background-color: #c94949;
+}
+.Smali {
+  background-color: #000000;
+}
+.Smalltalk {
+  background-color: #596706;
+}
+.Smarty {
+  background-color: #f0c040;
+}
+.Solidity {
+  background-color: #aa6746;
+}
+.SourcePawn {
+  background-color: #f69e1d;
+}
+.Squirrel {
+  background-color: #800000;
+}
+.Stan {
+  background-color: #b2011d;
+}
+.Standard-ML {
+  background-color: #dc566d;
+}
+.Starlark {
+  background-color: #76d275;
+}
+.Stata {
+  background-color: #1a5f91;
+}
+.SuperCollider {
+  background-color: #46390b;
+}
+.Swift {
+  background-color: #f05138;
+}
+.SystemVerilog {
+  background-color: #dae1c2;
+}
+.TI-Program {
+  background-color: #a0aa87;
+}
+.TLA {
+  background-color: #4b0079;
+}
+.TSQL {
+  background-color: #e38c00;
+}
+.TSX {
+  background-color: #3178c6;
+}
+.TXL {
+  background-color: #0178b8;
+}
+.Talon {
+  background-color: #333333;
+}
+.Tcl {
+  background-color: #e4cc98;
+}
+.Tcsh {
+  background-color: #000000;
+}
+.Terra {
+  background-color: #00004c;
+}
+.Thrift {
+  background-color: #d12127;
+}
+.Turing {
+  background-color: #cf142b;
+}
+.TypeScript {
+  background-color: #3178c6;
+}
+.Unified-Parallel-C {
+  background-color: #4e3617;
+}
+.Unix-Assembly {
+  background-color: #000000;
+}
+.Uno {
+  background-color: #9933cc;
+}
+.UnrealScript {
+  background-color: #a54c4d;
+}
+.UrWeb {
+  background-color: #ccccee;
+}
+.V {
+  background-color: #4f87c4;
+}
+.VBA {
+  background-color: #867db1;
+}
+.VBScript {
+  background-color: #15dcdc;
+}
+.VCL {
+  background-color: #148aa8;
+}
+.VHDL {
+  background-color: #adb2cb;
+}
+.Vala {
+  background-color: #a56de2;
+}
+.Verilog {
+  background-color: #b2b7f8;
+}
+.Vim-Script {
+  background-color: #199f4b;
+}
+.Visual-Basic-NET {
+  background-color: #945db7;
+}
+.Volt {
+  background-color: #1f1f1f;
+}
+.Vyper {
+  background-color: #2980b9;
+}
+.WebAssembly {
+  background-color: #04133b;
+}
+.WebIDL {
+  background-color: #000000;
+}
+.Whiley {
+  background-color: #d5c397;
+}
+.Witcher-Script {
+  background-color: #ff0000;
+}
+.Wollok {
+  background-color: #a23738;
+}
+.Wren {
+  background-color: #383838;
+}
+.X10 {
+  background-color: #4b6bef;
+}
+.XC {
+  background-color: #99da07;
+}
+.XProc {
+  background-color: #000000;
+}
+.XQuery {
+  background-color: #5232e7;
+}
+.XS {
+  background-color: #000000;
+}
+.XSLT {
+  background-color: #eb8ceb;
+}
+.Xojo {
+  background-color: #81bd41;
+}
+.Xonsh {
+  background-color: #285eef;
+}
+.Xtend {
+  background-color: #24255d;
+}
+.YARA {
+  background-color: #220000;
+}
+.Yacc {
+  background-color: #4b6c4b;
+}
+.Yul {
+  background-color: #794932;
+}
+.ZAP {
+  background-color: #0d665e;
+}
+.ZIL {
+  background-color: #dc75e5;
+}
+.Zeek {
+  background-color: #000000;
+}
+.ZenScript {
+  background-color: #00bcd1;
+}
+.Zephir {
+  background-color: #118f9e;
+}
+.Zig {
+  background-color: #ec915c;
+}
+.Zimpl {
+  background-color: #d67711;
+}
+.eC {
+  background-color: #913960;
+}
+.fish {
+  background-color: #4aae47;
+}
+.hoon {
+  background-color: #00b171;
+}
+.jq {
+  background-color: #c7254e;
+}
+.mIRC-Script {
+  background-color: #3d57c3;
+}
+.mcfunction {
+  background-color: #e22837;
+}
+.mupad {
+  background-color: #244963;
+}
+.nesC {
+  background-color: #94b0c7;
+}
+.ooc {
+  background-color: #b0b77e;
+}
+.q {
+  background-color: #0040cd;
+}
+.sed {
+  background-color: #64b970;
+}
+.wdl {
+  background-color: #42f1f4;
+}
+.wisp {
+  background-color: #7582d1;
+}
+.xBase {
+  background-color: #403a40;
+}
+
+/* Languages not included:
+    * - C#
+    * - C++
+    * - HTML
+    * - CSS
+    I know this is bad practice but I don't want to add another css file just for this
+*/
+.C-Sharp {
+  background-color: #178600;
+}
+.cpp {
+  background-color: #f34b7d;
+}
+.CSS {
+  background-color: #563d7c;
+}
+.HTML {
+  background-color: #e34c26;
+}

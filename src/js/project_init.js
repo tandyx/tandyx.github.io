@@ -5,7 +5,13 @@ window.addEventListener("load", function () {
     createBar(el.id, username, el.dataset.repo);
   });
 
-  for (const projectId of ["mbta_mapper", "teams_bot", "linprog"]) {
+  for (const projectId of [
+    "mbta_mapper",
+    "teams_bot",
+    "linprog",
+    "tandypack",
+    "pwsh",
+  ]) {
     addProjectEvents(projectId);
   }
 });
@@ -41,19 +47,6 @@ function createBar(containerId, username, reponame) {
       bar.dataset.tooltip = `${lang.toLowerCase()} ${languages[lang].toFixed(
         2
       )}%`;
-
-      // const tooltip = bar.appendChild(document.createElement("span"));
-      // tooltip.textContent = `${lang} ${languages[lang].toFixed(2)}%`;
-      // tooltip.className = "tooltip";
-      // tooltip.style.width = totalWidth;
-      // tooltip.style.zIndex = zIndex + 1;
-      // const tooltipText = tooltip.appendChild(document.createElement("span"));
-      // tooltipText.textContent = `${lang.toLowerCase()} ${languages[
-      //   lang
-      // ].toFixed(2)}%`;
-      // tooltipText.className = "tooltiptext";
-
-      //bar.style.backgroundColor = "red";
       container.appendChild(bar);
     });
   });
@@ -108,6 +101,17 @@ function addProjectEvents(id) {
     for (const e of projectWrapper.getElementsByClassName(
       "project-card-content"
     )) {
+      if (getStyle(e.id, "display") === "none") {
+        e.style.display = "block";
+        console.log(e);
+        console.log("block");
+      } else {
+        e.style.display = "none";
+        console.log(e);
+        console.log("none");
+      }
+    }
+    for (const e of projectWrapper.getElementsByClassName("norepo")) {
       if (getStyle(e.id, "display") === "none") {
         e.style.display = "block";
         console.log(e);
