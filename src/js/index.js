@@ -50,6 +50,7 @@ function removeHTMLFrom(...hostnames) {
     if (hostnames.includes(anchor.href.host)) continue;
     for (const replace of ["index", ".html"]) {
       anchor.href = anchor.href.replace(replace, "");
+      console.log(anchor.href);
     }
   }
 }
