@@ -123,7 +123,7 @@
     /* height: 10px; */
   }
 }
-
+/* 
 #mbta_mapper_card {
   background: linear-gradient(
       to right,
@@ -131,11 +131,9 @@
       rgba(86, 86, 86, 0)
     ),
     url("../img/train.png") right center no-repeat;
-  /* background: url("../img/train.png") no-repeat left center; */
   background-size: cover;
-  /* background-attachment: fixed; */
   background-position: fixed;
-}
+} */
 
 .project-card-container {
   border: #8d8d8d 2px solid;
