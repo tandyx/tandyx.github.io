@@ -4,6 +4,7 @@ window.addEventListener("load", function () {
     "",
     "127.0.0.1",
     "q7vr2gwr-3000.use.devtunnels.ms",
+    "l9bzxts8-3000.use.devtunnels.ms",
   ];
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);

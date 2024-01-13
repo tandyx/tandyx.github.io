@@ -54,7 +54,7 @@
 }
 
 html {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: black;
 }
@@ -62,7 +62,6 @@ html {
 html,
 body {
   margin: 0;
-  overflow-x: hidden;
   padding: 0;
 }
 
@@ -104,7 +103,6 @@ body.titlepage {
   background-attachment: fixed;
   background-position: center;
   position: relative;
-  overflow-x: hidden;
   /* overflow-y: hidden; */
 }
 
@@ -324,10 +322,6 @@ a:visited {
 }
 
 @media screen and (max-width: 768px) {
-  body.titlepage {
-    padding: 0% 5% 0% 5%;
-  }
-
   .body_container {
     margin: 10px 5%;
   }
