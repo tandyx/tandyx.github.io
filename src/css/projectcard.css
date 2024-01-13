@@ -1,9 +1,10 @@
 :root {
   --margin-left: 10px;
+  --project-card-background: rgb(10, 10, 10);
 }
 
 .project-card {
-  background-color: rgb(10, 10, 10);
+  background-color: var(--project-card-background);
   /* border-bottom: 2px solid #8d8d8d; */
 }
 
@@ -157,6 +158,8 @@
   padding: var(--margin-left);
   display: none;
   font-size: 14pt;
+  background-color: var(--project-card-background);
+
   /* display: none; */
 }
 
