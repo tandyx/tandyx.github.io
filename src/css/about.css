@@ -63,11 +63,20 @@
   }
 }
 
-#langPlot {
+/* .plot_container {
   width: 100%;
   height: 100%;
-}
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* #langPlot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 @media screen and (max-width: 524px) {
   .about_header {
     display: inline-block;

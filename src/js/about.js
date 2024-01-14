@@ -1,11 +1,9 @@
 window.onload = function () {
   const username = "tandy-c";
-  // getUserLanguages(username, ).then(
-  //   (data) => {
-  //     console.log(data);
-  //     createLangPiechart("langPlot", data);
-  //   }
-  // );
+  getUserLanguages(username).then((data) => {
+    console.log(data);
+    createLangPiechart("langPlot", data);
+  });
 };
 /**
  * Gets the languages used in a repo
@@ -61,23 +59,17 @@ function createLangPiechart(id, langdata) {
       type: "pie",
       hoverlabel: {
         borderRadius: 10,
-        font: {
-          family: font,
-          size: 15,
-        },
-        // bgcolor: "#474747",
+        font: { family: font, size: 15 },
       },
       hovertemplate: "%{label}: %{percent} <extra></extra>",
-
       outsidetextfont: { color: "transparent" },
+      responsive: true,
     },
   ];
 
   const layout = {
-    height: 400,
-    width: 500,
+    autosize: true,
     showlegend: false,
-    background: false,
     font: {
       family: font,
       size: 15,
@@ -86,13 +78,13 @@ function createLangPiechart(id, langdata) {
     paper_bgcolor: "rgba(0,0,0,0)",
     plot_bgcolor: "rgba(0,0,0,0)",
     margin: {
-      l: 20,
-      r: 20,
-      b: 20,
-      t: 20,
-      pad: 5,
+      l: 0,
+      r: 0,
+      b: 0,
+      t: 0,
+      pad: -30,
     },
   };
 
-  Plotly.newPlot(id, data, layout);
+  Plotly.newPlot(id, data, layout, { responsive: true });
 }
