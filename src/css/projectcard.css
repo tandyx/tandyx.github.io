@@ -179,4 +179,5 @@
   max-height: 400px;
   width: 75%;
   border-radius: 10px;
+  object-fit: scale-down;
 }

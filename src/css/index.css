@@ -304,6 +304,8 @@ a:visited {
 .centered {
   text-align: center;
   margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .centeredalt {
@@ -321,6 +323,41 @@ a:visited {
   text-align: left;
   color: #a1a1a1;
   margin: 5px 0px;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 1;
+  background: #333;
+  transform: translate(15%);
+  color: #fff;
+  padding: 5px;
+  font-size: 10pt;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s;
+  white-space: nowrap;
+  font-family: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
+    monospace;
+}
+
+.tooltip::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+
+  z-index: 1;
+  transform: translate(180%, 65%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+}
+
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
