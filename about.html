@@ -14,9 +14,19 @@
     <link rel="stylesheet" href="/src/css/index.css" />
     <link rel="stylesheet" href="/src/css/about.css" />
     <link rel="stylesheet" href="/src/css/navbar.css" />
+    <link rel="stylesheet" href="/src/css/projectcard.css" />
+    <link rel="stylesheet" href="/src/css/github-colors.css" />
 
     <script src="/src/js/index.js" async defer></script>
+    <script src="/src/js/project.js" async defer></script>
+    <script src="/src/js/about.js" async defer></script>
+
+    <script
+      src="https://cdn.plot.ly/plotly-2.27.0.min.js"
+      charset="utf-8"
+    ></script>
   </head>
+
   <body>
     <nav class="nav">
       <div class="titleLogo"><a href="../index.html">johan cho</a></div>
@@ -79,6 +89,13 @@
               class="tooltip"
               data-tooltip="youtube"
               >&#xf16a;</a
+            >&numsp;<a
+              href="/src/resume.pdf"
+              target="_blank"
+              rel="noopener"
+              class="tooltip"
+              data-tooltip="view resume"
+              >&#xf1c1;</a
             >
           </div>
         </div>
@@ -87,7 +104,101 @@
     <main class="body_container">
       <div class="about_container">
         <div class="sub_container left">dasdsadsa</div>
-        <div class="sub_container right">dsaddsadsaas</div>
+        <div class="sub_container right">
+          <div id="about_me" class="resume_section_container">
+            <h2>about me</h2>
+            <hr />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              at consectetur nostrum incidunt quos, enim cum impedit eos?
+              Laborum, quos error. Beatae dolor accusantium corporis, expedita
+              blanditiis quo fugit dolorum!
+            </p>
+          </div>
+          <div id="_projects" class="resume_section_container">
+            <h2>projects</h2>
+            <hr />
+            <p>
+              -> check out my projects <a href="./projects/index.html">here.</a>
+            </p>
+          </div>
+
+          <div id="skills" class="resume_section_container">
+            <h2>skills</h2>
+            <hr />
+            <div class="resume_section">
+              <h3>programming languages</h3>
+              <hr />
+              <div style="width: 10%">
+                <div id="langPlot"></div>
+              </div>
+              <p>python, java, c, c++, sql, html, css, javascript</p>
+            </div>
+            <div class="resume_section">
+              <h3>software</h3>
+              <hr />
+              <p>solidworks, fusion 360, matlab, excel, access, powerpoint</p>
+            </div>
+          </div>
+
+          <div id="experience" class="resume_section_container">
+            <h2>experience</h2>
+            <hr />
+            <div class="resume_section">
+              <h3>harvard IT analyst co-op</h3>
+              <hr />
+              <p>harvard university kennedy school</p>
+              <p>cambridge, massachusetts; janurary 2024 - present</p>
+            </div>
+            <div class="resume_section">
+              <h3>database course assistant grader</h3>
+              <hr />
+              <p>northeastern university college of engineering</p>
+              <p>boston, massachusetts; august 2023 - present</p>
+            </div>
+            <div class="resume_section">
+              <h3>keolis technical co-op</h3>
+              <hr />
+              <p>keolis commuter services</p>
+              <p>boston, massachusetts; janurary 2023 - august 2023</p>
+            </div>
+            <div class="resume_section">
+              <h3>amazon associate</h3>
+              <hr />
+              <p>amazon fresh</p>
+              <p>boston, massachusetts; august 2021 - janurary 2023</p>
+            </div>
+          </div>
+          <div id="education" class="resume_section_container">
+            <h2>education</h2>
+            <hr />
+            <div class="resume_section">
+              <h3>northeastern univeristy</h3>
+              <hr />
+              <p>boston, massachusetts; 2021-2025 (exp)</p>
+              <p>b.s. industrial engineering, minor mathematics</p>
+              <p>gpa: 4.0</p>
+              <p class="subheader">dean's list: 2021-2023</p>
+              <p class="subheader">tau beta pi, iise</p>
+              <p>
+                <a class="tooltip" data-tooltip="view classes" href="#classes"
+                  >classes</a
+                >
+              </p>
+            </div>
+            <div class="resume_section">
+              <h3>sharon high school</h3>
+              <hr />
+              <p>sharon, massachusetts; 2017-2021</p>
+              <p>high school diploma</p>
+              <p>gpa: 3.6</p>
+              <p class="subheader">
+                graduated cum laude, honor's list 2017-2021, ap scholar w/
+                distinction
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer>

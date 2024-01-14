@@ -59,41 +59,6 @@ function createBar(containerId, username, reponame) {
 }
 
 /**
- * Gets the languages used in a repo
- * @param {string} username - The username of the repo owner
- * @param {string} reponame - The name of the repo
- * @param {string} key - The github api key
- * @returns {Promise} - A promise that resolves to an object of languages and their percentages
- */
-async function getRepoLangs(username, reponame, key = null) {
-  {
-    const ls = await fetch(
-      "https://api.github.com/repos/" +
-        username +
-        "/" +
-        reponame +
-        "/languages" +
-        (key ? "?access_token=" + key : "")
-    );
-
-    const languageStats = Object.entries(await ls.json())
-      .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-
-    const totalBytes = Object.values(languageStats).reduce(
-      (partialSum, a) => partialSum + a,
-      0
-    );
-
-    const languagesPercentage = {};
-    Object.keys(languageStats).forEach((lang) => {
-      languagesPercentage[lang] = (languageStats[lang] * 100) / totalBytes;
-    });
-    return languagesPercentage;
-  }
-}
-
-/**
  * adds event listeners to the project cards
  * @param {string} id - The id of the element to get the style of
  * @returns {string} - The style of the element
