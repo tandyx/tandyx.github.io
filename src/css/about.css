@@ -71,6 +71,10 @@
       position: relative;
       margin: 0 25% 0 25%;
     }
+
+    .subheader {
+      text-align: center;
+    }
   }
 }
 
