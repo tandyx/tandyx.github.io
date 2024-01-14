@@ -1,8 +1,8 @@
 window.onload = function () {
   const username = "tandy-c";
-  //   getUserLanguages(username).then((data) => {
-  // createLangPiechart("langPlot", data);
-  //   });
+  // getUserLanguages(username).then((data) => {
+  //   createLangPiechart("langPlot", data);
+  // });
 };
 /**
  * Gets the languages used in a repo
