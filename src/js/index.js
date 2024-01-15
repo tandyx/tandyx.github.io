@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-  setNav();
   const localHosts = [
     "localhost",
     "",
@@ -10,6 +9,7 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
+  setNav();
   document.addEventListener("click", function (event) {
     // Check if the clicked element is not inside the navbar
     if (!event.target.closest(".nav")) {
