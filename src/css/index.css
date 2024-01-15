@@ -216,6 +216,9 @@ footer {
   left: 0;
   color: var(--grey-text);
   font-size: 9pt;
+  * {
+    margin-bottom: 5px;
+  }
 }
 p {
   margin-left: 5px;
@@ -258,13 +261,14 @@ a:visited {
 
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: rgba(0, 0, 0, 0.95);
+  background: none;
+  background-color: var(--background-color);
   /* border-radius: 10px; */
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: var(--background-color);
   /* border-radius: 10px; */
 }
 

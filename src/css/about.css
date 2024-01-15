@@ -61,12 +61,18 @@
 }
 
 .resume_section {
-  margin-left: 10px;
+  margin: 0 0 -10px 0;
   hr {
     margin-top: -15px;
   }
   p {
     margin: 5px 0px;
+    font-size: 12pt;
+  }
+  ul,
+  li,
+  ol {
+    margin: 5px;
     font-size: 12pt;
   }
 }
@@ -181,5 +187,5 @@
 }
 
 .resume_section_container {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
