@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
-
   document.addEventListener("click", function (event) {
     // Check if the clicked element is not inside the navbar
     if (!event.target.closest(".nav")) {
@@ -18,6 +17,13 @@ window.addEventListener("load", function () {
       if (menuToggle.checked) {
         menuToggle.checked = false;
       }
+    }
+  });
+  document.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      document.getElementById("back2top").style.display = "block";
+    } else {
+      document.getElementById("back2top").style.display = "none";
     }
   });
 });
