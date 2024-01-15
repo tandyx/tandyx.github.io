@@ -10,10 +10,10 @@ window.onload = function () {
     }
     document.getElementById("aboutleft").style.display = "block";
   });
-  getUserLanguages(username).then((data) => {
-    console.log(data);
-    createLangPiechart("langPlot", data);
-  });
+  // getUserLanguages(username).then((data) => {
+  //   console.log(data);
+  //   createLangPiechart("langPlot", data);
+  // });
 };
 /**
  * Gets the languages used in a repo
@@ -51,6 +51,12 @@ async function getUserLanguages(username, key = null) {
   return languagesJson;
 }
 
+/**
+ * creates a pie chart of the languages used in a repo
+ * @param {string} id - The id of the div to put the pie chart in
+ * @param {Object} langdata - The object of languages and their percentages
+ * @returns {void}
+ */
 function createLangPiechart(id, langdata) {
   const langstyles = getStylesheet("github-colors");
   const font = getStyleRuleValue("font-family", "body", getStylesheet("index"));
