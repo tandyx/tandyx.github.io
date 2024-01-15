@@ -1,8 +1,10 @@
 window.onload = function () {
   const username = "tandy-c";
-
   document.addEventListener("scroll", () => {
-    if (elementIsVisibleInViewport("aboutheader", true)) {
+    if (
+      elementIsVisibleInViewport("aboutheader", true) ||
+      window.innerWidth < 768
+    ) {
       document.getElementById("aboutleft").style.display = "none";
       return;
     }
