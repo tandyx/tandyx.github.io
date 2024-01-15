@@ -3,7 +3,9 @@ window.addEventListener("load", function () {
   document.querySelectorAll("[data-repo]").forEach((el) => {
     createBar(el.id, username, el.dataset.repo);
   });
-  for (const project of document.getElementsByClassName("projContainer")) {
+  for (const project of document.getElementsByClassName(
+    "project-card-container"
+  )) {
     addProjectEvents(project);
   }
 });
