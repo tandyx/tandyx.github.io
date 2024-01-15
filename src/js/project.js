@@ -3,12 +3,20 @@ window.addEventListener("load", function () {
   document.querySelectorAll("[data-repo]").forEach((el) => {
     createBar(el.id, username, el.dataset.repo);
   });
-  for (const project of document.getElementsByClassName(
+
+  for (const proj of document.getElementsByClassName(
     "project-card-container"
   )) {
-    addProjectEvents(project);
+    addProjectEvents(proj);
+  }
+  if (window.location.hash) {
+    document.getElementById(window.location.hash.slice(1)).click();
   }
 });
+
+window.onhashchange = function () {
+  document.getElementById(window.location.hash.slice(1)).click();
+};
 
 /**
  * Creates a bar chart of the languages used in a repo
