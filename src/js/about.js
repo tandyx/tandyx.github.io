@@ -8,10 +8,10 @@ window.onload = function () {
     }
     document.getElementById("aboutleft").style.display = "block";
   });
-  // getUserLanguages(username).then((data) => {
-  //   console.log(data);
-  //   createLangPiechart("langPlot", data);
-  // });
+  getUserLanguages(username).then((data) => {
+    console.log(data);
+    createLangPiechart("langPlot", data);
+  });
 };
 /**
  * Gets the languages used in a repo
