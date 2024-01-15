@@ -56,7 +56,7 @@ function getStyle(id, styleProp) {
 function removeHTMLFrom(...hostnames) {
   for (let anchor of document.querySelectorAll("a[href]")) {
     if (hostnames.includes(anchor.href.host)) continue;
-    if (anchor.href === "index.html") {
+    if (anchor.href.endsWith("index.html")) {
       anchor.href = anchor.href.replace("index.html", "");
     } else {
       anchor.href = anchor.href.replace(".html", "");
