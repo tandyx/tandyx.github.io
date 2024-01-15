@@ -175,9 +175,19 @@
   border-radius: 10px;
 }
 
-.project-card-content img {
+.project-card-content img,
+.project-card-content video {
   max-height: 400px;
   width: 75%;
   border-radius: 10px;
   object-fit: scale-down;
+}
+
+.project-card-container .code-wrapper {
+  max-height: 400px;
+  width: 75%;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--grey-text);
 }

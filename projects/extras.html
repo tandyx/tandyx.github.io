@@ -184,14 +184,15 @@
               We were tasked to solve a complicated optimization problem. I
               chose to use AMPL and worked largely solo.
             </p>
-            <code>
-              # DOSOVO: if you produce a midsize car, you must produce a compact
-              car subject to dos_if_midsize_then_compact: sum {i in CARS:
-              size_desc[i] == "midsize"} Y[i,"Dosovo"] <= sum { i in CARS:
-              size_desc[i] in {"compact size/midsize", "compact size"} and
-              assembly_line_mapper[i,"Dosovo"] not in { _ in CARS: size_desc[_]
-              == "midsize" } } Y[i,"Dosovo"];
-            </code>
+            <div class="code-wrapper">
+              <code>
+                subject to dos_if_midsize_then_compact: sum {i in CARS:
+                size_desc[i] == "midsize"} Y[i,"Dosovo"] <= sum { i in CARS:
+                size_desc[i] in {"compact size/midsize", "compact size"} and
+                assembly_line_mapper[i,"Dosovo"] not in { _ in CARS:
+                size_desc[_] == "midsize" } } Y[i,"Dosovo"];
+              </code>
+            </div>
           </div>
         </div>
         <div id="ie4510" class="project-card-container">
