@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+  setNav();
   const localHosts = [
     "localhost",
     "",
@@ -13,7 +14,7 @@ window.addEventListener("load", function () {
     // Check if the clicked element is not inside the navbar
     if (!event.target.closest(".nav")) {
       // Close the hamburger menu
-      let menuToggle = document.getElementById("menu-toggle");
+      const menuToggle = document.getElementById("menu-toggle");
       if (menuToggle.checked) {
         menuToggle.checked = false;
       }
@@ -108,7 +109,6 @@ async function getRepoLangs(username, reponame, key = null) {
  * @returns {string} - The value of the style
  * @returns {null} - If the style was not found
  */
-
 function getStyleRuleValue(style, selector, sheet = undefined) {
   const sheets = typeof sheet !== "undefined" ? [sheet] : document.styleSheets;
   for (const sheet of sheets) {
@@ -128,7 +128,6 @@ function getStyleRuleValue(style, selector, sheet = undefined) {
  * @returns {CSSStyleSheet} - The stylesheet
  * @returns {null} - If the stylesheet was not found
  */
-
 function getStylesheet(sheetName) {
   for (const sheet of document.styleSheets) {
     if (sheet.href?.includes(sheetName)) {
@@ -144,7 +143,7 @@ function getStylesheet(sheetName) {
  * @param {boolean} partiallyVisible - Whether the element can be partially visible
  * @returns {boolean} - Whether the element is visible
  */
-const elementIsVisibleInViewport = (id, partiallyVisible = false) => {
+function elementIsVisibleInViewport(id, partiallyVisible = false) {
   const el = document.getElementById(id);
   if (!el) return false;
   const { top, left, bottom, right } = el.getBoundingClientRect();
@@ -154,4 +153,23 @@ const elementIsVisibleInViewport = (id, partiallyVisible = false) => {
         (bottom > 0 && bottom < innerHeight)) &&
         ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
-};
+}
+
+/**
+ * Sets the nav bar to the current page
+ * @returns {void}
+ */
+function setNav() {
+  for (const navBar of document.getElementsByClassName("nav")) {
+    for (const menu of navBar.getElementsByClassName("menu")) {
+      for (const child of menu.children) {
+        for (const anchor of child.getElementsByTagName("a")) {
+          if (anchor.href === window.location.href) {
+            anchor.style.color = "var(--accent)";
+            anchor.href = "#";
+          }
+        }
+      }
+    }
+  }
+}

@@ -29,8 +29,8 @@
       </label>
       <ul class="menu">
         <li><a href="../about.html">about</a></li>
-        <li><a href="./index.html">projects</a></li>
-        <li><a href="#">extras</a></li>
+        <li><a href="../projects/index.html">projects</a></li>
+        <li><a href="../projects/extras.html">extras</a></li>
       </ul>
     </nav>
 
@@ -39,13 +39,40 @@
       <header>
         <h1>extras</h1>
         <p class="subheader">
-          -> more applicable projects <a href="./">here</a>
+          -> more applicable projects <a href="../projects/index.html">here</a>
         </p>
         <hr />
         <br />
       </header>
 
       <section class="projContainer" id="miniProjects">
+        <div id="thissite" class="project-card-container">
+          <div id="thissite_card" class="project-card no-highlight">
+            <h1>portfolio site</h1>
+            <p class="subheader">this site!</p>
+            <span class="link-wrapper">
+              <a
+                href="https://github.com/tandy-c/tandy-c.github.io"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="view source"
+                ><i class="fa">&#xf09b;</i></a
+              >
+            </span>
+            <div
+              id="thissitebar"
+              class="bar-wrapper"
+              data-repo="tandy-c.github.io"
+            ></div>
+          </div>
+          <div id="thissite_content" class="project-card-content">
+            <p>
+              This site was born out of an assignment and a prior attempt. It
+              took a lot of time and uses *mostly* original css, js and html!
+            </p>
+          </div>
+        </div>
+
         <div id="linprog" class="project-card-container">
           <div id="linprog_card" class="project-card no-highlight">
             <h1>linear programming site</h1>
@@ -133,6 +160,12 @@
             <p class="subheader">final "project" for operations research</p>
             <span class="link-wrapper">
               <a
+                href="https://drive.google.com/file/d/1CnO5QGbpaexRrt9mTwnDpIXqMVac_0eY/view?usp=sharing"
+                target="_blank"
+                rel="noopener"
+                data-tooltip="assignment"
+                ><i class="fa">&#xf1c1;</i></a
+              ><a
                 href="https://github.com/tandy-c/ie4515-final"
                 target="_blank"
                 rel="noopener"
@@ -151,6 +184,14 @@
               We were tasked to solve a complicated optimization problem. I
               chose to use AMPL and worked largely solo.
             </p>
+            <code>
+              # DOSOVO: if you produce a midsize car, you must produce a compact
+              car subject to dos_if_midsize_then_compact: sum {i in CARS:
+              size_desc[i] == "midsize"} Y[i,"Dosovo"] <= sum { i in CARS:
+              size_desc[i] in {"compact size/midsize", "compact size"} and
+              assembly_line_mapper[i,"Dosovo"] not in { _ in CARS: size_desc[_]
+              == "midsize" } } Y[i,"Dosovo"];
+            </code>
           </div>
         </div>
         <div id="ie4510" class="project-card-container">

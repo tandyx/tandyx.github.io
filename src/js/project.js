@@ -1,24 +1,10 @@
 window.addEventListener("load", function () {
   const username = "tandy-c";
-
   document.querySelectorAll("[data-repo]").forEach((el) => {
     createBar(el.id, username, el.dataset.repo);
   });
-
-  for (const projectId of [
-    "mbta_mapper",
-    "teams_bot",
-    "linprog",
-    "tandypack",
-    "pwsh",
-    "ie4522",
-    "ie4515",
-    "ie4510",
-    "ie3425",
-    "ie2310",
-    "ge1502",
-  ]) {
-    addProjectEvents(projectId);
+  for (const project of document.getElementsByClassName("projContainer")) {
+    addProjectEvents(project);
   }
 });
 
@@ -60,13 +46,11 @@ function createBar(containerId, username, reponame) {
 
 /**
  * adds event listeners to the project cards
- * @param {string} id - The id of the element to get the style of
+ * @param {HTMLElement} projectWrapper - The element to add the event listeners to
  * @returns {string} - The style of the element
  */
-function addProjectEvents(id) {
-  const projectWrapper = document.getElementById(id);
+function addProjectEvents(projectWrapper) {
   if (!projectWrapper) return;
-
   projectWrapper.addEventListener("click", function (event) {
     // Check if the clicked element is not inside the navbar
     for (const e of projectWrapper.getElementsByClassName(
