@@ -1,9 +1,17 @@
 window.onload = function () {
   const username = "tandy-c";
-  getUserLanguages(username).then((data) => {
-    console.log(data);
-    createLangPiechart("langPlot", data);
+
+  document.addEventListener("scroll", () => {
+    if (elementIsVisibleInViewport("aboutheader", true)) {
+      document.getElementById("aboutleft").style.display = "none";
+      return;
+    }
+    document.getElementById("aboutleft").style.display = "block";
   });
+  // getUserLanguages(username).then((data) => {
+  //   console.log(data);
+  //   createLangPiechart("langPlot", data);
+  // });
 };
 /**
  * Gets the languages used in a repo

@@ -131,3 +131,21 @@ function getStylesheet(sheetName) {
   }
   return null;
 }
+
+/**
+ * checks if an element is visible in the viewport
+ * @param {string} id - The id of the element to check
+ * @param {boolean} partiallyVisible - Whether the element can be partially visible
+ * @returns {boolean} - Whether the element is visible
+ */
+const elementIsVisibleInViewport = (id, partiallyVisible = false) => {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const { top, left, bottom, right } = el.getBoundingClientRect();
+  const { innerHeight, innerWidth } = window;
+  return partiallyVisible
+    ? ((top > 0 && top < innerHeight) ||
+        (bottom > 0 && bottom < innerHeight)) &&
+        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+    : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};

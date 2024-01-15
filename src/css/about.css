@@ -4,6 +4,7 @@
 
 .about_container {
   display: flex;
+
   justify-content: space-between;
   .sub_container {
     width: 100%;
@@ -12,9 +13,16 @@
     height: 100%;
 
     &.left {
-      margin: 1rem 30px 0 auto;
-      border-right: 1px solid #f1f1f1;
-      width: 20%;
+      margin: 1rem 30px 0 -10%;
+      /* border-right: 1px solid #f1f1f1; */
+      width: 30%;
+      text-align: center;
+      h1 {
+        font-size: 3rem;
+      }
+      .subheader {
+        text-align: center;
+      }
     }
     &.right {
       margin: 1rem 10px 0 10px;
@@ -77,6 +85,18 @@
   justify-content: center;
   align-items: center;
 } */
+#aboutleft {
+  display: none;
+  position: fixed;
+  left: -10%;
+  top: 25%;
+  width: 20%;
+  text-align: center;
+  .subheader {
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 524px) {
   .about_header {
     display: inline-block;

@@ -357,6 +357,10 @@ a:visited {
   opacity: 1;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .body_container {
     margin: 10px 5%;
