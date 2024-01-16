@@ -91,8 +91,8 @@ function createLangPiechart(id, langdata) {
       size: 15,
       color: "#f2f2f2",
     },
-    paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(0,0,0,0)",
+    // paper_bgcolor: "rgba(0,0,0,0)",
+    // plot_bgcolor: "rgba(0,0,0,0)",
     margin: {
       l: 0,
       r: 0,

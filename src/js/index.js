@@ -191,3 +191,21 @@ function checkOverflow(el) {
 
   return isOverflowing;
 }
+
+/**
+ * finds overflow in document; logs and adds border
+ * @returns {void}
+ */
+function findOverflow() {
+  let all = document.getElementsByTagName("*"),
+    i = 0,
+    rect,
+    docWidth = document.documentElement.offsetWidth;
+  for (; i < all.length; i++) {
+    rect = all[i].getBoundingClientRect();
+    if (rect.right > docWidth || rect.left < 0) {
+      console.log(all[i]);
+      all[i].style.borderTop = "1px solid red";
+    }
+  }
+}
