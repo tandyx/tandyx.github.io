@@ -7,15 +7,17 @@
   --background-color: rgb(3, 3, 10);
   --grey-text: #262626;
   --subheader-text: #a1a1a1;
-  --fonts: "cascadia-code", "Consolas", "Courier New", monospace;
+  --fonts: "cascadia-code", "cascadia-mono" "Consolas", "Courier New", monospace;
 }
 
 @font-face {
   font-family: "cascadia-code";
-  src: url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@4.2.1/files/cascadia-code-latin-ext-400-normal.woff2")
-    format("woff2")
-    url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@4.2.1/files/cascadia-code-latin-ext-400-normal.woff")
-    format("woff");
+  src: url("../font/CascadiaCode.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "cascadia-mono";
+  src: url("../font/CascadiaMono.woff2") format("woff2");
 }
 
 @font-face {
