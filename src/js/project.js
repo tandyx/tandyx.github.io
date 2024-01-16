@@ -1,5 +1,5 @@
 window.addEventListener("load", function () {
-  const username = "tandy-c";
+  const username = "johan-cho";
   document.querySelectorAll("[data-repo]").forEach((el) => {
     createBar(el.id, username, el.dataset.repo);
   });

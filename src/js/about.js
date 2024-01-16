@@ -1,5 +1,5 @@
 window.onload = function () {
-  const username = "tandy-c";
+  const username = "johan-cho";
   document.addEventListener("scroll", () => {
     if (
       elementIsVisibleInViewport("aboutheader", true) ||
