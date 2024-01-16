@@ -173,3 +173,21 @@ function setNav() {
     }
   }
 }
+
+/**
+ * checks to see if the element is overflowing
+ * @param {HTMLElement} el - The element to check
+ * @returns {boolean} - Whether the element is overflowing
+ */
+function checkOverflow(el) {
+  let curOverflow = el.style.overflow;
+
+  if (!curOverflow || curOverflow === "visible") el.style.overflow = "hidden";
+
+  let isOverflowing =
+    el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
+
+  el.style.overflow = curOverflow;
+
+  return isOverflowing;
+}
