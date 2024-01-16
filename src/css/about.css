@@ -36,7 +36,7 @@
   }
   .right {
     float: right;
-    /* padding-left: 20px; */
+    margin-left: 20px;
   }
 }
 
@@ -110,9 +110,11 @@
     text-align: center;
     .left {
       float: none;
+      margin: 0;
     }
     .right {
       float: none;
+      margin: 0;
     }
     .variable-width-200 {
       max-width: 100%;
