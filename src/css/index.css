@@ -7,7 +7,8 @@
   --background-color: rgb(3, 3, 10);
   --grey-text: #262626;
   --subheader-text: #a1a1a1;
-  --fonts: "cascadia-code", "cascadia-mono" "Consolas", "Courier New", monospace;
+  --fonts: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
+    monospace;
 }
 
 @font-face {
