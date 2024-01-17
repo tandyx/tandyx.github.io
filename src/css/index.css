@@ -391,8 +391,9 @@ a:visited {
   text-decoration: none !important;
 
   div {
-    margin: 20% 30%;
-    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 30%;
   }
 }
 
