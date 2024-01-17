@@ -56,17 +56,8 @@
         </p>
         <hr />
         <br />
-        <!-- <ul>
-          <li><a href="#personal">personal projects</a></li>
-          <li><a href="#class_projects">school projects</a></li>
-          <li><a href="#other">other</a></li>
-        </ul> -->
       </header>
-
       <section class="projContainer" id="mainProjects">
-        <!-- <h2>personal projects</h2>
-        <p class="subheader">projects i've worked on in my free time</p>
-        <hr /> -->
         <div id="mbta_mapper" class="project-card-container">
           <div id="mbta_mapper_card" class="project-card no-highlight">
             <h1>mbta mapper</h1>
@@ -96,12 +87,12 @@
               company runs in real-time. It was an internal app that I became
               reliant on to commute into Boston, and I knew that I'd lose access
               to it when I left the company, so I made my own public-facing
-              version that I use every day.
+              version that me and a few friends use every day.
             </p>
 
             <p>
               I use SQLAlchemy/sqlite in the backend and leaflet.js to render
-              the map.
+              the map, running within a docker image on digital ocean.
             </p>
 
             <iframe
@@ -147,6 +138,8 @@
               at a specific time or interval to automate myself out of that
               process.
             </p>
+
+            <p>ran within docker, hosted by azure.</p>
             <img
               src="/src/img/teams_sc.png"
               alt="msteamsbot screenshot"
@@ -181,8 +174,8 @@
             <p>
               My personal powershell profile; may be of some use to people. It
               contains *some* unix commands, a few useful extra
-              functions/aliases and some styling to make the terminal feel more
-              natural to me.
+              functions/aliases (command line driver updates, <code>sudo</code>)
+              and some styling to enhance powershell.
             </p>
             <img
               src="/src/img/pwsh.png"
@@ -217,9 +210,10 @@
           </div>
           <div id="tandypack_content" class="project-card-content">
             <p>
-              A texturepack I made for 1.8.9 Minecraft. When I used to upload
-              videos to youtube, this was requested a lot. Now they finally have
-              a non-google drive link to download it from.
+              A texturepack I made for 1.8.9 Minecraft that was supposed to have
+              a more modern gui. When I used to upload videos to youtube, this
+              was requested a lot. Now they finally have a non-google drive link
+              to download it from.
             </p>
             <img
               src="/src/img/tandypack.png"
@@ -227,7 +221,7 @@
               class="centeredalt"
               loading="lazy"
             />
-            <p class="caption">the ui</p>
+            <p class="caption">the gui in survival</p>
           </div>
         </div>
       </section>
@@ -242,7 +236,7 @@
           >this repo</a
         >.
       </div>
-      <div class="fa link-grid">
+      <div class="fa links-wrapper">
         <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
           >&#xf0e0;</a
         >&numsp;<a
@@ -260,7 +254,10 @@
           target="_blank"
           rel="noopener"
           >&#xf16a;</a
-        >&numsp;<a href="/src/resume.pdf" target="_blank" rel="noopener"
+        >&numsp;<a
+          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
+          target="_blank"
+          rel="noopener"
           >&#xf1c1;</a
         >
       </div>
