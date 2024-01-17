@@ -210,16 +210,8 @@
               AMPL, but didn't teach us how to use it and then bounced between
               telling us to use it and to forget about it.
             </p>
-            <div class="code-wrapper">
-              <code>
-                subject to dos_if_midsize_then_compact: sum {i in CARS:
-                size_desc[i] == "midsize"} Y[i,"Dosovo"] <= sum { i in CARS:
-                size_desc[i] in {"compact size/midsize", "compact size"} and
-                assembly_line_mapper[i,"Dosovo"] not in { _ in CARS:
-                size_desc[_] == "midsize" } } Y[i,"Dosovo"];
-              </code>
-            </div>
-            <p class="caption">one of the constraints used</p>
+            <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fjohan-cho%2Fie4515-final%2Fblob%2Fmaster%2Ffinal_project.mod&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on&fetchFromJsDelivr=on"></script>
+            <p class="caption">the <code>.mod</code> file</p>
           </div>
         </div>
         <div id="ie4510" class="project-card-container">
