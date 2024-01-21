@@ -177,9 +177,20 @@ nav a:visited:hover {
   }
   .menu {
     color: var(--text);
+  }
+
+  .menu::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
+
   .menu > li:not(:last-child) {
     border-bottom: 1px solid var(--grey-accent);
   }
