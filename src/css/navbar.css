@@ -17,14 +17,24 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-  /* background-color: var(--background-color); */
+
   height: var(--navbar-height);
   padding: 1em;
   font-weight: bolder;
   font-size: 20pt;
   z-index: 1000;
+}
+
+nav:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 nav a,
@@ -161,8 +171,14 @@ nav a:visited:hover {
     margin: 0;
     padding: 0.5em 0;
     width: 100%;
+
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* background-color: #1a1a1a; */
+  }
+  .menu {
     color: var(--text);
-    background-color: #1a1a1a;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
   .menu > li:not(:last-child) {
     border-bottom: 1px solid var(--grey-accent);

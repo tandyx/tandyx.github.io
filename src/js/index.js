@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
     if (!event.target.closest(".nav")) {
       // Close the hamburger menu
       const menuToggle = document.getElementById("menu-toggle");
-      if (menuToggle.checked) {
+      if (menuToggle && menuToggle.checked) {
         menuToggle.checked = false;
       }
     }
@@ -32,6 +32,7 @@ window.addEventListener("load", function () {
  * Gets a c style property from an element
  * @param {string} id - The element to get the style from
  * @param {string} styleProp - The style property to get
+ * @returns {string | void} - The value of the style property or undefined if it doesn't exist
  */
 function getStyle(id, styleProp) {
   let x = document.getElementById(id);

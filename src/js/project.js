@@ -57,7 +57,7 @@ function createBar(containerId, username, reponame) {
 /**
  * adds event listeners to the project cards
  * @param {HTMLElement} projectWrapper - The element to add the event listeners to
- * @returns {string} - The style of the element
+ * @returns {void}
  */
 function addProjectEvents(projectWrapper) {
   if (!projectWrapper) return;
@@ -72,11 +72,11 @@ function addProjectEvents(projectWrapper) {
         e.style.display = "none";
       }
     }
-    for (const e of projectWrapper.getElementsByClassName("norepo")) {
-      if (getStyle(e.id, "visibility") === "hidden") {
-        e.style.visibility = "visible";
+    for (const bar of projectWrapper.getElementsByClassName("norepo")) {
+      if (getStyle(bar.id, "visibility") === "hidden") {
+        bar.style.visibility = "visible";
       } else {
-        e.style.visibility = "hidden";
+        bar.style.visibility = "hidden";
       }
     }
   });
