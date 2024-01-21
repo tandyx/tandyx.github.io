@@ -30,12 +30,13 @@ window.addEventListener("load", function () {
 });
 /**
  * Gets a c style property from an element
- * @param {string} id - The element to get the style from
+ * @param {string | HTMLElement} id - The element to get the style from
  * @param {string} styleProp - The style property to get
  * @returns {string | void} - The value of the style property or undefined if it doesn't exist
  */
 function getStyle(id, styleProp) {
-  let x = document.getElementById(id);
+  const x = typeof id === "string" ? document.getElementById(id) : id;
+  if (!x) return;
   let y;
   if (x.style[styleProp]) return x.style[styleProp];
 
@@ -128,6 +129,7 @@ function getStyleRuleValue(style, selector, sheet = undefined) {
  * @param {string} sheetName - The name of the stylesheet to get
  * @returns {CSSStyleSheet} - The stylesheet
  * @returns {null} - If the stylesheet was not found
+ * @example getStylesheet("nav");
  */
 function getStylesheet(sheetName) {
   for (const sheet of document.styleSheets) {
@@ -140,12 +142,13 @@ function getStylesheet(sheetName) {
 
 /**
  * checks if an element is visible in the viewport
- * @param {string} id - The id of the element to check
+ * @param {HTMLElement | string} id - The id of the element to check
  * @param {boolean} partiallyVisible - Whether the element can be partially visible
  * @returns {boolean} - Whether the element is visible
+ * @example elementIsVisibleInViewport("element");
  */
 function elementIsVisibleInViewport(id, partiallyVisible = false) {
-  const el = document.getElementById(id);
+  const el = typeof id === "string" ? document.getElementById(id) : id;
   if (!el) return false;
   const { top, left, bottom, right } = el.getBoundingClientRect();
   const { innerHeight, innerWidth } = window;
@@ -159,6 +162,7 @@ function elementIsVisibleInViewport(id, partiallyVisible = false) {
 /**
  * Sets the nav bar to the current page
  * @returns {void}
+ * @example window.addEventListener("load", setNav);
  */
 function setNav() {
   for (const navBar of document.getElementsByClassName("nav")) {
@@ -173,15 +177,41 @@ function setNav() {
       }
     }
   }
-}
 
+  const menutoggle = document.getElementById("menu-toggle");
+  const styleSheet = getStylesheet("nav");
+  if (!menutoggle) return;
+  menutoggle.addEventListener("change", () => {
+    const menu = document.getElementById("navmenu");
+    if (!styleSheet || !menu) return;
+    styleSheet.insertRule(
+      `nav:has(#menu-toggle:checked)::before { position: absolute; height: ${
+        Number(getStyle(menu, "height").replace("px", "")) +
+        Number(getStyle(menu.children[0], "height").replace("px", "")) -
+        Number(
+          getStyle(
+            menu.children[menu.children.length - 1],
+            "border-bottom-width"
+          ).replace("px", "")
+        )
+      }px }`
+    );
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && menutoggle.checked) {
+      menutoggle.click();
+    }
+  });
+}
 /**
  * checks to see if the element is overflowing
- * @param {HTMLElement} el - The element to check
+ * @param {HTMLElement | string} el - The element to check
  * @returns {boolean} - Whether the element is overflowing
+ * @example checkOverflow(document.getElementById("element"));
  */
 function checkOverflow(el) {
-  let curOverflow = el.style.overflow;
+  if (typeof el === "string") el = document.getElementById(el);
 
   if (!curOverflow || curOverflow === "visible") el.style.overflow = "hidden";
 
@@ -196,6 +226,7 @@ function checkOverflow(el) {
 /**
  * finds overflow in document; logs and adds border
  * @returns {void}
+ * @example findOverflow();
  */
 function findOverflow() {
   let all = document.getElementsByTagName("*"),
