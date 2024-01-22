@@ -220,7 +220,10 @@ footer {
   color: var(--grey-text);
   font-size: 9pt;
   * {
-    margin-bottom: 5px;
+    margin: 5px 2px;
+  }
+  .reduced-margin-left {
+    margin-left: -1px;
   }
   div:last-child {
     margin-bottom: 30px;

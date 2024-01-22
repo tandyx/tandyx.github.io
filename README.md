@@ -1,3 +1,9 @@
-# My Personal Website 2.0
+# my portfolio
 
-Work in progress.
+link: <https://johan-cho.github.io>
+
+this is my second attempt at a portfolio website. it uses vanilla html, javascript and css.
+
+## libraries
+
+- [plotly.js](https://plotly.com/javascript/)
