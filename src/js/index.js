@@ -54,6 +54,7 @@ function getStyle(id, styleProp) {
  * Removes the .html from the end of the href of all anchor tags
  * @param  {...string} hostnames - The hostnames to exclude
  * @returns {void}
+ * @example removeHTMLFrom("localhost", "", "127.0.0.1")
  */
 function removeHTMLFrom(...hostnames) {
   for (let anchor of document.querySelectorAll("a[href]")) {
