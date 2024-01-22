@@ -114,13 +114,13 @@
 
 .bar-wrapper {
   width: 100%;
-  max-height: max-content;
   background-color: #8d8d8d;
   margin-top: 10px;
   height: 5px;
   &.norepo {
     visibility: hidden;
     height: 2px;
+    content: "";
     /* height: 10px; */
   }
 }

@@ -182,7 +182,7 @@ nav a:visited:hover {
     /* border: 1px solid var(--grey-accent); */
     height: 2.5em;
     padding: var(--menubar-padding);
-    border-bottom: 1px solid var(--accent);
+    border-top: 2px solid var(--grey-accent);
   }
 
   .menu > li {
@@ -199,15 +199,13 @@ nav a:visited:hover {
     color: var(--text);
   }
 
-  #menu-toggle:checked ~ .menu > li:first-child {
+  /* #menu-toggle:checked ~ .menu > li:first-child {
     border-top: 1px solid var(--accent);
-  }
+  } */
 
-  /*
   #menu-toggle:checked ~ .menu > li:last-child {
-    border-bottom: 1px solid var(--accent);
-  } 
-  */
+    border-bottom: 2px solid var(--grey-accent);
+  }
 
   /* .menu > li:not(:last-child) {
     border-bottom: 1px solid var(--grey-accent);

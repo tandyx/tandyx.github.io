@@ -2,11 +2,6 @@
   margin: 10px 10% 10px 10%;
 }
 
-* {
-  visibility: visible !important;
-  /* outline: 1px solid red !important; */
-}
-
 .about_container {
   display: flex;
 
