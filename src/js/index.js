@@ -242,3 +242,55 @@ function findOverflow() {
     }
   }
 }
+
+/**
+ * checks if the selection is in an element
+ * @param {HTMLElement | string} element - The element to check
+ * @param {Selection} selection - The selection to check
+ * @returns {boolean}
+ * @example selectionInElement(document.getElementById("element"));
+ */
+function selectionInElement(element, selection = null) {
+  element =
+    typeof element === "string" ? document.getElementById(element) : element;
+  selection = selection || window.getSelection();
+  // console.log(selection);
+  if (!selection || !element) return false;
+  if (
+    ["None", "Caret"].includes(selection.type) ||
+    !selection.rangeCount ||
+    selection.isCollapsed
+  ) {
+    return false;
+  }
+  if (selection.containsNode(element, true)) return true;
+  for (const child of element.children) {
+    if (
+      selection.containsNode(child, true) ||
+      selectionInElement(child, selection)
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * checks if a child is a parent of an element
+ * @param {HTMLElement | string} element - The element to check
+ * @param {HTMLElement | string} parent - The parent to check
+ * @returns {boolean}
+ * @example checkParent(document.getElementById("element"), document.body);
+ */
+
+function checkParent(element, parent) {
+  element =
+    typeof element === "string" ? document.getElementById(element) : element;
+  parent =
+    typeof parent === "string" ? document.getElementById(parent) : parent;
+  while (element) {
+    if (element === parent) return true;
+    element = element.parentElement;
+  }
+  return false;
+}

@@ -1,8 +1,5 @@
 window.addEventListener("load", function () {
   const username = "johan-cho";
-  document.querySelectorAll("[data-repo]").forEach((el) => {
-    createBar(el.id, username, el.dataset.repo);
-  });
 
   for (const proj of document.getElementsByClassName(
     "project-card-container"
@@ -12,6 +9,9 @@ window.addEventListener("load", function () {
   if (window.location.hash) {
     document.getElementById(window.location.hash.slice(1)).click();
   }
+  document.querySelectorAll("[data-repo]").forEach((el) => {
+    createBar(el.id, username, el.dataset.repo);
+  });
 });
 
 window.onhashchange = function () {
@@ -20,13 +20,16 @@ window.onhashchange = function () {
 
 /**
  * Creates a bar chart of the languages used in a repo
- * @param {string} containerId - The id of the element to put the bar chart in
+ * @param {HTMLElement | string} containerId - The id of the element to put the bar chart in
  * @param {string} username - The username of the repo owner
  * @param {string} reponame - The name of the repo
  * @returns {void}
  */
 function createBar(containerId, username, reponame) {
-  const container = document.getElementById(containerId);
+  const container =
+    typeof containerId === "string"
+      ? document.getElementById(containerId)
+      : containerId;
   const langPromise = getRepoLangs(username, reponame);
   langPromise.then((languages) => {
     let zIndex =
@@ -56,16 +59,32 @@ function createBar(containerId, username, reponame) {
 
 /**
  * adds event listeners to the project cards
- * @param {HTMLElement} projectWrapper - The element to add the event listeners to
+ * @param {HTMLElement | string} projectWrapper - The element to add the event listeners to
  * @returns {void}
  */
 function addProjectEvents(projectWrapper) {
+  projectWrapper =
+    typeof projectWrapper === "string"
+      ? document.getElementById(projectWrapper)
+      : projectWrapper;
+
   if (!projectWrapper) return;
   projectWrapper.addEventListener("click", function (event) {
-    // Check if the clicked element is not inside the navbar
+    console.log(event.target);
+    if (
+      ["A", "IMG"].includes(event.target.tagName) ||
+      event.target.classList.contains("fa")
+    ) {
+      return;
+    }
+
     for (const e of projectWrapper.getElementsByClassName(
       "project-card-content"
     )) {
+      console.log(selectionInElement(e));
+      if (checkParent(event.target, e) && selectionInElement(e)) {
+        return;
+      }
       if (getStyle(e.id, "display") === "none") {
         e.style.display = "block";
       } else {

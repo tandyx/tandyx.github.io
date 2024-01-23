@@ -443,6 +443,23 @@ a:visited {
   text-decoration: underline solid 1px var(--accent-dark);
 }
 
+.blank-anchor,
+.blank-anchor:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blank-anchor:hover,
+.blank-anchor:visited:hover {
+  color: inherit;
+  text-decoration: underline solid 1px;
+}
+
+.blank-anchor:active,
+.blank-anchor:visited:active {
+  text-decoration: underline solid 1px;
+}
+
 .links-wrapper {
   a:visited {
     color: var(--accent);

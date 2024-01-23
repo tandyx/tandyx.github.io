@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/src/css/projectcard.css" />
     <link rel="stylesheet" href="/src/css/navbar.css" />
     <link rel="stylesheet" href="/src/css/github-colors.css" />
+    <link rel="stylesheet" href="/src/css/github-colors-text.css" />
 
     <script src="/src/js/index.js" async defer></script>
     <script src="/src/js/project.js" async defer></script>
@@ -87,12 +88,27 @@
           <div id="thissite_content" class="project-card-content">
             <p>
               I made a portfolio site for a class assignment (encp3000), but it
-              didn't look great. This is my attempt at a better one.
+              didn't look great and was slow, unintuivite and hard to read. This
+              is my attempt at a better one that considers the user experience,
+              while also appearing "clean".
             </p>
             <p>
-              It took a while, especially because all of the css/js is vanilla.
-              I hope you like it! Don't be afraid to
-              <a href="../about.html#contact">send me</a> some feedback as well.
+              It took a while; all of the <span class="text-HTML">html</span>,
+              <span class="text-CSS">css</span> and
+              <span class="text-JavaScript">js</span> is vanilla, a lot of that
+              either implements things that have already been done by frameworks
+              or queries the github api (all of the language stats per repo and
+              overall are realtime).
+            </p>
+            <p>
+              One thing that I need to think about is how do I make the language
+              bar a little more intuivite? Most users don't understand what it
+              means, and that you could hover over it to reveal the languages
+              and their percentages.
+            </p>
+            <p>
+              Feel free to <a href="../about.html#contact">send me</a> some
+              feedback; UX is a continuous process.
             </p>
           </div>
         </div>
@@ -124,9 +140,17 @@
           </div>
           <div id="linprog_content" class="project-card-content">
             <p>
-              A site I created in about a week to teach myself flask forms so
-              that I could more readily help database students with flask and
-              deploying their site.
+              A site I created in about a week to teach myself
+              <a
+                class="text-Python blank-anchor"
+                href="https://flask.palletsprojects.com/en/1.1.x/quickstart/"
+                rel="noopener"
+                target="_blank"
+                >flask</a
+              >
+              forms so that I could more readily help database students with
+              their <a class="blank-anchor" href="#ie3425">final project</a> and
+              deploying it to the wider web.
             </p>
             <iframe
               src="https://tandyc.pythonanywhere.com/"
@@ -208,10 +232,11 @@
           </div>
           <div id="ie4515_content" class="project-card-content">
             <p>
-              We were tasked to solve a complicated optimization problem. I
-              chose to use AMPL and worked largely solo. Man told us to use
-              AMPL, but didn't teach us how to use it and then bounced between
-              telling us to use it and to forget about it.
+              We were tasked to solve a complicated optimization problem and I
+              worked solo. Man told us to use
+              <span class="text-AMPL">AMPL</span>, but didn't teach us how to
+              use it and then bounced between telling us to use it and to forget
+              about it.
             </p>
             <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fjohan-cho%2Fie4515-final%2Fblob%2Fmaster%2Ffinal_project.mod&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on&fetchFromJsDelivr=on"></script>
             <p class="caption">the <code>.mod</code> file</p>
@@ -246,10 +271,13 @@
           </div>
           <div id="ie4510_content" class="project-card-content">
             <p>
-              We looked for a system that could've been optimized, propose
-              solutions and simulate those solutions using Rockwell Software's
-              Arena. I built the simuation and contributed to the report and the
-              presentation.
+              We looked for a system that could be optimized, propose solutions
+              and simulate those solutions using Rockwell Software's Arena. We
+              chose to improve the boarding system on the mbta's busses. I built
+              the simuation and contributed to the report and the presentation.
+            </p>
+            <p>
+              We found that removing cash payments would significantly decrease
             </p>
             <img
               src="/src/img/sim.png"
@@ -290,23 +318,40 @@
           </div>
           <div id="ie3425_content" class="project-card-content">
             <p>
-              I wanted to combine a front, middle and backend to create a
-              website (and the project stipulated that). In my case, a user
-              would've queried the website and database for information on
-              competitive tf2 players.
+              I wanted to combine a frontend and backend to create a website
+              (and the project stipulated that). In my case, a user would've
+              queried the website and the
+              <span class="text-SQLPL">sqlite</span>
+              database for information on competitive tf2 players.
             </p>
             <p>
               However, my professor couldn't figure django out, so we just made
-              a separate front and backend. It's fun to look see how far I've
-              come.
+              a separate front and backend. I don't even think that we would've
+              gotten anywhere anyways because we were using
+              <span class="text-Jupyter">jupyter</span> notebooks to write code.
+              It's fun to look see how far I've come.
             </p>
+
+            <p>
+              When I became the TA, however, we were able to use
+              <a
+                class="blank-anchor text-Python"
+                href="https://flask.palletsprojects.com/en/1.1.x/quickstart/"
+                rel="noopener"
+                target="_blank"
+                >flask</a
+              >
+              to make a fullstack site that actually worked and talked to the
+              database via forms.
+            </p>
+
             <iframe
               src="https://www1.coe.neu.edu/~johancho/project/project1_home.html"
               loading="lazy"
               class="centered"
               title="tf2 website"
             ></iframe>
-            <p class="caption">the site</p>
+            <p class="caption">the site i made</p>
           </div>
         </div>
         <div id="ie2310" class="project-card-container">
@@ -378,9 +423,12 @@
           <div id="ge1502_content" class="project-card-content">
             <p>
               In a group of 3, I helped to create a basketball-like carnival
-              game that combined autocad, solidworks, MATLAB and arduino for the
-              first year engineering spring expo. I worked on reports and MATLAB
-              (for analytics) and helped to assemble the game.
+              game that combined autocad, solidworks,
+              <span class="text-MATLAB">MATLAB</span> and
+              <span class="text-cpp">arduino</span> for the first year
+              engineering spring expo. I worked on reports and
+              <span class="text-MATLAB">MATLAB</span> (for analytics) and helped
+              to assemble the game.
             </p>
             <iframe
               width="560"
