@@ -44,7 +44,10 @@ function createBar(containerId, username, reponame) {
       const bar = document.createElement("div");
       zIndex -= 1;
       totalWidth += languages[lang];
-      bar.classList.add(lang, "bar");
+      bar.classList.add(
+        lang.replace(" ", "-").replace("+", "P").replace("#", "Sharp"),
+        "bar"
+      );
       bar.style.width = `${languages[lang]}%`;
       bar.style.left = `${totalWidth - languages[lang]}%`;
       // bar.style.backgroundColor = colorJson[lang] || "#474747";

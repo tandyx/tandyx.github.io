@@ -793,7 +793,7 @@
 .text-Objective-C {
   color: #438eff !important;
 }
-.text-Objective-C {
+.text-Objective-CPP {
   color: #6866fb !important;
 }
 .text-Objective-J {
@@ -1321,10 +1321,19 @@
 .text-xBase {
   color: #403a40 !important;
 }
+
+/* Languages not included:
+    * - C#
+    * - C++
+    * - HTML
+    * - CSS
+    * - Jupyter Notebook
+    I know this is bad practice but I don't want to add another css file just for this
+*/
 .text-C-Sharp {
   color: #178600 !important;
 }
-.text-cpp {
+.text-CPP {
   color: #f34b7d !important;
 }
 .text-CSS {
@@ -1332,4 +1341,7 @@
 }
 .text-HTML {
   color: #e34c26 !important;
+}
+.text-Jupyter-Notebook {
+  color: #da5b0b !important;
 }

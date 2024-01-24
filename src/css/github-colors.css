@@ -797,7 +797,7 @@ https://github.com/simonecorsi/github-languages-colors/blob/main/src/gh-backgrou
 .Objective-C {
   background-color: #438eff;
 }
-.Objective-C {
+.Objective-CPP {
   background-color: #6866fb;
 }
 .Objective-J {
@@ -1331,12 +1331,13 @@ https://github.com/simonecorsi/github-languages-colors/blob/main/src/gh-backgrou
     * - C++
     * - HTML
     * - CSS
+    * - Jupyter Notebook
     I know this is bad practice but I don't want to add another css file just for this
 */
 .C-Sharp {
   background-color: #178600;
 }
-.cpp {
+.CPP {
   background-color: #f34b7d;
 }
 .CSS {
@@ -1344,4 +1345,7 @@ https://github.com/simonecorsi/github-languages-colors/blob/main/src/gh-backgrou
 }
 .HTML {
   background-color: #e34c26;
+}
+.Jupyter-Notebook {
+  background-color: #da5b0b;
 }

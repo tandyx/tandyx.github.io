@@ -168,6 +168,17 @@
   background-position: fixed;
 }
 
+#ie4510_card {
+  background: linear-gradient(
+      to right,
+      var(--project-card-background) 50%,
+      rgba(0, 0, 0, 0)
+    ),
+    url("../img/bus.jpg") right center no-repeat;
+  background-size: cover;
+  background-position: fixed;
+}
+
 .project-card-container {
   border: #8d8d8d 2px solid;
   border-radius: 10px;
