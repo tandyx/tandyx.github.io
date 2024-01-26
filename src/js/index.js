@@ -213,7 +213,8 @@ function setNav() {
       for (const child of menu.children) {
         if (child.id === "modeToggle") {
           for (const an of child.getElementsByTagName("a")) {
-            an.text = getCookie("mode") === "dark" ? "\u263E" : "\u263C";
+            an.text =
+              getCookie("mode") || "dark" === "dark" ? "\u263E" : "\u263C";
           }
           child.addEventListener("click", function () {
             let mode = toggleDarkLight();
