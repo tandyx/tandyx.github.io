@@ -1,20 +1,24 @@
 window.onload = function () {
   const username = "johan-cho";
-  document.addEventListener("scroll", () => {
-    if (
-      elementIsVisibleInViewport("aboutheader", true) ||
-      window.innerWidth < 768
-    ) {
-      document.getElementById("aboutleft").style.display = "none";
-      return;
-    }
-    document.getElementById("aboutleft").style.display = "block";
-  });
+  leftsideSetter();
+  document.addEventListener("scroll", leftsideSetter);
   getUserLanguages(username).then((data) => {
     console.log(data);
     createLangPiechart("langPlot", data);
   });
 };
+
+function leftsideSetter() {
+  if (
+    elementIsVisibleInViewport("aboutheader", true) ||
+    window.innerWidth < 768
+  ) {
+    document.getElementById("aboutleft").style.display = "none";
+    return;
+  }
+  document.getElementById("aboutleft").style.display = "block";
+}
+
 /**
  * Gets the languages used in a repo
  * @param {string} username - The username of the repo owner

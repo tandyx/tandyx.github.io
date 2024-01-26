@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
-  setNav();
   document.addEventListener("click", function (event) {
     // Check if the clicked element is not inside the navbar
     if (!event.target.closest(".nav")) {
@@ -27,7 +26,50 @@ window.addEventListener("load", function () {
       document.getElementById("back2top").style.display = "none";
     }
   });
+
+  if (window.location.pathname !== "/index.html") {
+    toggleDarkLight(false);
+    setNav();
+  } else {
+    toggleDarkLight(false, "dark");
+  }
 });
+
+/**
+ * Toggles the dark/light mode
+ * @param {boolean} toggle - Whether to toggle the mode
+ * @param {string} mode - The mode to set the page to
+ * @param {Object} cssVars - The css variables to change
+ * @returns {string} - The mode the page is in
+ * @example toggleDarkLight();
+ */
+function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
+  mode = mode || getCookie("mode") || "dark";
+  cssVars = cssVars || {
+    "--text-color": "#555555",
+    "--project-card-background": "#f5f5f5",
+    "--background-color": "#azure",
+  };
+  if (!["dark", "light"].includes(mode)) {
+    setCookie("mode", "dark", 365);
+    return mode;
+  }
+
+  if (toggle) {
+    mode = mode === "dark" ? "light" : "dark";
+    setCookie("mode", mode, 365);
+  }
+  for (const [key, value] of Object.entries(cssVars)) {
+    if (mode === "light") {
+      document.documentElement.style.setProperty(key, value);
+    } else {
+      document.documentElement.style.removeProperty(key);
+    }
+  }
+
+  return mode;
+}
+
 /**
  * Gets a c style property from an element
  * @param {string | HTMLElement} id - The element to get the style from
@@ -169,9 +211,23 @@ function setNav() {
   for (const navBar of document.getElementsByClassName("nav")) {
     for (const menu of navBar.getElementsByClassName("menu")) {
       for (const child of menu.children) {
+        if (child.id === "modeToggle") {
+          for (const an of child.getElementsByTagName("a")) {
+            an.text = getCookie("mode") === "dark" ? "\u263E" : "\u263C";
+          }
+          child.addEventListener("click", function () {
+            let mode = toggleDarkLight();
+            for (const an of child.getElementsByTagName("a")) {
+              an.text = mode === "dark" ? "\u263E" : "\u263C";
+            }
+          });
+
+          continue;
+        }
+
         for (const anchor of child.getElementsByTagName("a")) {
           if (anchor.href === window.location.href) {
-            anchor.style.color = "var(--accent)";
+            anchor.style.color = "var(--accent-color)";
             anchor.href = "#";
           }
         }
@@ -293,4 +349,42 @@ function checkParent(element, parent) {
     element = element.parentElement;
   }
   return false;
+}
+
+/**
+ * sets a cookie to a value
+ * @param {string} name - The name of the cookie
+ * @param {string} value - The value of the cookie
+ * @param {number | null} exdays - The number of days until the cookie expires or null if it never expires
+ * @returns {void}
+ * @example setCookie("username", "johan", 10);
+ */
+
+function setCookie(name, value, exdays = null) {
+  if (!exdays) {
+    document.cookie = `${name}=${value};path=/`;
+    return;
+  }
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value};${"expires=" + d.toUTCString()};path=/`;
+}
+
+/**
+ * fetches a cookie
+ * @param {string} name - the name of the cookie to fetch
+ * @returns {string} - the value of the cookie
+ * @example let user = getCookie("username");
+ */
+function getCookie(name) {
+  name += "=";
+  for (let cookie of decodeURIComponent(document.cookie).split(";")) {
+    while (cookie.charAt(0) == " ") {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return "";
 }

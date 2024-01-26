@@ -1,8 +1,7 @@
 :root {
   --navbar-height: 65px;
-  --text: #f2f2f2;
   --grey-accent: #525252;
-  --accent-bar-height: 2px;
+  --accent-color-bar-height: 2px;
   --menubar-padding: 0.5em;
 }
 
@@ -50,14 +49,14 @@ nav a:visited:hover {
 
 .menu li:hover,
 .titleLogo:hover {
-  color: var(--text);
+  color: var(--text-color);
   cursor: pointer;
-  background-color: var(--accent-dark);
+  background-color: var(--accent-color-dark);
 }
 
 .menu li:active,
 .titleLogo:active {
-  color: var(--accent);
+  color: var(--accent-color);
 }
 
 .menu {
@@ -103,7 +102,7 @@ nav a:visited:hover {
 .menu-button::before,
 .menu-button::after {
   display: block;
-  background-color: var(--text);
+  background-color: var(--text-color);
   position: absolute;
   height: 6px;
   width: 32px;
@@ -149,11 +148,11 @@ nav a:visited:hover {
   width: 100%;
   height: 2px;
   position: absolute;
-  background-color: var(--accent);
+  background-color: var(--accent-color);
 } */
 
 /* nav:has(#menu-toggle:checked) {
-  border-bottom: 10px solid var(--accent);
+  border-bottom: 10px solid var(--accent-color);
 } */
 
 @media (max-width: 768px) {
@@ -196,11 +195,11 @@ nav a:visited:hover {
     /* background-color: #1a1a1a; */
   }
   .menu {
-    color: var(--text);
+    color: var(--text-color);
   }
 
   /* #menu-toggle:checked ~ .menu > li:first-child {
-    border-top: 1px solid var(--accent);
+    border-top: 1px solid var(--accent-color);
   } */
 
   #menu-toggle:checked ~ .menu > li:last-child {

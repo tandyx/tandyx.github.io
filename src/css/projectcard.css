@@ -33,17 +33,17 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: var(--text);
+  color: var(--text-color);
 }
 
 .project-card .link-wrapper a {
   position: relative;
   display: inline-block;
-  color: var(--text);
+  color: var(--text-color);
 }
 
 .project-card .link-wrapper a:hover {
-  color: var(--accent);
+  color: var(--accent-color);
 }
 
 .project-card .link-wrapper a::after,
@@ -190,10 +190,10 @@
 }
 
 .project-card-container:hover {
-  border: var(--accent) 2px solid;
+  border: var(--accent-color) 2px solid;
   cursor: pointer;
   .norepo {
-    background-color: var(--accent);
+    background-color: var(--accent-color);
   }
 }
 
