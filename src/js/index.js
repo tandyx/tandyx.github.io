@@ -61,7 +61,7 @@ function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
     "--text-color": "#303030",
     "--subheader-text": "#6e6e6e",
     "--project-card-background": "#f5f5f5",
-    "--background-color": "#e6e6e6",
+    "--background-color": "#f8f8f8",
   };
   if (!["dark", "light"].includes(mode)) {
     setCookie("mode", "dark", 365);
@@ -227,12 +227,12 @@ function setNav() {
         if (child.id === "modeToggle") {
           for (const an of child.getElementsByTagName("a")) {
             an.text =
-              (getCookie("mode") || "dark") === "dark" ? "\u263E" : "\u2600";
+              (getCookie("mode") || "dark") === "dark" ? "\uf186" : "\uf185";
           }
           child.addEventListener("click", function () {
             let mode = toggleDarkLight();
             for (const an of child.getElementsByTagName("a")) {
-              an.text = mode === "dark" ? "\u263E" : "\u2600";
+              an.text = mode === "dark" ? "\uf186" : "\uf185";
             }
           });
 
