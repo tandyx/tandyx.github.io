@@ -214,12 +214,12 @@ function setNav() {
         if (child.id === "modeToggle") {
           for (const an of child.getElementsByTagName("a")) {
             an.text =
-              getCookie("mode") || "dark" === "dark" ? "\u263E" : "\u263C";
+              getCookie("mode") || "dark" === "dark" ? "\u263E" : "\u2600";
           }
           child.addEventListener("click", function () {
             let mode = toggleDarkLight();
             for (const an of child.getElementsByTagName("a")) {
-              an.text = mode === "dark" ? "\u263E" : "\u263C";
+              an.text = mode === "dark" ? "\u263E" : "\u2600";
             }
           });
 
