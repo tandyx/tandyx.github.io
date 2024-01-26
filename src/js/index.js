@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
  */
 
 function main() {
-  if (window.location.pathname !== "/index.html") {
+  if (!["/index.html", "/"].includes(window.location.pathname)) {
     toggleDarkLight(false);
   } else {
     toggleDarkLight(false, "dark");
