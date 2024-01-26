@@ -1,5 +1,11 @@
 main();
 
+window.addEventListener("load", function () {
+  if (window.location.pathname !== "/index.html") {
+    setNav();
+  }
+});
+
 /**
  * The main function -- executed for every page load
  * @returns {void}
@@ -21,7 +27,6 @@ function main() {
 
   if (window.location.pathname !== "/index.html") {
     toggleDarkLight(false);
-    setNav();
   } else {
     toggleDarkLight(false, "dark");
   }
