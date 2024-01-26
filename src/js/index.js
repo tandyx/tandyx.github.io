@@ -44,7 +44,13 @@ window.addEventListener("load", function () {
  * @example toggleDarkLight();
  */
 function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
-  mode = mode || getCookie("mode") || "dark";
+  mode =
+    mode ||
+    getCookie("mode") ||
+    (window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
   cssVars = cssVars || {
     "--text-color": "#555555",
     "--project-card-background": "#f5f5f5",
