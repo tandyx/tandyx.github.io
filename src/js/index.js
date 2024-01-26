@@ -1,4 +1,13 @@
-window.addEventListener("load", function () {
+main();
+
+/**
+ * The main function -- executed for every page load
+ * @returns {void}
+ * @example window.addEventListener("load", main);
+ * @example main();
+ */
+
+function main() {
   const localHosts = [
     "localhost",
     "",
@@ -9,6 +18,14 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
+
+  if (window.location.pathname !== "/index.html") {
+    toggleDarkLight(false);
+    setNav();
+  } else {
+    toggleDarkLight(false, "dark");
+  }
+
   document.addEventListener("click", function (event) {
     // Check if the clicked element is not inside the navbar
     if (!event.target.closest(".nav")) {
@@ -20,35 +37,27 @@ window.addEventListener("load", function () {
     }
   });
   document.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      document.getElementById("back2top").style.display = "block";
-    } else {
-      document.getElementById("back2top").style.display = "none";
-    }
+    const back2top = document.getElementById("back2top");
+    if (!back2top) return;
+    back2top.style.display = window.scrollY > 100 ? "block" : "none";
   });
-
-  if (window.location.pathname !== "/index.html") {
-    toggleDarkLight(false);
-    setNav();
-  } else {
-    toggleDarkLight(false, "dark");
-  }
-});
+}
 
 /**
  * Toggles the dark/light mode
  * @param {boolean} toggle - Whether to toggle the mode
  * @param {string} mode - The mode to set the page to
- * @param {Object} cssVars - The css variables to change
+ * @param {Object} cssVars - The css variables to change, defaults:
  * @returns {string} - The mode the page is in
  * @example toggleDarkLight();
  */
 function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
   mode = mode || getCookie("mode") || "dark";
   cssVars = cssVars || {
-    "--text-color": "#555555",
+    "--text-color": "#303030",
+    "--subheader-text": "#6e6e6e",
     "--project-card-background": "#f5f5f5",
-    "--background-color": "#azure",
+    "--background-color": "#e6e6e6",
   };
   if (!["dark", "light"].includes(mode)) {
     setCookie("mode", "dark", 365);
