@@ -1,19 +1,6 @@
 main();
 
 window.addEventListener("load", function () {
-  if (window.location.pathname !== "/index.html") {
-    setNav();
-  }
-});
-
-/**
- * The main function -- executed for every page load
- * @returns {void}
- * @example window.addEventListener("load", main);
- * @example main();
- */
-
-function main() {
   const localHosts = [
     "localhost",
     "",
@@ -24,7 +11,19 @@ function main() {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
+  if (window.location.pathname !== "/index.html") {
+    setNav();
+  }
+});
 
+/**
+ * The main function -- executed for every page load, typically before the DOM is loaded
+ * @returns {void}
+ * @example window.addEventListener("load", main);
+ * @example main();
+ */
+
+function main() {
   if (window.location.pathname !== "/index.html") {
     toggleDarkLight(false);
   } else {
