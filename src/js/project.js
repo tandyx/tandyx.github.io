@@ -35,9 +35,15 @@ function createBar(containerId, username, reponame) {
     let zIndex =
       Object.keys(languages).length +
       1 +
-      getStyle(
-        containerId,
-        typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
+      Number(
+        (
+          getStyle(
+            containerId,
+            typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
+          ) || "0"
+        )
+          .replace("auto", "")
+          .replace("px", "")
       );
     let totalWidth = 0;
     Object.keys(languages).forEach((lang) => {
