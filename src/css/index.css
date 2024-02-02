@@ -600,3 +600,8 @@ a:visited {
     text-wrap: none;
   }
 }
+@media screen and (min-width: 1080px) {
+  .body_container {
+    margin: 10px 20%;
+  }
+}
