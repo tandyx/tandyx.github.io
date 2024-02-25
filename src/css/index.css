@@ -90,6 +90,11 @@ thead {
   background-color: var(--accent-color-dark);
 }
 
+p,
+li {
+  line-height: 125%;
+}
+
 body.titlepage {
   background: linear-gradient(
       rgba(0, 0, 0, 0.1) 0%,
@@ -137,6 +142,11 @@ body.titlepage {
   border-radius: 10px;
 }
 
+.mainContainer.alt {
+  top: 45%;
+  left: 50%;
+}
+
 .mainContainer > h3 {
   font-size: 20pt;
   font-weight: bold;
@@ -151,6 +161,10 @@ h1 {
   font-weight: bold;
   margin: 0;
   padding: 0;
+}
+
+.mainContainer.alt h1 {
+  font-size: 40pt;
 }
 
 h1 {
@@ -172,6 +186,22 @@ h2 {
   padding: 0 1em;
   list-style: none;
   margin-bottom: -10px;
+}
+
+.mainContainer.alt ul,
+.mainContainer.alt ol,
+.mainContainer.alt li {
+  font-size: 10pt;
+  /* margin: 0.75em 0; */
+  padding: 0 1em;
+  list-style: none;
+  margin-bottom: -10px;
+}
+.mainContainer.alt li {
+  margin-bottom: 0px;
+}
+.mainContainer.alt ul {
+  margin-top: 70px;
 }
 
 .mainContainer li {
@@ -371,7 +401,7 @@ a:visited {
 }
 
 .text-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .back2top {
@@ -527,6 +557,44 @@ a:visited {
 
 .noscript-text {
   color: var(--northeastern-red);
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px !important;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+.blue-white-anchor,
+.blue-white-anchor:visited {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.blue-white-anchor:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.blue-white-anchor:active {
+  color: var(--accent-color-dark);
+  text-decoration: none;
+}
+
+.blue-white-anchor:visited:hover {
+  color: var(--accent-color-dark);
+  text-decoration: none;
+}
+
+.blue-white-anchor:visited:active {
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 /* .noscript-box {

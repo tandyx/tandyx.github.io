@@ -197,6 +197,13 @@
   }
 }
 
+.project-card-container:active {
+  border: var(--accent-color-dark) 2px solid;
+  .norepo {
+    background-color: var(--accent-color-dark);
+  }
+}
+
 .project-card-content {
   padding: var(--margin-left);
   display: none;
