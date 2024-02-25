@@ -588,12 +588,12 @@ a:visited {
 }
 
 .blue-white-anchor:visited:hover {
-  color: var(--accent-color-dark);
+  color: var(--accent-color);
   text-decoration: none;
 }
 
 .blue-white-anchor:visited:active {
-  color: var(--accent-color);
+  color: var(--accent-color-dark);
   text-decoration: none;
 }
 
