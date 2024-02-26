@@ -46,6 +46,10 @@
   color: var(--accent-color);
 }
 
+.project-card .link-wrapper a:active {
+  color: var(--accent-color-dark);
+}
+
 .project-card .link-wrapper a::after,
 .bar::after {
   content: attr(data-tooltip);
