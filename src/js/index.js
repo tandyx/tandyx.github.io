@@ -67,7 +67,6 @@ function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
     setCookie("mode", "dark", 365);
     return mode;
   }
-
   if (toggle) {
     mode = mode === "dark" ? "light" : "dark";
     setCookie("mode", mode, 365);
@@ -79,7 +78,6 @@ function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
       document.documentElement.style.removeProperty(key);
     }
   }
-
   return mode;
 }
 
@@ -92,17 +90,17 @@ function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
 function getStyle(id, styleProp) {
   const x = typeof id === "string" ? document.getElementById(id) : id;
   if (!x) return;
-  let y;
-  if (x.style[styleProp]) return x.style[styleProp];
-
+  if (x.style[styleProp]) {
+    return x.style[styleProp];
+  }
   if (window.getComputedStyle) {
-    y = document.defaultView
+    return document.defaultView
       .getComputedStyle(x, null)
       .getPropertyValue(styleProp);
-  } else if (x.currentStyle) {
-    y = x.currentStyle[styleProp];
   }
-  return y;
+  if (x.currentStyle) {
+    return x.currentStyle[styleProp];
+  }
 }
 
 /**

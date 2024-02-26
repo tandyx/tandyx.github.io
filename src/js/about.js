@@ -8,6 +8,11 @@ window.onload = function () {
   });
 };
 
+/**
+ * sets that the left side of the about page should be hidden if the about header is not visible
+ * @returns {void}
+ */
+
 function leftsideSetter() {
   if (
     elementIsVisibleInViewport("aboutheader", true) ||

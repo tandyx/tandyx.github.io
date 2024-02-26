@@ -90,6 +90,19 @@ thead {
   background-color: var(--accent-color-dark);
 }
 
+td,
+th {
+  padding: 10px 20px 10px 20px;
+}
+
+.table-center {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 p,
 li {
   line-height: 125%;
