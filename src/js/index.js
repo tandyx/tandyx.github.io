@@ -239,7 +239,6 @@ function setNav() {
 
         for (const anchor of child.getElementsByTagName("a")) {
           if (anchor.href === window.location.href) {
-            anchor.style.color = "var(--accent-color)";
             anchor.href = "#";
           }
           if (
