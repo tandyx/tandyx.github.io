@@ -242,6 +242,13 @@ function setNav() {
             anchor.style.color = "var(--accent-color)";
             anchor.href = "#";
           }
+          if (
+            window.location.pathname.startsWith(
+              anchor.pathname.split(".")[0].replace("index", "") || "/"
+            )
+          ) {
+            anchor.style.color = "var(--accent-color)";
+          }
         }
       }
     }

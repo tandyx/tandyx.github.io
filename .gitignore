@@ -56,5 +56,4 @@ docs/_build/
 launch.json
 
 node_modules/
-package.json
-package-lock.json
+test.py
