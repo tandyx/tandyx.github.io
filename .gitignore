@@ -57,3 +57,4 @@ launch.json
 
 node_modules/
 test.py
+/etc/winget-stuck.html
