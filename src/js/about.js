@@ -39,6 +39,7 @@ async function getUserLanguages(username, key = null) {
     : fetch(`https://api.github.com/users/${username}/repos`));
 
   for (const repo of await response.json()) {
+    if (repo.fork) continue;
     const repoResponse = await (key
       ? fetch(
           `https://api.github.com/repos/${username}/${repo.name}/languages`,
