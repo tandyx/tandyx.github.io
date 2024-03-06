@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      name="keywords"
+      content="johan cho, johan, cho, northeastern, industrial engineering, data science, data, science, portfolio, projects, mbtamapper, mbta, mapper, mbta mapper, mbta map, mbta map generator, mbta map maker, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer"
+    />
+    <meta name="author" content="Johan Cho" />
+    <link rel="canonical" href="https://johan-cho.github.io/etc/sudo-ps1" />
+
+    <meta name="description" content="johan cho's other projects" />
+    <link rel="icon" href="/src/img/lucario.ico" type="image/x-icon" />
+    <title>Sudo Powershell | Johan Cho</title>
+
+    <meta
+      property="og:url"
+      content="https://johan-cho.github.io/etc/sudo-ps1"
+    />
+    <meta property="og:image" content="/src/img/lucario.jpg" />
+    <meta property="og:description" content="my portfolio" />
+    <meta property="og:title" content="Extras | Johan Cho" />
+    <!-- <meta property="og:site_name" content="johan cho's portfolio" /> -->
+    <meta property="og:see_also" content="https://johan-cho.github.io/etc" />
+
+    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/projectcard.css" />
+    <link rel="stylesheet" href="/src/css/navbar.css" />
+    <link rel="stylesheet" href="/src/css/github-colors-text.css" />
+
+    <script src="/src/js/index.js" async defer></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/night-owl.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
+    />
+    <script>
+      hljs.addPlugin(new CopyButtonPlugin());
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="titleLogo"><a href="../index.html">johan cho</a></div>
+      <input id="menu-toggle" type="checkbox" title="menutoggle" />
+      <label class="menu-button-container" for="menu-toggle">
+        <div class="menu-button"></div>
+      </label>
+      <ul class="menu" id="navmenu">
+        <li id="modeToggle" class="fa"><a>&#xF186;</a></li>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/projects/index.html">projects</a></li>
+        <li><a href="/etc/index.html">etc</a></li>
+      </ul>
+    </nav>
+    <main class="body_container">
+      <div>
+        <h1 class="text-center">sudo</h1>
+        <h4 class="subheader text-center margin-top">
+          sudo for <span class="text-PowerShell">powershell</span>!
+        </h4>
+        <!-- <p class="text-center fa subheadermargin-top">&#xf0e7; 03/01/2024</p> -->
+      </div>
+      <div>
+        <p>
+          This function attempts to emulate sudo. It can be added to a
+          powershell profile.
+        </p>
+        <pre><code class="code-font language-powershell">
+<#
+# sudo.ps1
+# holds a recreation of the sudo command
+# Sudo: elevates powershell or command to admin
+#>
+
+
+function Sudo {
+  <#
+  .SYNOPSIS
+      Elevates powershell or command to admin.
+  .DESCRIPTION
+      Elevates powershell or command to admin.
+      Sudo -> opens a new powershell window as admin.
+      Sudo {command -args} -> runs the command as admin.
+  .EXAMPLE
+      Sudo
+  .OUTPUTS    
+      System.String
+  #>
+  $pwrsh = Get-First-Path-If-Exists "$psHome\powershell.exe" "$psHome\pwsh.exe"
+  $isAdmin = isadmin
+  if ($args.Count -gt 0) {
+      if ((Get-Command $args[0]).Definition.EndsWith(".exe")) {
+          return Start-Process (Get-Command $args[0]).Definition -Verb RunAs -ArgumentList ($args[1..($args.Length - 1)] -join " ") -WorkingDirectory $PWD
+      }
+      if ($isAdmin) {
+          return & $args
+      }
+      return Start-Process $pwrsh -Verb RunAs -WorkingDirectory $PWD -ArgumentList "-NoExit", "-NoLogo", "-Command & {$args}"
+  }
+  if ($isAdmin) {
+      return Write-Host("Shell is already running as admin.") -Fore Red
+  }
+  Start-Process $pwrsh -Verb runAs -ArgumentList "-NoExit", "-NoLogo"
+}
+        </code></pre>
+        <!-- <img
+          src="/src/img/WINGET_STUCK.png"
+          class="centeredalt margin-top"
+          title="album cover"
+        /> -->
+      </div>
+    </main>
+    <footer>
+      <div>
+        designed by me and hosted in
+        <a
+          href="https://github.com/johan-cho/johan-cho.github.io"
+          rel="noopener"
+          target="_blank"
+          >this repo</a
+        >.
+      </div>
+      <div class="fa links-wrapper">
+        <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
+          >&#xf0e0;</a
+        ><a
+          href="https://www.linkedin.com/in/chojohan/"
+          target="_blank"
+          rel="noopener"
+          >&#xf08c;</a
+        ><a href="https://github.com/johan-cho" target="_blank" rel="noopener"
+          >&#xf09b;</a
+        ><a
+          href="https://www.youtube.com/channel/UCP91LPgRFY03YoIGrmuMH9A"
+          target="_blank"
+          rel="noopener"
+          >&#xf16a;</a
+        ><a
+          href="https://open.spotify.com/user/31rmddg3bkfj4gl56uvbw7225t3y?si=313276f3aff34fc2"
+          target="_blank"
+          rel="noopener"
+          >&#xf1bc; </a
+        ><a
+          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
+          target="_blank"
+          rel="noopener"
+          class="reduced-margin-left"
+          >&#xf1c1;</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

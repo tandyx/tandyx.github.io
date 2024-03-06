@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      name="keywords"
+      content="johan cho, johan, cho, northeastern, industrial engineering, data science, data, science, portfolio, projects, mbtamapper, mbta, mapper, mbta mapper, mbta map, mbta map generator, mbta map maker, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer"
+    />
+    <meta name="author" content="Johan Cho" />
+    <link rel="canonical" href="https://johan-cho.github.io/etc/winget-stuck" />
+
+    <meta name="description" content="johan cho's other projects" />
+    <link rel="icon" href="/src/img/lucario.ico" type="image/x-icon" />
+    <title>Winget Stuck Fix | Johan Cho</title>
+
+    <meta
+      property="og:url"
+      content="https://johan-cho.github.io/etc/winget-stuck"
+    />
+    <meta property="og:image" content="/src/img/lucario.jpg" />
+    <meta property="og:description" content="my portfolio" />
+    <meta property="og:title" content="Extras | Johan Cho" />
+    <!-- <meta property="og:site_name" content="johan cho's portfolio" /> -->
+    <meta property="og:see_also" content="https://johan-cho.github.io/etc" />
+
+    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/projectcard.css" />
+    <link rel="stylesheet" href="/src/css/navbar.css" />
+    <link rel="stylesheet" href="/src/css/github-colors-text.css" />
+
+    <script src="/src/js/index.js" async defer></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/night-owl.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
+    />
+    <script>
+      hljs.addPlugin(new CopyButtonPlugin());
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="titleLogo"><a href="../index.html">johan cho</a></div>
+      <input id="menu-toggle" type="checkbox" title="menutoggle" />
+      <label class="menu-button-container" for="menu-toggle">
+        <div class="menu-button"></div>
+      </label>
+      <ul class="menu" id="navmenu">
+        <li id="modeToggle" class="fa"><a>&#xF186;</a></li>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/projects/index.html">projects</a></li>
+        <li><a href="/etc/index.html">etc</a></li>
+      </ul>
+    </nav>
+    <main class="body_container">
+      <div>
+        <h1 class="text-center">winget stuck fix</h1>
+        <h4 class="subheader text-center margin-top">
+          solved via <span class="text-PowerShell">powershell</span>
+        </h4>
+      </div>
+      <div>
+        <p>
+          Winget sometimes times out (blue loading thing). This is a script that
+          curls the winget installer, and tries to install it. If it initially
+          fails, it's probably because of a dependency on the Microsoft.UI.XML
+          framework. This script also tries to install that.
+        </p>
+        <pre><code class="code-font language-powershell">
+<#
+# Script that fixes winget not loading
+# 02/29/2024 Johan Cho
+# powershell winget-fix.ps1
+#>
+
+function Install-Winget {
+    <#
+    .SYNOPSIS
+        Updates/installs winget.
+    .DESCRIPTION
+        Updates/installs winget.
+    .EXAMPLE
+        Update-Winget
+    .OUTPUTS
+        System.null
+    #>
+
+    Write-Host "Installing winget..." -ForegroundColor Green
+    $latestVersion = (Invoke-RestMethod -Uri 'https://api.github.com/repos/microsoft/winget-cli/releases/latest').tag_name
+    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/$latestVersion/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$env:temp\WinGet.msixbundle"
+    try {
+        Add-AppxPackage "$env:temp\WinGet.msixbundle" -ErrorAction Stop
+    }
+    catch {
+        Write-Host "Failed to install winget" -ForegroundColor Red
+        Install-MSXML
+        Write-Host "trying to install winget again..." -ForegroundColor Green
+        Add-AppxPackage "$env:temp\WinGet.msixbundle"
+    }
+    Write-Host "Finished" -ForegroundColor Green
+}
+
+function Install-MSXML {
+    <#
+    .SYNOPSIS
+        Installs Microsoft UI XAML.
+    .DESCRIPTION
+        Installs Microsoft UI XAML.
+    .EXAMPLE
+        Install-MSXML
+    .OUTPUTS
+        System.null
+    #>
+
+    Write-Host "Trying to install Microsoft.UI.Xaml package..." -ForegroundColor Yellow
+    $zipPath = "$env:temp\microsoft.ui.xaml.zip"
+    Invoke-WebRequest -Uri "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml" -OutFile $zipPath
+    Expand-Archive $zipPath -DestinationPath $zipPath.TrimEnd(".zip") -Force
+    Add-AppxPackage $(Get-ChildItem -Path "$($zipPath.TrimEnd(".zip"))\tools\AppX\x64\Release\" -Filter "*.appx")[0].FullName -ErrorAction Stop
+    Remove-Item -Path $zipPath.TrimEnd(".zip") -Recurse -Force
+    Remove-Item -Path $zipPath -Force
+    Write-Host "Microsoft.UI.Xaml package install finished" -ForegroundColor Green
+}
+
+Install-Winget
+        </code></pre>
+        <!-- <img
+          src="/src/img/WINGET_STUCK.png"
+          class="centeredalt margin-top"
+          title="album cover"
+        /> -->
+      </div>
+    </main>
+    <footer>
+      <div>
+        designed by me and hosted in
+        <a
+          href="https://github.com/johan-cho/johan-cho.github.io"
+          rel="noopener"
+          target="_blank"
+          >this repo</a
+        >.
+      </div>
+      <div class="fa links-wrapper">
+        <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
+          >&#xf0e0;</a
+        ><a
+          href="https://www.linkedin.com/in/chojohan/"
+          target="_blank"
+          rel="noopener"
+          >&#xf08c;</a
+        ><a href="https://github.com/johan-cho" target="_blank" rel="noopener"
+          >&#xf09b;</a
+        ><a
+          href="https://www.youtube.com/channel/UCP91LPgRFY03YoIGrmuMH9A"
+          target="_blank"
+          rel="noopener"
+          >&#xf16a;</a
+        ><a
+          href="https://open.spotify.com/user/31rmddg3bkfj4gl56uvbw7225t3y?si=313276f3aff34fc2"
+          target="_blank"
+          rel="noopener"
+          >&#xf1bc; </a
+        ><a
+          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
+          target="_blank"
+          rel="noopener"
+          class="reduced-margin-left"
+          >&#xf1c1;</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
