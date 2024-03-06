@@ -252,6 +252,12 @@ h2 {
   color: var(--accent-color);
 }
 
+.code-font {
+  font-family: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
+    monospace;
+  font-size: 10pt;
+}
+
 footer {
   text-align: center;
   /* position: absolute; */
