@@ -406,3 +406,59 @@ function getCookie(name) {
   }
   return "";
 }
+
+/** Title case a string
+ * @param {string} str - string to title case
+ * @param {string} split - character to split string on
+ * @returns {string} - title cased string
+ */
+function toTitleCase(str, split = "_") {
+  return str
+    .toLowerCase()
+    .split(split)
+    .map(function (word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
+/**
+ * adds a source to the head
+ * @param {string} src - The source of the file to add to the head
+ * @returns {HTMLElement} - The element added to the head
+ */
+function addSrcToHead(src) {
+  const head = document.head;
+  let htmlEl;
+  if (src.endsWith(".css")) {
+    htmlEl = document.createElement("link");
+    htmlEl.rel = "stylesheet";
+    htmlEl.type = "text/css";
+    htmlEl.href = src;
+  } else if (src.endsWith(".js")) {
+    htmlEl = document.createElement("script");
+    htmlEl.src = src;
+    htmlEl.type = "text/javascript";
+    htmlEl.async = true;
+    htmlEl.defer = true;
+  } else if (src.endsWith(".ico")) {
+    htmlEl = document.createElement("link");
+    htmlEl.rel = "icon";
+    htmlEl.href = src;
+  }
+  head.appendChild(htmlEl);
+  return htmlEl;
+}
+
+/**
+ * checks if a src is in the head
+ * @param {string} src - The source of the file to check for in the head
+ * @returns {boolean} - Whether the src is in the head
+ */
+function checkSrcInHead(src) {
+  const head = document.head;
+  for (const child of head.children) {
+    if (child.src === src) return true;
+  }
+  return false;
+}

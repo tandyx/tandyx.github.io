@@ -34,29 +34,18 @@
     <link rel="stylesheet" href="/src/css/github-colors-text.css" />
 
     <script src="/src/js/index.js" async defer></script>
-    <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
-    />
+    <script src="/src/js/codeblock.js" async defer></script>
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/night-owl.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-    <!-- and it's easy to individually load additional languages -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
     <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
     />
-    <script>
-      hljs.addPlugin(new CopyButtonPlugin());
-      hljs.highlightAll();
-    </script>
   </head>
   <body>
     <nav class="nav">
@@ -85,49 +74,7 @@
           This function attempts to emulate sudo. It can be added to a
           powershell profile.
         </p>
-        <pre><code class="code-font language-powershell">
-<#
-# sudo.ps1
-# holds a recreation of the sudo command
-# Sudo: elevates powershell or command to admin
-#>
-
-
-function Sudo {
-  <#
-  .SYNOPSIS
-      Elevates powershell or command to admin.
-  .DESCRIPTION
-      Elevates powershell or command to admin.
-      Sudo -> opens a new powershell window as admin.
-      Sudo {command -args} -> runs the command as admin.
-  .EXAMPLE
-      Sudo
-  .OUTPUTS    
-      System.String
-  #>
-  $pwrsh = Get-First-Path-If-Exists "$psHome\powershell.exe" "$psHome\pwsh.exe"
-  $isAdmin = isadmin
-  if ($args.Count -gt 0) {
-      if ((Get-Command $args[0]).Definition.EndsWith(".exe")) {
-          return Start-Process (Get-Command $args[0]).Definition -Verb RunAs -ArgumentList ($args[1..($args.Length - 1)] -join " ") -WorkingDirectory $PWD
-      }
-      if ($isAdmin) {
-          return & $args
-      }
-      return Start-Process $pwrsh -Verb RunAs -WorkingDirectory $PWD -ArgumentList "-NoExit", "-NoLogo", "-Command & {$args}"
-  }
-  if ($isAdmin) {
-      return Write-Host("Shell is already running as admin.") -Fore Red
-  }
-  Start-Process $pwrsh -Verb runAs -ArgumentList "-NoExit", "-NoLogo"
-}
-        </code></pre>
-        <!-- <img
-          src="/src/img/WINGET_STUCK.png"
-          class="centeredalt margin-top"
-          title="album cover"
-        /> -->
+        <pre data-src="/src/cdn/sudo.ps1"></pre>
       </div>
     </main>
     <footer>
