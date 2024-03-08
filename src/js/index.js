@@ -11,9 +11,11 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
-  if (window.location.pathname !== "/index.html") {
-    setNav();
-  }
+  if (window.location.pathname !== "/index.html") setNav();
+
+  document.querySelectorAll("*[data-copy]").forEach((el) => {
+    addCopyEvent(el);
+  });
 });
 
 /**
@@ -461,4 +463,44 @@ function checkSrcInHead(src) {
     if (child.src === src) return true;
   }
   return false;
+}
+
+/**
+ * adds a copy event to an element
+ * @param {string | HTMLElement} el - The element to add the copy event to
+ * @returns {void}
+ */
+
+function addCopyEvent(el) {
+  /**
+   * Adds a copy event to an element - internal use only
+   * @param {HTMLElement} _el - The element to add the copy event to
+   * @param {string} _text - The text to copy
+   * @returns {void}
+   */
+
+  el = typeof el === "string" ? document.getElementById(el) : el;
+  el.style.cursor = "pointer";
+  el.addEventListener("click", function () {
+    const src = this.getAttribute("data-copy");
+    if (src !== "_src") return _addCopyEvent(this, src);
+    fetch(this.getAttribute("data-copy-src")).then((response) => {
+      response.text().then((code) => {
+        _addCopyEvent(this, code);
+      });
+    });
+  });
+
+  function _addCopyEvent(_el, _text) {
+    const originalText = _el.textContent;
+    _el.style.fontFamily = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue("--font-family");
+    navigator.clipboard.writeText(_text);
+    _el.textContent = "copied!";
+    setTimeout(() => {
+      _el.textContent = originalText;
+      _el.style.fontFamily = "";
+    }, 1000);
+  }
 }

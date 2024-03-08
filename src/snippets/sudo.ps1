@@ -6,7 +6,7 @@
 function Sudo {
     <#
     .SYNOPSIS
-        Elevates powershell or command to admin.
+        Elevates powershell or commamergnd to admin.
     .DESCRIPTION
         Elevates powershell or command to admin.
         Sudo -> opens a new powershell window as admin.

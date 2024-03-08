@@ -63,7 +63,7 @@ function loadCodeBlock(id, code, language = null) {
       hljs.highlightElement(codeNode);
     };
     document.head.appendChild(script);
-    return;
+    return preNode;
   }
   codeNode.classList.add(`language-${language}`);
   return preNode;
