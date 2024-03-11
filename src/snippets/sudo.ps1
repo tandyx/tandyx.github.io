@@ -22,7 +22,7 @@ function Sudo {
     }
     $isAdmin = isadmin
     if ($args.Count -gt 0) {
-        if ((Get-Command $args[0]).Definition.EndsWith(".exe")) {
+        if (Test-Path (Get-Command $args[0]).Definition) {
             return Start-Process (Get-Command $args[0]).Definition -Verb RunAs -ArgumentList ($args[1..($args.Length - 1)] -join " ") -WorkingDirectory $PWD
         }
         if ($isAdmin) {
