@@ -628,6 +628,10 @@ a:visited {
   }
 }
 
+.hljs-copy-button {
+  font-family: var(--font-family) !important;
+}
+
 /* .noscript-box {
   color: var(--northeastern-red);
   position: fixed;
