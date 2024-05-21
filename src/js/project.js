@@ -25,44 +25,42 @@ window.onhashchange = function () {
  * @param {string} reponame - The name of the repo
  * @returns {void}
  */
-function createBar(containerId, username, reponame) {
+async function createBar(containerId, username, reponame) {
   const container =
     typeof containerId === "string"
       ? document.getElementById(containerId)
       : containerId;
-  const langPromise = getRepoLangs(username, reponame);
-  langPromise.then((languages) => {
-    let zIndex =
-      Object.keys(languages).length +
-      1 +
-      Number(
-        (
-          getStyle(
-            containerId,
-            typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
-          ) || "0"
-        )
-          .replace("auto", "")
-          .replace("px", "")
-      );
-    let totalWidth = 0;
-    Object.keys(languages).forEach((lang) => {
-      const bar = document.createElement("div");
-      zIndex -= 1;
-      totalWidth += languages[lang];
-      bar.classList.add(
-        lang.replace(" ", "-").replace("+", "P").replace("#", "Sharp"),
-        "bar"
-      );
-      bar.style.width = `${languages[lang]}%`;
-      bar.style.left = `${totalWidth - languages[lang]}%`;
-      // bar.style.backgroundColor = colorJson[lang] || "#474747";
-      bar.style.zIndex = zIndex;
-      bar.dataset.tooltip = `${lang.toLowerCase()} ${languages[lang].toFixed(
-        2
-      )}%`;
-      container.appendChild(bar);
-    });
+  const languages = await getRepoLangs(username, reponame);
+  let zIndex =
+    Object.keys(languages).length +
+    1 +
+    Number(
+      (
+        getStyle(
+          containerId,
+          typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
+        ) || "0"
+      )
+        .replace("auto", "")
+        .replace("px", "")
+    );
+  let totalWidth = 0;
+  Object.keys(languages).forEach((lang) => {
+    const bar = document.createElement("div");
+    zIndex -= 1;
+    totalWidth += languages[lang];
+    bar.classList.add(
+      lang.replace(" ", "-").replace("+", "P").replace("#", "Sharp"),
+      "bar"
+    );
+    bar.style.width = `${languages[lang]}%`;
+    bar.style.left = `${totalWidth - languages[lang]}%`;
+    // bar.style.backgroundColor = colorJson[lang] || "#474747";
+    bar.style.zIndex = zIndex;
+    bar.dataset.tooltip = `${lang.toLowerCase()} ${languages[lang].toFixed(
+      2
+    )}%`;
+    container.appendChild(bar);
   });
 }
 

@@ -12,7 +12,6 @@ window.addEventListener("load", function () {
     removeHTMLFrom(...localHosts);
   }
   if (window.location.pathname !== "/index.html") setNav();
-
   document.querySelectorAll("*[data-copy]").forEach((el) => {
     addCopyEvent(el);
   });
@@ -112,7 +111,7 @@ function getStyle(id, styleProp) {
  * @example removeHTMLFrom("localhost", "", "127.0.0.1")
  */
 function removeHTMLFrom(...hostnames) {
-  for (let anchor of document.querySelectorAll("a[href]")) {
+  for (const anchor of document.querySelectorAll("a[href]")) {
     if (hostnames.includes(anchor.href.host)) continue;
     if (anchor.href.endsWith("index.html")) {
       anchor.href = anchor.href.replace("index.html", "");
@@ -164,8 +163,7 @@ async function getRepoLangs(username, reponame, key = null) {
  * @param {string} style - The style to get
  * @param {string} selector - The selector to get the style from
  * @param {CSSStyleSheet} sheet - The stylesheet to get the style from
- * @returns {string} - The value of the style
- * @returns {null} - If the style was not found
+ * @returns {string | null} - The value of the style
  */
 function getStyleRuleValue(style, selector, sheet = undefined) {
   const sheets = typeof sheet !== "undefined" ? [sheet] : document.styleSheets;
@@ -183,8 +181,7 @@ function getStyleRuleValue(style, selector, sheet = undefined) {
 /**
  * Gets a stylesheet by name
  * @param {string} sheetName - The name of the stylesheet to get
- * @returns {CSSStyleSheet} - The stylesheet
- * @returns {null} - If the stylesheet was not found
+ * @returns {CSSStyleSheet | null} - The stylesheet
  * @example getStylesheet("nav");
  */
 function getStylesheet(sheetName) {
@@ -262,16 +259,13 @@ function setNav() {
     const menu = document.getElementById("navmenu");
     if (!styleSheet || !menu) return;
     styleSheet.insertRule(
-      `nav:has(#menu-toggle:checked)::before { position: absolute; height: ${
-        Number(getStyle(menu, "height").replace("px", "")) +
-        Number(getStyle(menu.children[0], "height").replace("px", "")) -
-        Number(
-          getStyle(
-            menu.children[menu.children.length - 1],
-            "border-bottom-width"
-          ).replace("px", "")
-        )
-      }px }`
+      `nav:has(#menu-toggle:checked)::before { position: absolute; height: calc(${getStyle(
+        menu,
+        "height"
+      )} + ${getStyle(menu.children[0], "height")} - ${getStyle(
+        menu.children[menu.children.length - 1],
+        "border-bottom-width"
+      )}) }`
     );
   });
 
