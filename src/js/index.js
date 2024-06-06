@@ -1,3 +1,11 @@
+/**
+ * @file index.js
+ * @fileoverview main file and loaded on every page. also contains helper functions
+ * @exports *
+ */
+
+"use strict";
+
 main();
 
 window.addEventListener("load", function () {
@@ -283,7 +291,7 @@ function setNav() {
  */
 function checkOverflow(el) {
   if (typeof el === "string") el = document.getElementById(el);
-
+  let curOverflow;
   if (!curOverflow || curOverflow === "visible") el.style.overflow = "hidden";
 
   let isOverflowing =

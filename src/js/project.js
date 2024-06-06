@@ -1,3 +1,11 @@
+/**
+ * @file project.js
+ * @fileoverview This file contains the code for the project cards
+ * @typedef {import("./index.js")}
+ */
+
+"use strict";
+
 window.addEventListener("load", function () {
   const username = "johan-cho";
 

@@ -1,3 +1,9 @@
+/**
+ * @file codeblock.js
+ * @fileoverview really only used to render codeblocks
+ * @typedef {import("./index.js")}
+ */
+
 const langMap = {
   js: "javascript",
   ps1: "powershell",
