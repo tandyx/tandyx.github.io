@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/highlight.js": "^10.1.0",
+    "@types/plotly.js-basic-dist": "^1.54.4",
+    "highlight.js": "^11.9.0",
+    "plotly": "^1.0.6"
+  }
+}

@@ -2,10 +2,9 @@
  * @file about.js
  * @fileoverview This file contains the code for the about page
  * @typedef {import("./index.js")}
- * @typedef {import("plotly")}
+ * @typedef {import("plotly.js")}
  */
 "use strict";
-
 window.onload = function () {
   const username = "johan-cho";
   leftsideSetter();

@@ -2,7 +2,10 @@
  * @file codeblock.js
  * @fileoverview really only used to render codeblocks
  * @typedef {import("./index.js")}
+ * @typedef {import("highlight.js")}
  */
+"use strict";
+// const { default: hljs } = require("highlight.js");
 
 const langMap = {
   js: "javascript",
