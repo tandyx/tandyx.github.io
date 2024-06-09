@@ -4,6 +4,7 @@
  * @typedef {import("./index.js")}
  * @typedef {import("plotly.js")}
  */
+
 "use strict";
 window.onload = function () {
   const username = "johan-cho";

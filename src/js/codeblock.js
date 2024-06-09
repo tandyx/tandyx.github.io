@@ -2,11 +2,11 @@
  * @file codeblock.js
  * @fileoverview really only used to render codeblocks
  * @typedef {import("./index.js")}
- * @typedef {import("highlight.js")}
+ * @typedef {import("highlight.js").HLJSApi} hljs
  */
 "use strict";
-// const { default: hljs } = require("highlight.js");
 
+// hlj
 const langMap = {
   js: "javascript",
   ps1: "powershell",
