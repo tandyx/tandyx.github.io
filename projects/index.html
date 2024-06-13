@@ -95,7 +95,7 @@
             <div id="mbtab" class="bar-wrapper" data-repo="mbta_mapper"></div>
           </div>
           <div id="mbta_mapper_content" class="project-card-content">
-            <p>
+            <!-- <p>
               I used to work for Keolis; our team developed the backend of
               <a
                 href="https://www.bowst.com/work/keolis/"
@@ -108,18 +108,16 @@
               to commute into Boston, and I knew that I'd lose access to it when
               I left the company, so I made my own public-facing version that I
               use every day.
-            </p>
-
+            </p> -->
             <p>
-              I use
+              realtime mbta tracking site made with
               <a
                 class="text-Python blank-anchor"
                 href="https://www.sqlalchemy.org/"
                 rel="noopener"
                 target="_blank"
                 >sqlalchemy</a
-              >
-              in the backend and
+              >,
               <a
                 class="text-JavaScript blank-anchor"
                 href="https://leafletjs.com/"
@@ -127,13 +125,19 @@
                 target="_blank"
                 >leaflet.js</a
               >
-              to render the map. I deployed it to digitalocean using
+              and
               <a
                 class="text-Dockerfile blank-anchor"
                 href="https://www.docker.com/"
                 rel="noopener"
                 target="_blank"
                 >docker</a
+              >. made to be a public-facing
+              <a
+                href="https://www.bowst.com/work/keolis/"
+                target="_blank"
+                rel="noopener"
+                >keolis vehicle locator</a
               >.
             </p>
 
@@ -181,12 +185,11 @@
           </div>
           <div id="ampl-vscode_content" class="project-card-content">
             <p>
-              Created an extension for Visual Studio Code that adds syntax
-              highlighting, snippets, and a "language server" for the
+              created vscode extentsion that adds syntax highlighting, snippets,
+              etc. for the
               <span class="text-AMPL">AMPL</span>
-              modeling language. I used
-              <span class="text-TypeScript">TypeScript</span> to create the
-              extension.
+              modeling language. Made with
+              <span class="text-TypeScript">TypeScript</span>.
             </p>
             <img
               src="/src/img/vscode_.png"
@@ -218,11 +221,8 @@
           </div>
           <div id="pwsh-profile_content" class="project-card-content">
             <p>
-              My personal
-              <span class="text-PowerShell">powershell</span>
-              profile; may be of some use to people. It contains *some* unix
-              commands, a few useful extra functions/aliases and some styling to
-              make the terminal feel more natural to me.
+              my
+              <span class="text-PowerShell">powershell</span> profile
             </p>
             <img
               src="/src/img/pwsh.png"
@@ -254,15 +254,9 @@
           </div>
           <div id="teams_bot_content" class="project-card-content">
             <p>
-              Northeastern's college of engineering tutoring center requires
-              that office hours start with a specific teams message. I created a
-              <span class="text-Python">python</span> program that sends a
-              message to a microsoft teams channel at a specific time or
-              interval to automate myself out of that process.
-            </p>
-            <p>
-              I deployed this to azure using
-              <span class="text-Dockerfile">docker</span>.
+              automated ms teams webhook messages with
+              <span class="text-Python">python</span>
+              and <span class="text-Dockerfile">docker</span>.
             </p>
 
             <img
