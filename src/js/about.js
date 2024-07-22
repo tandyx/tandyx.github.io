@@ -6,12 +6,36 @@
  */
 
 "use strict";
+
+const digitToWord = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+];
+
 window.onload = function () {
   const username = "johan-cho";
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
   getUserLanguages(username).then((data) => {
-    console.log(data);
+    Object.keys(data).forEach((key) => {
+      const newKey = key
+        .replaceAll("+", "P")
+        .replaceAll("#", "-Sharp")
+        .replace(/\s/g, "-")
+        .replaceAll(".", "-")
+        .replace(/["'()]/g, "")
+        .replace(/^\d/, (match) => digitToWord[match]);
+      data[newKey] = data[key];
+      if (newKey !== key) delete data[key];
+    });
     createLangPiechart("langPlot", data);
   });
 };
@@ -76,7 +100,7 @@ async function getUserLanguages(username, key = null) {
  * @returns {void}
  */
 function createLangPiechart(id, langdata) {
-  const langstyles = getStylesheet("github-colors");
+  const langstyles = getStylesheet("github-lang-css/background.css");
   const font = getStyleRuleValue("font-family", "body", getStylesheet("index"));
   const data = [
     {
@@ -86,7 +110,7 @@ function createLangPiechart(id, langdata) {
       marker: {
         colors: Object.keys(langdata).map(
           (lang) =>
-            getStyleRuleValue("background-color", `.${lang}`, langstyles) ||
+            getStyleRuleValue("background-color", `.${lang}-bg`, langstyles) ||
             "#474747"
         ),
       },
