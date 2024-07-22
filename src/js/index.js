@@ -24,6 +24,18 @@ window.addEventListener("load", function () {
     addCopyEvent(el);
   });
 });
+const digitToWord = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+];
 
 /**
  * The main function -- executed for every page load, typically before the DOM is loaded

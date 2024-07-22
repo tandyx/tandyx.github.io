@@ -58,7 +58,13 @@ async function createBar(containerId, username, reponame) {
     zIndex -= 1;
     totalWidth += languages[lang];
     bar.classList.add(
-      lang.replace(" ", "-").replace("+", "P").replace("#", "Sharp"),
+      `${lang
+        .replaceAll("+", "P")
+        .replaceAll("#", "-Sharp")
+        .replace(/\s/g, "-")
+        .replaceAll(".", "-")
+        .replace(/["'()]/g, "")
+        .replace(/^\d/, (match) => digitToWord[match])}-bg`,
       "bar"
     );
     bar.style.width = `${languages[lang]}%`;

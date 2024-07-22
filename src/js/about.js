@@ -7,19 +7,6 @@
 
 "use strict";
 
-const digitToWord = [
-  "zero",
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-];
-
 window.onload = function () {
   const username = "johan-cho";
   leftsideSetter();
