@@ -7,7 +7,7 @@
 "use strict";
 
 window.addEventListener("load", function () {
-  const username = "johan-cho";
+  const username = "tandyx";
 
   for (const proj of document.getElementsByClassName(
     "project-card-container"

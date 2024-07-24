@@ -8,7 +8,7 @@
 "use strict";
 
 window.onload = function () {
-  const username = "johan-cho";
+  const username = "tandyx";
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
   getUserLanguages(username).then((data) => {
