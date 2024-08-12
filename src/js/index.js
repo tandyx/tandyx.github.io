@@ -101,7 +101,6 @@ function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
   }
   return mode;
 }
-
 /**
  * Gets a c style property from an element
  * @param {string | HTMLElement} id - The element to get the style from
