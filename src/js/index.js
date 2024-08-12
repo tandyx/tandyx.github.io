@@ -518,3 +518,60 @@ function addCopyEvent(el) {
     }, 1000);
   }
 }
+
+/**
+ * @typedef {{index: number[], columns: string[], data: any[]}} SCHMData
+ * data must be formatted as `SCHMData`
+ * @param {string} div div of plot
+ * @param {string[] | string} srcs src of the json file, eg. `["/src/json/supply_chain_costs.json", ...]`
+ * @param {Plotly.Data[]} plotlyArgs additional plotly arguments
+ * @param {Plotly.Layout} plotlyLayout additional plotly layout
+ * @param {Plotly.Config} plotlyConfig additional plotly config
+ */
+async function plotTimeSeries(
+  div,
+  srcs,
+  plotlyArgs = [],
+  plotlyLayout = {},
+  plotlyConfig = {}
+) {
+  srcs = Array.isArray(srcs) ? srcs : [srcs];
+  plotlyArgs = Array.isArray(plotlyArgs)
+    ? plotlyArgs
+    : Array.from({ length: 10 }, (_, i) => plotlyArgs);
+  /**@type {SCHMData[]} */
+  const data = [];
+  for (const src of srcs) {
+    const resp = await fetch(src);
+    if (!resp.ok) throw new Error(`${await resp.text()}: ${resp.status}`);
+    data.push(await resp.json());
+  }
+
+  const font = getStyleRuleValue("font-family", "body", getStylesheet("index"));
+
+  return await Plotly.newPlot(
+    div,
+    data.map((d, i) => ({
+      x: d.data.map((d) => d[0]),
+      y: d.data.map((d) => d[1]),
+      type: "scatter",
+      xaxis: d.columns[0],
+      yaxis: `y${i + 1}`,
+      hoverlabel: {
+        borderRadius: 10,
+        font: { family: font, size: 15 },
+      },
+      outsidetextfont: { color: "transparent" },
+      ...plotlyArgs[i],
+    })),
+    {
+      autosize: true,
+      font: {
+        family: font,
+        size: 15,
+      },
+      ...plotlyLayout,
+    },
+    { responsive: true, ...plotlyConfig }
+  );
+}

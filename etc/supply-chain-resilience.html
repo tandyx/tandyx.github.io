@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      name="keywords"
+      content="johan cho, johan, cho, northeastern, industrial engineering, data science, data, science, portfolio, projects, mbtamapper, mbta, mapper, mbta mapper, mbta map, mbta map generator, mbta map maker, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer, mbta map generator, mbta map generator, mbta map maker, mbta map maker, mbta map creator, mbta map creator, mbta map builder, mbta map builder, mbta map editor, mbta map editor, mbta map designer, mbta map designer"
+    />
+    <meta name="author" content="Johan Cho" />
+    <link
+      rel="canonical"
+      href="https://johan-cho.github.io/etc/update-drivers"
+    />
+
+    <meta name="description" content="Powershell script to update drivers" />
+    <link rel="icon" href="/src/img/lucario.ico" type="image/x-icon" />
+    <title>Update Drivers | Johan Cho</title>
+
+    <meta
+      property="og:url"
+      content="https://johan-cho.github.io/etc/update-drivers"
+    />
+    <meta property="og:image" content="/src/img/lucario.jpg" />
+    <meta
+      property="og:description"
+      content="Powershell script to update drivers"
+    />
+    <meta property="og:title" content="Update Drivers | Johan Cho" />
+    <!-- <meta property="og:site_name" content="johan cho's portfolio" /> -->
+    <meta property="og:see_also" content="https://johan-cho.github.io/etc" />
+
+    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/projectcard.css" />
+    <link rel="stylesheet" href="/src/css/navbar.css" />
+    <script
+      src="https://cdn.plot.ly/plotly-2.27.0.min.js"
+      charset="utf-8"
+    ></script>
+    <script src="/src/js/index.js" async defer></script>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("load", () =>
+        plotTimeSeries(
+          "supply-chain-costs",
+          ["supply_chain_costs.json", "inflation.json"].map(
+            (src) => `/src/json/${src}`
+          ),
+          [
+            {
+              name: "scm %",
+              mode: "lines",
+            },
+            {
+              name: "inflation %",
+              mode: "lines",
+            },
+          ],
+          {
+            title: "supply chain costs & inflation vs time",
+            xaxis: { title: "date" },
+            yaxis: { title: "supply chain cost index change %" },
+            yaxis2: {
+              title: "inflation rate %",
+              overlaying: "y",
+              side: "right",
+            },
+          }
+        )
+      );
+    </script>
+    <nav class="nav">
+      <div class="titleLogo"><a href="../index.html">johan cho</a></div>
+      <input id="menu-toggle" type="checkbox" title="menutoggle" />
+      <label class="menu-button-container" for="menu-toggle">
+        <div class="menu-button"></div>
+      </label>
+      <ul class="menu" id="navmenu">
+        <li id="modeToggle" class="fa"><a>&#xF186;</a></li>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/projects/index.html">projects</a></li>
+        <li><a href="/etc/index.html">etc</a></li>
+      </ul>
+    </nav>
+    <main class="body_container">
+      <div>
+        <h1 class="text-center">supply chain resilience</h1>
+        <h4 class="subheader text-center margin-top">
+          a deeper dive into supply chain & inflation
+        </h4>
+        <h4 class="subheader text-center margin-top">
+          ENGW3315 - Paul Babin: project #4
+        </h4>
+      </div>
+
+      <div>
+        <p>
+          In my
+          <a
+            href="https://1drv.ms/w/c/6edae6d67d0a4b32/Ednbi7rC7xhJgRZ6vMYyW9MBO3GDCebcKCeI3BT63yBpPA?e=occTS3"
+            target="_blank"
+            rel="noopener"
+            >op-ed</a
+          >, I wrote about the supply chain and how the lack of resilience
+          caused inflation. I touched upon blame, what resilience is, and how
+          industrial engineers and members of the public can seek to improve it.
+        </p>
+        <p>
+          One of my regrets is my failure to delve into <i>how</i> the supply
+          chain affects inflation. It's a complicated topic; I felt I lacked the
+          flexibility and opportunity to expand on mechanics. Since this writing
+          is more of a blog post, I have the freedom to use graphics to support
+          the correlation between supply chain shocks and inflation. This post,
+          however, is only a slightly deeper dive into a specific topic. I just
+          wanted to elaborate a little more on something that I didn't touch
+          upon.
+        </p>
+        <p>
+          Supply chain issues manifest themselves in increased cost to operate —
+          manufacturing, shipping, maintenance and storage factor into total
+          cost. This is shown in the below chart as an index — aggregated and
+          normalized or centered around 0, data. The inflation rate, the
+          increase in prices since last year, is given as well.
+        </p>
+        <div id="supply-chain-costs"></div>
+        <p class="caption">
+          Inflation and supply chain cost index data since 2014 is from the
+          <a href="https://www.bls.gov" target="_blank" rel="noopener">
+            Bureau of Labor Statistics </a
+          >.
+        </p>
+        <p>
+          The two focal points of the chart are the correlation between supply
+          chain costs and inflation, and the spike in supply chain costs in
+          early 2021 as the country began to recover from COVID. I haven't seen
+          this specific chart anywhere online; I've seen similar ones like the
+          below graphic from the white house.
+        </p>
+
+        <img
+          src="https://www.whitehouse.gov/wp-content/uploads/2023/11/figure-2-2.png"
+          alt="white house supply chain resilience"
+          loading="lazy"
+          class="centeredalt100"
+        />
+
+        <p class="caption">
+          From the
+          <a
+            href="https://www.whitehouse.gov/cea/written-materials/2023/11/30/issue-brief-supply-chain-resilience/"
+            target="_blank"
+            rel="noopener"
+            >White House</a
+          >. Note the similarities between mine. They use raw data, while I plot
+          the rate of change.
+        </p>
+
+        <p>
+          Both charts show that supply chain costs increased heavily after
+          covid, due to the aforementioned energy and goods demand spike, which
+          is inflation. They also show that there's a slight “lag” to inflation
+          from supply chain costs; the same relative increase or decrease in the
+          supply chain index is then reflected in inflation. While correlation
+          doesn't concretely prove causation, the lag and correlation before
+          covid are indicators that supply chain costs affect inflation.
+          Increased shipping costs increase the price of goods and services,
+          which increases inflation, and the cycle repeats.
+        </p>
+        <hr />
+        <p>
+          The
+          <a
+            href="https://www.whitehouse.gov/cea/written-materials/2023/11/30/issue-brief-supply-chain-resilience/"
+            target="_blank"
+            rel="noopener"
+            >White House's article</a
+          >'s been a great resource throughout my research because it attempts
+          to abstract complicated supply chain topics into digestible ideas. It
+          also talks about mitigation efforts through the president's, Joe
+          Biden, perspective. The big “win” that reduced shipping costs and thus
+          inflation was the Ocean Reform Shipping Act. They show this graphic as
+          evidence:
+        </p>
+
+        <img
+          src="https://www.whitehouse.gov/wp-content/uploads/2023/11/figure-4.png?resize=2048,1183"
+          alt="white house supply chain resilience"
+          loading="lazy"
+          class="centeredalt100"
+        />
+        <p class="caption">From the White House.</p>
+
+        <p>
+          It's a little more complicated than that, however. The supply chain
+          isn't the only inflationary factor; the aforementioned increased
+          goods/energy demand, economic growth and construction are three of the
+          many potential causes of inflation. At the same time supply chain woes
+          were going around, the Federal Bank instituted interest rate hikes;
+          traditional economics stipulates that inflation and economic growth
+          are positively correlated while interest rate is negatively correlated
+          with both. In other words, as interest rates increase, both economic
+          growth and inflation slow. I think that no matter how well-written the
+          article was or how effective the Ocean Reform Shipping Act was, it's
+          important to take all factors into account. I just wanted to shed
+          light on a factor that's tangent to my discipline.
+        </p>
+        <hr />
+
+        <cite>
+          <ol>
+            <li>
+              <a
+                href="https://www.bls.gov/charts/import-export/us-import-and-export-price-indexes-12-month-percent-change.htm"
+                target="_blank"
+                rel="noopener"
+                >Bureau of Labor Statistics - Supply Chain Index Data</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexhistorical_us_table.htm"
+                target="_blank"
+                rel="noopener"
+                >Bureau of Labor Statistics - Inflation Daata</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.whitehouse.gov/cea/written-materials/2023/11/30/issue-brief-supply-chain-resilience/"
+                target="_blank"
+                rel="noopener"
+                >White House - Supply Chain Resiliancy</a
+              >
+            </li>
+          </ol>
+        </cite>
+
+        <!-- op-ed https://1drv.ms/w/c/6edae6d67d0a4b32/Ednbi7rC7xhJgRZ6vMYyW9MBO3GDCebcKCeI3BT63yBpPA?e=occTS3 -->
+
+        <!-- scm data: https://www.bls.gov/charts/import-export/us-import-and-export-price-indexes-12-month-percent-change.htm -->
+        <!-- inflation data: https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexhistorical_us_table.htm -->
+        <!-- https://www.whitehouse.gov/cea/written-materials/2023/11/30/issue-brief-supply-chain-resilience/ -->
+      </div>
+    </main>
+    <footer>
+      <div>
+        designed by me and hosted in
+        <a
+          href="https://github.com/johan-cho/johan-cho.github.io"
+          rel="noopener"
+          target="_blank"
+          >this repo</a
+        >.
+      </div>
+      <div class="fa links-wrapper">
+        <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
+          >&#xf0e0;</a
+        ><a
+          href="https://www.linkedin.com/in/chojohan/"
+          target="_blank"
+          rel="noopener"
+          >&#xf08c;</a
+        ><a href="https://github.com/johan-cho" target="_blank" rel="noopener"
+          >&#xf09b;</a
+        ><a
+          href="https://www.youtube.com/channel/UCP91LPgRFY03YoIGrmuMH9A"
+          target="_blank"
+          rel="noopener"
+          >&#xf16a;</a
+        ><a
+          href="https://open.spotify.com/user/31rmddg3bkfj4gl56uvbw7225t3y?si=313276f3aff34fc2"
+          target="_blank"
+          rel="noopener"
+          >&#xf1bc; </a
+        ><a
+          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
+          target="_blank"
+          rel="noopener"
+          class="reduced-margin-left"
+          >&#xf1c1;</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
