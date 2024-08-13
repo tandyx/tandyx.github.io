@@ -30,7 +30,6 @@
 
     <link rel="stylesheet" href="/src/css/index.css" />
     <link rel="stylesheet" href="/src/css/projectcard.css" />
-    <link rel="stylesheet" href="/src/css/navbar.css" />
     <link rel="stylesheet" href="https://unpkg.com/github-lang-css/index.css" />
     <script src="/src/js/index.js" async defer></script>
     <script src="/src/js/codeblock.js" async defer></script>
@@ -45,21 +44,11 @@
       rel="stylesheet"
       href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
     />
+    <script src="/src/js/components/footer.js" defer></script>
+    <script src="/src/js/components/navbar.js" defer></script>
   </head>
   <body>
-    <nav class="nav">
-      <div class="titleLogo"><a href="../index.html">johan cho</a></div>
-      <input id="menu-toggle" type="checkbox" title="menutoggle" />
-      <label class="menu-button-container" for="menu-toggle">
-        <div class="menu-button"></div>
-      </label>
-      <ul class="menu" id="navmenu">
-        <li id="modeToggle" class="fa"><a>&#xF186;</a></li>
-        <li><a href="/about.html">about</a></li>
-        <li><a href="/projects/index.html">projects</a></li>
-        <li><a href="/etc/index.html">etc</a></li>
-      </ul>
-    </nav>
+    <x-nav></x-nav>
     <main class="body_container">
       <div>
         <h1 class="text-center">sudo</h1>
@@ -98,44 +87,6 @@
         <pre data-src="/src/snippets/sudo.ps1"></pre>
       </div>
     </main>
-    <footer>
-      <div>
-        designed by me and hosted in
-        <a
-          href="https://github.com/tandyx/tandyx.github.io"
-          rel="noopener"
-          target="_blank"
-          >this repo</a
-        >.
-      </div>
-      <div class="fa links-wrapper">
-        <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
-          >&#xf0e0;</a
-        ><a
-          href="https://www.linkedin.com/in/chojohan/"
-          target="_blank"
-          rel="noopener"
-          >&#xf08c;</a
-        ><a href="https://github.com/tandyx" target="_blank" rel="noopener"
-          >&#xf09b;</a
-        ><a
-          href="https://www.youtube.com/channel/UCP91LPgRFY03YoIGrmuMH9A"
-          target="_blank"
-          rel="noopener"
-          >&#xf16a;</a
-        ><a
-          href="https://open.spotify.com/user/31rmddg3bkfj4gl56uvbw7225t3y?si=313276f3aff34fc2"
-          target="_blank"
-          rel="noopener"
-          >&#xf1bc; </a
-        ><a
-          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
-          target="_blank"
-          rel="noopener"
-          class="reduced-margin-left"
-          >&#xf1c1;</a
-        >
-      </div>
-    </footer>
+    <x-footer></x-footer>
   </body>
 </html>
