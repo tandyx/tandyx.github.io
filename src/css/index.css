@@ -712,4 +712,16 @@ a:visited {
   .body_container {
     margin: 10px 20%;
   }
+
+  p,
+  h1 h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  li {
+    line-height: 125%;
+  }
 }
