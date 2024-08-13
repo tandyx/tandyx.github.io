@@ -270,7 +270,6 @@ function setNav() {
       }
     }
   }
-
   const menutoggle = document.getElementById("menu-toggle");
   const styleSheet = getStylesheet("nav");
   if (!menutoggle) return;
@@ -294,6 +293,7 @@ function setNav() {
     }
   });
 }
+
 /**
  * checks to see if the element is overflowing
  * @param {HTMLElement | string} el - The element to check

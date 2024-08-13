@@ -3,8 +3,6 @@ class Navbar extends HTMLElement {
 
   constructor() {
     super();
-  }
-  connectedCallback() {
     this.innerHTML = `
         <link rel="stylesheet" href="/src/css/navbar.css" />
         <nav class="nav">
@@ -21,6 +19,64 @@ class Navbar extends HTMLElement {
         </ul>
         </nav>
       `;
+  }
+  /**
+   * Invoked when the custom element is first connected to the document's DOM.
+   */
+  connectedCallback() {
+    for (const menu of this.getElementsByClassName("menu")) {
+      for (const child of menu.children) {
+        if (child.id === "modeToggle") {
+          for (const an of child.getElementsByTagName("a")) {
+            an.text =
+              (getCookie("mode") || "dark") === "dark" ? "\uf186" : "\uf185";
+          }
+          child.addEventListener("click", function () {
+            let mode = toggleDarkLight();
+            for (const an of child.getElementsByTagName("a")) {
+              an.text = mode === "dark" ? "\uf186" : "\uf185";
+            }
+          });
+
+          continue;
+        }
+
+        for (const anchor of child.getElementsByTagName("a")) {
+          if (anchor.href === window.location.href) {
+            anchor.href = "#";
+          }
+          if (
+            window.location.pathname.startsWith(
+              anchor.pathname.split(".")[0].replace("index", "") || "/"
+            )
+          ) {
+            anchor.style.color = "var(--accent-color)";
+          }
+        }
+      }
+    }
+    const menutoggle = document.getElementById("menu-toggle");
+    const styleSheet = getStylesheet("nav");
+    if (!menutoggle) return;
+    menutoggle.addEventListener("change", () => {
+      const menu = document.getElementById("navmenu");
+      if (!styleSheet || !menu) return;
+      styleSheet.insertRule(
+        `nav:has(#menu-toggle:checked)::before { position: absolute; height: calc(${getStyle(
+          menu,
+          "height"
+        )} + ${getStyle(menu.children[0], "height")} - ${getStyle(
+          menu.children[menu.children.length - 1],
+          "border-bottom-width"
+        )}) }`
+      );
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768 && menutoggle.checked) {
+        menutoggle.click();
+      }
+    });
   }
 }
 

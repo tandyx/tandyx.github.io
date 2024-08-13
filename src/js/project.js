@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
     addProjectEvents(proj);
   }
   if (window.location.hash) {
-    document.getElementById(window.location.hash.slice(1)).click();
+    document.getElementById(window.location.hash.slice(1))?.click();
   }
   document.querySelectorAll("[data-repo]").forEach((el) => {
     createBar(el.id, username, el.dataset.repo);
