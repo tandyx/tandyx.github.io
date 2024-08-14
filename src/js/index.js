@@ -19,7 +19,6 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
-  if (window.location.pathname !== "/index.html") setNav();
   document.querySelectorAll("*[data-copy]").forEach((el) => {
     addCopyEvent(el);
   });
@@ -229,69 +228,6 @@ function elementIsVisibleInViewport(id, partiallyVisible = false) {
         (bottom > 0 && bottom < innerHeight)) &&
         ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
-}
-
-/**
- * Sets the nav bar to the current page
- * @returns {void}
- * @example window.addEventListener("load", setNav);
- */
-function setNav() {
-  for (const navBar of document.getElementsByClassName("nav")) {
-    for (const menu of navBar.getElementsByClassName("menu")) {
-      for (const child of menu.children) {
-        if (child.id === "modeToggle") {
-          for (const an of child.getElementsByTagName("a")) {
-            an.text =
-              (getCookie("mode") || "dark") === "dark" ? "\uf186" : "\uf185";
-          }
-          child.addEventListener("click", function () {
-            let mode = toggleDarkLight();
-            for (const an of child.getElementsByTagName("a")) {
-              an.text = mode === "dark" ? "\uf186" : "\uf185";
-            }
-          });
-
-          continue;
-        }
-
-        for (const anchor of child.getElementsByTagName("a")) {
-          if (anchor.href === window.location.href) {
-            anchor.href = "#";
-          }
-          if (
-            window.location.pathname.startsWith(
-              anchor.pathname.split(".")[0].replace("index", "") || "/"
-            )
-          ) {
-            anchor.style.color = "var(--accent-color)";
-          }
-        }
-      }
-    }
-  }
-  const menutoggle = document.getElementById("menu-toggle");
-  const styleSheet = getStylesheet("nav");
-  if (!menutoggle) return;
-  menutoggle.addEventListener("change", () => {
-    const menu = document.getElementById("navmenu");
-    if (!styleSheet || !menu) return;
-    styleSheet.insertRule(
-      `nav:has(#menu-toggle:checked)::before { position: absolute; height: calc(${getStyle(
-        menu,
-        "height"
-      )} + ${getStyle(menu.children[0], "height")} - ${getStyle(
-        menu.children[menu.children.length - 1],
-        "border-bottom-width"
-      )}) }`
-    );
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768 && menutoggle.checked) {
-      menutoggle.click();
-    }
-  });
 }
 
 /**
