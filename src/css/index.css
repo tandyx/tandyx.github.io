@@ -707,12 +707,6 @@ a:visited {
   .mainContainer li {
     text-wrap: none;
   }
-}
-@media screen and (min-width: 1080px) {
-  .body_container {
-    margin: 10px 20%;
-  }
-
   p,
   h1 h2,
   h3,
@@ -723,5 +717,10 @@ a:visited {
   ol,
   li {
     line-height: 125%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .body_container {
+    margin: 10px 20%;
   }
 }

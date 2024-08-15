@@ -148,16 +148,10 @@ function removeHTMLFrom(...hostnames) {
  */
 async function getRepoLangs(username, reponame, key = null) {
   {
-    const ls = await (key
-      ? fetch(
-          `https://api.github.com/repos/${username}/${reponame}/languages`,
-          {
-            headers: { Authorization: "token " + key },
-          }
-        )
-      : fetch(
-          `https://api.github.com/repos/${username}/${reponame}/languages`
-        ));
+    const ls = await fetch(
+      `https://api.github.com/repos/${username}/${reponame}/languages`,
+      key ? { headers: { Authorization: "token " + key } } : {}
+    );
 
     const languageStats = Object.entries(await ls.json())
       .sort(([, a], [, b]) => b - a)
@@ -168,11 +162,14 @@ async function getRepoLangs(username, reponame, key = null) {
       0
     );
 
-    const languagesPercentage = {};
-    Object.keys(languageStats).forEach((lang) => {
-      languagesPercentage[lang] = (languageStats[lang] * 100) / totalBytes;
-    });
-    return languagesPercentage;
+    // const languagesPercentage = {};
+    // Object.keys(languageStats).forEach((lang) => {
+    //   languagesPercentage[lang] = (languageStats[lang] * 100) / totalBytes;
+    // });
+    return Object.keys(languageStats).reduce((acc, lang) => {
+      acc[lang] = (languageStats[lang] * 100) / totalBytes;
+      return acc;
+    }, {});
   }
 }
 
