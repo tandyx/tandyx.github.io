@@ -13,7 +13,7 @@ const langMap = {
 };
 
 // main();
-window.onload = function () {
+window.addEventListener("load", () => {
   for (const preNode of document.getElementsByTagName("pre")) {
     const fileSource = preNode.getAttribute("data-src");
     fetch(fileSource).then((response) => {
@@ -30,7 +30,7 @@ window.onload = function () {
   } catch (error) {
     console.error(error);
   }
-};
+});
 // /**
 //  * main function, loads before `window.onload`
 //  * @returns {void}

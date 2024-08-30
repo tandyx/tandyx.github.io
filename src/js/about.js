@@ -7,7 +7,7 @@
 
 "use strict";
 
-window.onload = function () {
+window.addEventListener("load", () => {
   const username = "tandyx";
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
@@ -25,7 +25,7 @@ window.onload = function () {
     });
     createLangPiechart("langPlot", data);
   });
-};
+});
 
 /**
  * sets that the left side of the about page should be hidden if the about header is not visible
@@ -51,24 +51,24 @@ function leftsideSetter() {
  */
 async function getUserLanguages(username, key = null) {
   const languagesJson = {};
-  const response = await (key
-    ? fetch(`https://api.github.com/users/${username}/repos`, {
+  const repos = await (key
+    ? fetchCatch(`https://api.github.com/users/${username}/repos`, {
         headers: { Authorization: "token " + key },
       })
-    : fetch(`https://api.github.com/users/${username}/repos`));
+    : fetchCatch(`https://api.github.com/users/${username}/repos`));
 
-  for (const repo of await response.json()) {
+  for (const repo of repos) {
     if (repo.fork) continue;
-    const repoResponse = await (key
-      ? fetch(
+    const repoData = await (key
+      ? fetchCatch(
           `https://api.github.com/repos/${username}/${repo.name}/languages`,
           { headers: { Authorization: "token " + key } }
         )
-      : fetch(
+      : fetchCatch(
           `https://api.github.com/repos/${username}/${repo.name}/languages`
         ));
 
-    const languages = await repoResponse.json();
+    const languages = await repoData;
     for (const language in await languages) {
       if (languagesJson[language]) {
         languagesJson[language] += languages[language];

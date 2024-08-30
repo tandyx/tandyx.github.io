@@ -6,7 +6,7 @@
 
 "use strict";
 
-window.addEventListener("load", function () {
+window.addEventListener("load", async function () {
   const username = "tandyx";
 
   for (const proj of document.getElementsByClassName(
@@ -22,9 +22,9 @@ window.addEventListener("load", function () {
   });
 });
 
-window.onhashchange = function () {
+window.addEventListener("hashchange", () => {
   document.getElementById(window.location.hash.slice(1)).click();
-};
+});
 
 /**
  * Creates a bar chart of the languages used in a repo
@@ -84,6 +84,7 @@ async function createBar(containerId, username, reponame) {
  * @returns {void}
  */
 function addProjectEvents(projectWrapper) {
+  /** @type {HTMLElement} */
   projectWrapper =
     typeof projectWrapper === "string"
       ? document.getElementById(projectWrapper)

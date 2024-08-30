@@ -9,13 +9,7 @@
 main();
 
 window.addEventListener("load", function () {
-  const localHosts = [
-    "localhost",
-    "",
-    "127.0.0.1",
-    "q7vr2gwr-3000.use.devtunnels.ms",
-    "l9bzxts8-3000.use.devtunnels.ms",
-  ];
+  const localHosts = ["localhost", "", "127.0.0.1"];
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
@@ -148,12 +142,12 @@ function removeHTMLFrom(...hostnames) {
  */
 async function getRepoLangs(username, reponame, key = null) {
   {
-    const ls = await fetch(
+    const ls = await fetchCatch(
       `https://api.github.com/repos/${username}/${reponame}/languages`,
       key ? { headers: { Authorization: "token " + key } } : {}
     );
 
-    const languageStats = Object.entries(await ls.json())
+    const languageStats = Object.entries(ls)
       .sort(([, a], [, b]) => b - a)
       .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
@@ -161,11 +155,6 @@ async function getRepoLangs(username, reponame, key = null) {
       (partialSum, a) => partialSum + a,
       0
     );
-
-    // const languagesPercentage = {};
-    // Object.keys(languageStats).forEach((lang) => {
-    //   languagesPercentage[lang] = (languageStats[lang] * 100) / totalBytes;
-    // });
     return Object.keys(languageStats).reduce((acc, lang) => {
       acc[lang] = (languageStats[lang] * 100) / totalBytes;
       return acc;
@@ -506,4 +495,28 @@ async function plotTimeSeries(
     },
     { responsive: true, ...plotlyConfig }
   );
+}
+
+/**
+ * cache fetch requests in local or session storage
+ *
+ * auto assumes json but will default to text if failed
+ *
+ * @param {string} url
+ * @param {RequestInit} fetchParams
+ * @param {("local" | "session")?} [cache = "session"]
+ * @returns {Promise<any | Response>}
+ */
+async function fetchCatch(url, fetchParams, cache = "session") {
+  if (!cache) return await fetch(url, fetchParams);
+  const cacheRef = cache === "local" ? localStorage : sessionStorage;
+  const cacheData = cacheRef.getItem(url);
+  if (cacheData) return JSON.parse(cacheData);
+  const resp = await fetch(url, fetchParams);
+  if (!resp.ok) throw new Error(`${resp.status}: ${await resp.text()}`);
+  try {
+    return await resp.json();
+  } catch {
+    return await resp.text();
+  }
 }
