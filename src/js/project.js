@@ -6,9 +6,7 @@
 
 "use strict";
 
-window.addEventListener("load", async function () {
-  const username = "tandyx";
-
+window.addEventListener("load", () => {
   for (const proj of document.getElementsByClassName(
     "project-card-container"
   )) {
@@ -17,7 +15,11 @@ window.addEventListener("load", async function () {
   if (window.location.hash) {
     document.getElementById(window.location.hash.slice(1))?.click();
   }
-  document.querySelectorAll("[data-repo]").forEach((el) => {
+});
+
+window.addEventListener("load", async () => {
+  const username = "tandyx";
+  document.querySelectorAll("[data-repo]").forEach(async (el) => {
     createBar(el.id, username, el.dataset.repo);
   });
 });
@@ -103,7 +105,6 @@ function addProjectEvents(projectWrapper) {
     for (const e of projectWrapper.getElementsByClassName(
       "project-card-content"
     )) {
-      console.log(selectionInElement(e));
       if (checkParent(event.target, e) && selectionInElement(e)) {
         return;
       }

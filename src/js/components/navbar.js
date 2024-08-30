@@ -35,6 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
   customElements.define(Navbar.componentName, Navbar);
 });
 
+document.addEventListener("click", (event) => {
+  // Check if the clicked element is not inside the navbar
+  if (!event.target?.closest(".nav")) {
+    // Close the hamburger menu
+    const menuToggle = document.getElementById("menu-toggle");
+    if (menuToggle && menuToggle.checked) {
+      menuToggle.checked = false;
+    }
+  }
+});
+
 window.addEventListener("load", () => {
   const _custNav = document.getElementById("_navbar");
   const _menu = _custNav.getElementsByClassName("menu")[0];

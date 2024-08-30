@@ -13,9 +13,7 @@ window.addEventListener("load", function () {
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
-  document.querySelectorAll("*[data-copy]").forEach((el) => {
-    addCopyEvent(el);
-  });
+  document.querySelectorAll("*[data-copy]").forEach((el) => addCopyEvent(el));
 });
 const digitToWord = [
   "zero",
@@ -44,16 +42,6 @@ function main() {
     toggleDarkLight(false, "dark");
   }
 
-  document.addEventListener("click", function (event) {
-    // Check if the clicked element is not inside the navbar
-    if (!event.target.closest(".nav")) {
-      // Close the hamburger menu
-      const menuToggle = document.getElementById("menu-toggle");
-      if (menuToggle && menuToggle.checked) {
-        menuToggle.checked = false;
-      }
-    }
-  });
   document.addEventListener("scroll", () => {
     const back2top = document.getElementById("back2top");
     if (!back2top) return;
