@@ -121,7 +121,7 @@ body.titlepage {
       rgba(0, 0, 0, 0.1) 5%,
       rgb(0, 0, 0) 90%
     ),
-    url("../img/boston_vector.png");
+    /* url("../img/boston_vector.png"); */ url("../img/alt_background.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
