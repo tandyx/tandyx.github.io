@@ -9,6 +9,7 @@
   --subheader-text: #a1a1a1;
   --font-family: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
     monospace;
+  --bg-photo: url("../img/boston_vector.png");
 }
 
 @font-face {
@@ -121,7 +122,7 @@ body.titlepage {
       rgba(0, 0, 0, 0.1) 5%,
       rgb(0, 0, 0) 90%
     ),
-    /* url("../img/boston_vector.png"); */ url("../img/alt_background.png");
+    var(--bg-photo);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
