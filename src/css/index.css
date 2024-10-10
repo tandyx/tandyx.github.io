@@ -613,6 +613,13 @@ a:visited {
 .margin-bottom-10 {
   margin-bottom: 10px !important;
 }
+.right-float {
+  float: right;
+}
+
+.small-font {
+  font-size: smaller;
+}
 
 .margin-top-30 {
   margin-top: 30px;
@@ -687,6 +694,18 @@ a:visited {
     cursor: pointer;
   }
 } */
+
+.fill-relative-div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.anchor-fill-parent {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
 
 @media screen and (max-width: 768px) {
   .body_container {

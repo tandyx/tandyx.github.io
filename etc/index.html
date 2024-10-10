@@ -29,67 +29,51 @@
     <meta property="og:see_also" content="https://tandyx.github.io/etc" />
 
     <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/projectcard.css" />
 
     <script src="/src/js/index.js" async defer></script>
     <script src="/src/js/components/footer.js" defer></script>
     <script src="/src/js/components/navbar.js" defer></script>
+    <script src="/src/js/components/hr-container.js" defer></script>
   </head>
   <body>
     <x-nav></x-nav>
     <main class="body_container">
       <div>
-        <h1>etc</h1>
+        <h1>/etc</h1>
         <h4 class="subheader">extra stuff</h4>
         <hr />
       </div>
       <div>
-        <table class="table-center">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Link</th>
-            </tr>
-          </thead>
-          <tr>
-            <td>08/12/2024</td>
-            <td>
-              <a href="./supply-chain-resilience.html"
-                >supply chain resilience - ENGW3315 project #4</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>03/06/2024</td>
-            <td>
-              <a href="./update-drivers.html">update drivers with powershell</a>
-            </td>
-          </tr>
-          <tr>
-            <td>03/06/2024</td>
-            <td>
-              <a href="./sudo-ps1.html">sudo for powershell</a>
-            </td>
-          </tr>
+        <style>
+          .hr-container {
+            text-align: left;
 
-          <tr>
-            <td>03/01/2024</td>
-            <td>
-              <a href="./winget-stuck.html">winget stuck fix</a>
-            </td>
-          </tr>
-          <tr>
-            <td>02/23/2024</td>
-            <td>
-              <a href="./dontbreakmyfall.html"
-                >don't break my fall - mike viola and snap</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>02/23/2024</td>
-            <td><a href="./tandypack.html">tandypack</a></td>
-          </tr>
-        </table>
+            .maingrid {
+              display: grid;
+              grid-template-columns: 60% auto;
+            }
+            .right-float {
+              float: right;
+              text-align: right;
+            }
+          }
+        </style>
+        <x-hr-container date="08/12/2024">
+          <a href="./supply-chain-resilience.html"> supply chain resilience</a>
+        </x-hr-container>
+        <x-hr-container date="03/06/2024">
+          <a href="./update-drivers.html">powershell update drivers</a>
+        </x-hr-container>
+        <x-hr-container date="03/01/2024">
+          <a href="./sudo-ps1.html">sudo for powershell</a>
+        </x-hr-container>
+        <x-hr-container date="02/23/2024">
+          <a href="./dontbreakmyfall.html">lost album found</a>
+        </x-hr-container>
+        <x-hr-container date="02/23/2024">
+          <a href="./tandypack.html">tandypack</a>
+        </x-hr-container>
       </div>
     </main>
     <x-footer></x-footer>
