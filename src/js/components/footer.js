@@ -36,12 +36,6 @@ class Footer extends HTMLElement {
           target="_blank"
           rel="noopener"
           >&#xf1bc; </a
-        ><a
-          href="https://1drv.ms/b/s!AjJLCn3W5tpuiTgJ2ZnOaPpz-Nhu"
-          target="_blank"
-          rel="noopener"
-          class="reduced-margin-left"
-          >&#xf1c1;</a
         >
       </div>
     </footer>

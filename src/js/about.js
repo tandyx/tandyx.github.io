@@ -51,30 +51,24 @@ function leftsideSetter() {
  */
 async function getUserLanguages(username, key = null) {
   const languagesJson = {};
-  const repos = await (key
-    ? fetchCatch(`https://api.github.com/users/${username}/repos`, {
-        headers: { Authorization: "token " + key },
-      })
-    : fetchCatch(`https://api.github.com/users/${username}/repos`));
+  const repos = await fetchCatch(
+    `https://api.github.com/users/${username}/repos`,
+    key ? { headers: { Authorization: "token " + key } } : {}
+  );
 
   for (const repo of repos) {
     if (repo.fork) continue;
-    const repoData = await (key
-      ? fetchCatch(
-          `https://api.github.com/repos/${username}/${repo.name}/languages`,
-          { headers: { Authorization: "token " + key } }
-        )
-      : fetchCatch(
-          `https://api.github.com/repos/${username}/${repo.name}/languages`
-        ));
+    const repoData = await fetchCatch(
+      `https://api.github.com/repos/${username}/${repo.name}/languages`,
+      key ? { headers: { Authorization: "token " + key } } : {}
+    );
 
-    const languages = await repoData;
-    for (const language in await languages) {
-      if (languagesJson[language]) {
-        languagesJson[language] += languages[language];
-      } else {
-        languagesJson[language] = languages[language];
-      }
+    for (const language in repoData) {
+      if (!languagesJson[language]) languagesJson[language] = 0;
+      languagesJson[language] +=
+        language === "Jupyter Notebook"
+          ? repoData[language] * 0.1
+          : repoData[language];
     }
   }
   return languagesJson;

@@ -707,6 +707,19 @@ a:visited {
   display: inline-block;
 }
 
+.hr-container {
+  text-align: left;
+
+  .maingrid {
+    display: grid;
+    grid-template-columns: 60% auto;
+  }
+  .right-float {
+    float: right;
+    text-align: right;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .body_container {
     margin: 10px 5%;

@@ -53,7 +53,6 @@ docs/_build/
 .env
 *.pyc
 *.pyo
-launch.json
 
 node_modules/
 test.py

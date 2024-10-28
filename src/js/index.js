@@ -496,10 +496,10 @@ async function plotTimeSeries(
  * @returns {Promise<any | Response>}
  */
 async function fetchCatch(url, fetchParams, cache = "session") {
-  if (!cache) return await fetch(url, fetchParams);
+  // if (!cache) return await fetch(url, fetchParams);
   const cacheRef = cache === "local" ? localStorage : sessionStorage;
   const cacheData = cacheRef.getItem(url);
-  if (cacheData) return JSON.parse(cacheData);
+  if (cacheData && cache) return JSON.parse(cacheData);
   const resp = await fetch(url, fetchParams);
   if (!resp.ok) throw new Error(`${resp.status}: ${await resp.text()}`);
   try {
