@@ -174,13 +174,6 @@ body.titlepage {
   left: 50%;
 }
 
-.mainContainer > h3 {
-  font-size: 20pt;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-}
-
 .mainContainer h1,
 h1 {
   /* text-align: center; */
