@@ -19,7 +19,7 @@
     <title>about | johan cho</title>
 
     <meta property="og:url" content="https://tandyx.github.io/about" />
-    <meta property="og:image" content="/src/img/lucario.jpg" />
+    <meta property="og:image" content="/src/img/lucario.png" />
     <meta property="og:description" content="about me" />
     <meta property="og:title" content="about | johan cho" />
     <!-- <meta property="og:site_name" content="johan cho's portfolio" /> -->
@@ -43,21 +43,17 @@
     ></script>
     <script src="/src/js/components/footer.js" defer></script>
     <script src="/src/js/components/navbar.js" defer></script>
-    <style>
-      h3 {
-        font-size: 1.5em;
-        margin-bottom: -5px;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <x-nav></x-nav>
     <header id="aboutheader" class="body_container">
       <div class="about_header">
         <img
-          src="/src/img/johan.jpg"
-          alt="johan cho"
+          src="/src/img/lucario.png"
+          alt="johan"
           class="circle_img left variable-width-200"
+          loading="lazy"
         />
         <div class="right">
           <h1>Johan Cho</h1>
@@ -117,9 +113,10 @@
         <div class="sub_container left">
           <div id="aboutleft" class="body_container">
             <img
-              src="/src/img/johan.jpg"
-              alt="johan cho"
+              src="/src/img/lucario.png"
+              alt="johan"
               class="circle_img left variable-width-200"
+              loading="lazy"
             />
             <div class="right">
               <h1>Johan Cho</h1>
@@ -177,8 +174,10 @@
           <div id="about_me" class="resume_section_container">
             <h3>about</h3>
             <hr />
-            <p>I'm from sharon, massachusetts.</p>
-            <p>you may also know me as <i>tandy</i></p>
+            <p>
+              I'm from sharon, massachusetts. You may also know me as
+              <i>Tandy</i>
+            </p>
             <p>
               I really like to walk around and explore new england towns/cities
               and boston. this extends to running and bike rides. I also play
@@ -225,17 +224,19 @@
               </noscript>
               <p class="caption">
                 in addition to: <span class="SQLPL">sql</span>,
-                <span class="JavaScript">react</span>
+                <span class="JavaScript">react/jsx</span>
               </p>
             </div>
             <div class="resume_section">
               <h4>software</h4>
               <hr />
-              <p>
-                git, autocad, microstation, rockwell arena, azure, microsoft
-                365, minitab,
-                <span class="Dockerfile">docker</span> (basic)
-              </p>
+              <ul>
+                <li>
+                  git, autocad, microstation, rockwell arena, azure, microsoft
+                  365, minitab,
+                  <span class="Dockerfile">docker</span> (basic)
+                </li>
+              </ul>
             </div>
           </div>
           <div id="certifications" class="resume_section_container">
@@ -256,7 +257,15 @@
             <h3>work</h3>
             <hr />
             <div class="resume_section">
-              <h4>software developer intern</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/John+Hancock.jpg"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>software developer intern</h4>
+              </div>
               <hr />
               <ul class="subheader">
                 <li>mimta - john hancock natural resource group</li>
@@ -264,7 +273,15 @@
               </ul>
             </div>
             <div class="resume_section">
-              <h4>IT analyst co-op</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/353778751_256772996987999_5970352246971840808_n.png"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>IT analyst co-op</h4>
+              </div>
               <hr />
               <ul class="subheader">
                 <li>harvard university kennedy school</li>
@@ -272,16 +289,35 @@
               </ul>
             </div>
             <div class="resume_section">
-              <h4>database course assistant grader</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/neucoe.jpg"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4 class="active-job-title">
+                  database course assistant grader
+                </h4>
+              </div>
               <hr />
-
               <ul class="subheader">
                 <li>northeastern university college of engineering</li>
                 <li>boston, massachusetts; 08/2023 - present</li>
               </ul>
             </div>
             <div class="resume_section">
-              <h4>keolis technical co-op</h4>
+              <style></style>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/keolis.jpg"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>digital solutions technical co-op</h4>
+              </div>
+
               <hr />
               <ul class="subheader">
                 <li>keolis commuter services</li>
@@ -289,7 +325,16 @@
               </ul>
             </div>
             <div class="resume_section">
-              <h4>t1 amazon associate</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/Amazon-512.webp"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>t1 amazon associate</h4>
+              </div>
+
               <hr />
               <ul class="subheader">
                 <li>amazon fresh</li>
@@ -302,7 +347,16 @@
             <h3>education</h3>
             <hr />
             <div class="resume_section">
-              <h4>northeastern university</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/neu.jpg"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>northeastern university</h4>
+              </div>
+
               <hr />
 
               <ul class="subheader">
@@ -312,13 +366,20 @@
               </ul>
             </div>
             <div class="resume_section">
-              <h4>sharon high school</h4>
+              <div class="resume-header-container">
+                <img
+                  src="/src/img/shs.jpg"
+                  alt="johan"
+                  loading="lazy"
+                  class="circle_img resume-inline-img"
+                />
+                <h4>sharon high school</h4>
+              </div>
               <hr />
 
               <div class="subheader">
                 <ul>
                   <li>sharon, massachusetts; 2017 - 2021</li>
-                  <li>high school diploma</li>
                   <li>gpa: 3.6</li>
                 </ul>
               </div>
@@ -438,7 +499,7 @@
                     href="https://www.husker.nu/courses/MATH/2341"
                     target="_blank"
                     rel="noopener"
-                    >math3341</a
+                    >math2341</a
                   >:<span class="subheader">
                     differential equations & linear algebra
                   </span>
@@ -446,10 +507,10 @@
                 <li>
                   <a
                     class="blank-anchor"
-                    href="https://www.husker.nu/courses/MATH/2341"
+                    href="https://www.husker.nu/courses/MATH/2321"
                     target="_blank"
                     rel="noopener"
-                    >math3331</a
+                    >math2321</a
                   >:<span class="subheader">
                     calc 3 - multivariable calculus</span
                   >

@@ -1,3 +1,7 @@
+:root {
+  --resume-logo-size: 35px;
+}
+
 .about_body_container {
   margin: 10px 10% 10px 10%;
 }
@@ -39,7 +43,10 @@
     margin-left: 20px;
   }
 }
-
+h3 {
+  font-size: 1.5em;
+  margin-bottom: -5px;
+}
 .circle_img {
   border-radius: 50%;
   /* position: relative; */
@@ -50,6 +57,18 @@
   width: 200px;
   max-width: 50%;
 }
+.resume-header-container {
+  display: grid;
+  grid-template-columns: calc(var(--resume-logo-size) + 10px) auto;
+}
+.resume-inline-img {
+  width: var(--resume-logo-size);
+  /* float: left; */
+  /* vertical-align: middle; */
+  /* margin-right: 12px; */
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 .link-grid {
   margin: 10px 0;
@@ -59,7 +78,7 @@
 }
 
 .resume_section {
-  margin: 0 0 -10px 0;
+  margin: -15px 0 -10px 0;
   padding: 0 0 0 10px;
   hr {
     margin-top: -15px;
@@ -74,6 +93,10 @@
     margin: 5px;
     font-size: 12pt;
   }
+}
+
+.active-job-title {
+  color: var(--accent-color);
 }
 
 /* .plot_container {
