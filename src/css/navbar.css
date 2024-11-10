@@ -25,6 +25,7 @@ nav {
   z-index: 1000;
 }
 
+.menu::before,
 nav::before {
   content: "";
   position: absolute;

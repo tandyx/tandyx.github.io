@@ -75,21 +75,6 @@ window.addEventListener("load", () => {
     }
   }
   const menutoggle = document.getElementById("menu-toggle");
-  const styleSheet = getStylesheet("nav");
-  if (!menutoggle) return;
-  menutoggle.addEventListener("change", () => {
-    const menu = document.getElementById("navmenu");
-    if (!styleSheet || !menu) return;
-    styleSheet.insertRule(
-      `nav:has(#menu-toggle:checked)::before { position: absolute; height: calc(${getStyle(
-        menu,
-        "height"
-      )} + ${getStyle(menu.children[0], "height")} - ${getStyle(
-        menu.children[menu.children.length - 1],
-        "border-bottom-width"
-      )}) }`
-    );
-  });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768 && menutoggle.checked) {
