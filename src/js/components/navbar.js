@@ -51,14 +51,10 @@ window.addEventListener("load", () => {
   const _menu = _custNav.getElementsByClassName("menu")[0];
   for (const child of _menu.children) {
     if (child.id === "modeToggle") {
-      for (const an of child.getElementsByTagName("a")) {
-        an.text =
-          (getCookie("mode") || "dark") === "dark" ? "\uf186" : "\uf185";
-      }
-      child.addEventListener("click", function () {
-        for (const an of child.getElementsByTagName("a")) {
-          an.text = toggleDarkLight() === "dark" ? "\uf186" : "\uf185";
-        }
+      const anchor = child.getElementsByTagName("a")[0];
+      anchor.text = Theme.unicodeIcon;
+      child.addEventListener("click", () => {
+        anchor.text = Theme.fromExisting().reverse().unicodeIcon;
       });
       continue;
     }

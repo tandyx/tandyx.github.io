@@ -6,6 +6,84 @@
 
 "use strict";
 
+class Theme {
+  /**
+   * @template {"dark" | "light"} T
+   * @param {T} theme "dark" or "light"
+   */
+  constructor(theme) {
+    if (!theme) throw new Error("theme must be set");
+    this.theme = theme;
+  }
+
+  static inputEnum = { light: 0, dark: 1 };
+
+  /**
+   * gets the system theme through window.watchMedia
+   * @returns {"dark" | "light" | null}
+   */
+  static get systemTheme() {
+    for (const scheme of [
+      ["(prefers-color-scheme: dark)", "dark"],
+      ["(prefers-color-scheme: light)", "light"],
+    ]) {
+      const queryList = window.matchMedia(scheme[0]);
+      if (queryList.matches) return scheme[1];
+    }
+  }
+  /**
+   * gets the active theme from either the html element or system theme\
+   * @returns {"dark" | "light" | null}
+   */
+  static get activeTheme() {
+    return document.documentElement.dataset.mode || Theme.systemTheme;
+  }
+
+  /**
+   * returns unicode icon from sys active theme
+   */
+  static get unicodeIcon() {
+    return Theme.activeTheme === "dark" ? "\uf186" : "\uf185";
+  }
+
+  /**
+   * returns unicode icon from sys active theme
+   */
+  get unicodeIcon() {
+    return this.theme === "dark" ? "\uf186" : "\uf185";
+  }
+
+  /**
+   * factory; creates new Theme from existing settings
+   */
+  static fromExisting() {
+    return new Theme(
+      document.documentElement.dataset.mode || Theme.systemTheme || "light"
+    );
+  }
+
+  /**
+   * sets <html data-mode="this.theme"> and saves it to session storage
+   * @param {boolean} [save=true] true by default, saves to `sessionStorage`
+   * @returns {this}
+   */
+  set(save = true) {
+    if (!this.theme) throw new Error("must set theme to set it");
+    document.documentElement.setAttribute("data-mode", this.theme);
+    if (save) sessionStorage.setItem("theme", this.theme);
+    return this;
+  }
+  /**
+   * reverses the theme (if dark -> light)
+   * @param {boolean} [save=true] true by default, saves to `sessionStorage`
+   * @returns {Theme}
+   */
+  reverse(save = true) {
+    if (!this.theme) throw new Error("must set theme to reverse it");
+    return new Theme(this.theme === "dark" ? "light" : "dark").set(save);
+  }
+}
+
 main();
 
 window.addEventListener("load", function () {
@@ -34,12 +112,11 @@ const digitToWord = [
  * @example window.addEventListener("load", main);
  * @example main();
  */
-
 function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
-    toggleDarkLight(false);
+    Theme.fromExisting().set();
   } else {
-    toggleDarkLight(false, "dark");
+    new Theme("dark").set();
   }
 
   document.addEventListener("scroll", () => {
@@ -49,39 +126,6 @@ function main() {
   });
 }
 
-/**
- * Toggles the dark/light mode
- * @param {boolean} toggle - Whether to toggle the mode
- * @param {string} mode - The mode to set the page to
- * @param {Object} cssVars - The css variables to change, defaults:
- * @returns {string} - The mode the page is in
- * @example toggleDarkLight();
- */
-function toggleDarkLight(toggle = true, mode = null, cssVars = null) {
-  mode = mode || getCookie("mode") || "dark";
-  cssVars = cssVars || {
-    "--text-color": "#303030",
-    "--subheader-text": "#6e6e6e",
-    "--project-card-background": "#f5f5f5",
-    "--background-color": "#f8f8f8",
-  };
-  if (!["dark", "light"].includes(mode)) {
-    setCookie("mode", "dark", 365);
-    return mode;
-  }
-  if (toggle) {
-    mode = mode === "dark" ? "light" : "dark";
-    setCookie("mode", mode, 365);
-  }
-  for (const [key, value] of Object.entries(cssVars)) {
-    if (mode === "light") {
-      document.documentElement.style.setProperty(key, value);
-    } else {
-      document.documentElement.style.removeProperty(key);
-    }
-  }
-  return mode;
-}
 /**
  * Gets a c style property from an element
  * @param {string | HTMLElement} id - The element to get the style from

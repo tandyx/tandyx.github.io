@@ -3,13 +3,24 @@
   --accent-color-dark: #006196;
   --accent-color-alt: #d000ff;
   --northeastern-red: #c8102e;
-  --text-color: #f2f2f2;
-  --background-color: rgb(3, 3, 10);
   --grey-text: #262626;
-  --subheader-text: #a1a1a1;
   --font-family: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
     monospace;
   --bg-photo: url("../img/boston_vector.png");
+}
+
+[data-mode="dark"] {
+  --text-color: #f2f2f2;
+  --subheader-text: #a1a1a1;
+  --project-card-background: rgb(7, 7, 17);
+  --background-color: rgb(3, 3, 10);
+}
+
+[data-mode="light"] {
+  --text-color: #303030;
+  --subheader-text: #6e6e6e;
+  --project-card-background: #f5f5f5;
+  --background-color: #f8f8f8;
 }
 
 @font-face {
