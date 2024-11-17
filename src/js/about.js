@@ -8,9 +8,12 @@
 "use strict";
 
 window.addEventListener("load", () => {
-  const username = "tandyx";
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const username = "tandyx";
   getUserLanguages(username).then((data) => {
     Object.keys(data).forEach((key) => {
       const newKey = key
@@ -67,7 +70,7 @@ async function getUserLanguages(username, key = null) {
       if (!languagesJson[language]) languagesJson[language] = 0;
       languagesJson[language] +=
         language === "Jupyter Notebook"
-          ? repoData[language] * 0.1
+          ? repoData[language] * 0.05
           : repoData[language];
     }
   }

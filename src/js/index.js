@@ -71,7 +71,6 @@ class Theme {
    * @returns {this}
    */
   set(save = true) {
-    if (!this.theme) throw new Error("must set theme to set it");
     document.documentElement.setAttribute("data-mode", this.theme);
     if (save) sessionStorage.setItem("theme", this.theme);
     return this;

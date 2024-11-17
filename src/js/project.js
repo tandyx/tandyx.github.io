@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
   }
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const username = "tandyx";
   document.querySelectorAll("[data-repo]").forEach(async (el) => {
     createBar(el.id, username, el.dataset.repo);
