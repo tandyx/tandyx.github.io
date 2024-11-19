@@ -4,8 +4,8 @@
   --accent-color-alt: #d000ff;
   --northeastern-red: #c8102e;
   --grey-text: #262626;
-  --font-family: "hack-custom", "Hack", "cascadia-code", "cascadia-mono",
-    "Consolas", "Courier New", monospace;
+  --font-family: "noto-sans", "Noto Sans", "Hack", "cascadia-code",
+    "cascadia-mono", "Consolas", "Courier New", monospace;
   --bg-photo: url("../img/boston_vector.png");
 }
 
@@ -34,8 +34,8 @@
 }
 
 @font-face {
-  font-family: "hack-custom";
-  src: url("../font/hack-regular.woff") format("woff");
+  font-family: "noto-sans";
+  src: url("../font/noto-sans-mono-v30-latin-regular.woff2") format("woff2");
 }
 
 @font-face {
