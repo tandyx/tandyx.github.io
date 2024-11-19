@@ -118,7 +118,7 @@ function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
     Theme.fromExisting().set();
   } else {
-    new Theme("dark").set();
+    new Theme("dark").set(save=false);
   }
 
   document.addEventListener("scroll", () => {
