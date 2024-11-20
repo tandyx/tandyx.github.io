@@ -2,6 +2,10 @@
   --resume-logo-size: 35px;
 }
 
+#about_me {
+  font-size: 14pt;
+}
+
 .about_body_container {
   margin: 10px 10% 10px 10%;
 }

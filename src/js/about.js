@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
   document.addEventListener("scroll", leftsideSetter);
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const username = "tandyx";
   getUserLanguages(username).then((data) => {
     Object.keys(data).forEach((key) => {
@@ -50,7 +50,7 @@ function leftsideSetter() {
  * Gets the languages used in a repo
  * @param {string} username - The username of the repo owner
  * @param {string} key - The github api key
- * @returns {Promise} - A promise that resolves to an object of languages and their percentages
+ * @returns {Promise<{[key = string]: number}>} - A promise that resolves to an object of languages and their percentages
  */
 async function getUserLanguages(username, key = null) {
   const languagesJson = {};

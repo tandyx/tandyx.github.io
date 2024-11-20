@@ -12,12 +12,13 @@ window.addEventListener("load", () => {
   )) {
     addProjectEvents(proj);
   }
+
   if (window.location.hash) {
     document.getElementById(window.location.hash.slice(1))?.click();
   }
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const username = "tandyx";
   document.querySelectorAll("[data-repo]").forEach(async (el) => {
     createBar(el.id, username, el.dataset.repo);
