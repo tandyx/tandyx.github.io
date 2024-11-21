@@ -116,7 +116,7 @@ const digitToWord = [
  */
 function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
-    Theme.fromExisting().set();
+    Theme.fromExisting().set(false);
   } else {
     new Theme("dark").set(false);
   }

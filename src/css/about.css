@@ -2,10 +2,6 @@
   --resume-logo-size: 35px;
 }
 
-#about_me {
-  font-size: 14pt;
-}
-
 .about_body_container {
   margin: 10px 10% 10px 10%;
 }
@@ -97,6 +93,9 @@ h3 {
     margin: 5px;
     font-size: 12pt;
   }
+  blockquote {
+    font-size: 14pt;
+  }
 }
 
 .active-job-title {
@@ -130,6 +129,9 @@ h3 {
 }
 
 @media screen and (max-width: 524px) {
+  #about_me {
+    font-size: 15pt;
+  }
   .about_header {
     display: inline-block;
     align-items: center;
