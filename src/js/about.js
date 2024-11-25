@@ -67,7 +67,7 @@ async function getUserLanguages(username, key = null) {
     );
 
     for (const language in repoData) {
-      if (!languagesJson[language]) languagesJson[language] = 0;
+      languagesJson[language] |= 0;
       languagesJson[language] +=
         language === "Jupyter Notebook"
           ? repoData[language] * 0.05
@@ -86,6 +86,7 @@ async function getUserLanguages(username, key = null) {
 function createLangPiechart(id, langdata) {
   const langstyles = getStylesheet("github-lang-css/background.css");
   const font = getStyleRuleValue("font-family", "body", getStylesheet("index"));
+  /**@type {Plotly.Data[]} */
   const data = [
     {
       values: Object.values(langdata),
@@ -108,7 +109,7 @@ function createLangPiechart(id, langdata) {
       responsive: true,
     },
   ];
-
+  /**@type {Plotly.Layout} */
   const layout = {
     autosize: true,
     showlegend: false,

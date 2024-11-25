@@ -106,9 +106,7 @@ function addProjectEvents(projectWrapper) {
     for (const e of projectWrapper.getElementsByClassName(
       "project-card-content"
     )) {
-      if (checkParent(event.target, e) && selectionInElement(e)) {
-        return;
-      }
+      if (checkParent(event.target, e) && selectionInElement(e)) return;
       if (getStyle(e.id, "display") === "none") {
         e.style.display = "block";
       } else {
