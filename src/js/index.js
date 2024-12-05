@@ -41,6 +41,7 @@ class Theme {
 
   /**
    * returns unicode icon from sys active theme
+   * @returns {string}
    */
   static get unicodeIcon() {
     return Theme.activeTheme === "dark" ? "\uf186" : "\uf185";
@@ -48,6 +49,7 @@ class Theme {
 
   /**
    * returns unicode icon from sys active theme
+   * @returns {string}
    */
   get unicodeIcon() {
     return this.theme === "dark" ? "\uf186" : "\uf185";
@@ -67,20 +69,21 @@ class Theme {
 
   /**
    * sets <html data-mode="this.theme"> and saves it to session storage
-   * @param {boolean} [save=true] true by default, saves to `sessionStorage`
+   * @param {"session" | "local" | null} [save = "session"] by default saves to `sessionStorage`
    * @returns {this}
    */
-  set(save = true) {
+  set(save = "session") {
     document.documentElement.setAttribute("data-mode", this.theme);
-    if (save) sessionStorage.setItem("theme", this.theme);
+    if (save == "session") sessionStorage.setItem("theme", this.theme);
+    if (save == "local") localStorage.setItem("theme", this.theme);
     return this;
   }
   /**
    * reverses the theme (if dark -> light)
-   * @param {boolean} [save=true] true by default, saves to `sessionStorage`
+   * @param {"session" | "local" | null} [save = "session"] by default saves to `sessionStorage`
    * @returns {Theme}
    */
-  reverse(save = true) {
+  reverse(save = "session") {
     if (!this.theme) throw new Error("must set theme to reverse it");
     return new Theme(this.theme === "dark" ? "light" : "dark").set(save);
   }
@@ -116,9 +119,9 @@ const digitToWord = [
  */
 function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
-    Theme.fromExisting().set(false);
+    Theme.fromExisting().set(null);
   } else {
-    new Theme("dark").set(false);
+    new Theme("dark").set(null);
   }
 
   document.addEventListener("scroll", () => {
