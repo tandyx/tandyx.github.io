@@ -1,6 +1,6 @@
 # my portfolio
 
-link: <https://tandyx.github.io>
+link: <https://tandy.xyz>
 
 this is my second attempt at a portfolio website. it uses vanilla html, javascript and css.
 
