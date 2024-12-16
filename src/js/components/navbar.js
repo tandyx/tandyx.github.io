@@ -36,14 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("click", (event) => {
-  // Check if the clicked element is not inside the navbar
-  if (!event.target?.closest(".nav")) {
-    // Close the hamburger menu
-    const menuToggle = document.getElementById("menu-toggle");
-    if (menuToggle && menuToggle.checked) {
-      menuToggle.checked = false;
-    }
-  }
+  if (event.target?.closest(".nav")) return;
+  const menuToggle = document.getElementById("menu-toggle");
+  if (menuToggle && menuToggle.checked) menuToggle.checked = false;
 });
 
 window.addEventListener("load", () => {
@@ -54,7 +49,11 @@ window.addEventListener("load", () => {
       const anchor = child.getElementsByTagName("a")[0];
       anchor.text = Theme.unicodeIcon;
       child.addEventListener("click", () => {
-        anchor.text = Theme.fromExisting().reverse().unicodeIcon;
+        anchor.text = Theme.fromExisting().reverse(sessionStorage, (theme) => {
+          if (typeof themeCssMap === "undefined") return;
+          removeFileFromHead(themeCssMap[theme.opposite.theme]);
+          addCssFile(themeCssMap[theme.theme]);
+        }).unicodeIcon;
       });
       continue;
     }

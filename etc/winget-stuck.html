@@ -45,10 +45,6 @@
     <script src="/src/js/index.js" async defer></script>
     <script src="/src/js/codeblock.js" async defer></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/night-owl.min.css"
-    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
     <link
@@ -94,12 +90,11 @@
       </div>
       <div>
         <p>
-          Winget sometimes times out (blue loading thing). This is a script that
-          curls the winget installer, and tries to install it. If it initially
-          fails, it's probably because of a dependency on the Microsoft.UI.XML
-          framework. This script also tries to install that.
+          winget sometimes times out (blue loading thing). this has worked 99%
+          of the time whenever winget isn't installed or updated.
         </p>
         <pre
+          class="border-radius-5"
           data-src="https://raw.githubusercontent.com/tandyx/winget-fix/master/winget-fix.ps1"
         ></pre>
         <!-- <img

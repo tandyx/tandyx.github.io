@@ -12,23 +12,29 @@ const langMap = {
   ps1: "powershell",
 };
 
+const themeCssMap = {
+  dark: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css",
+  light:
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs.min.css",
+};
+
 // main();
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
+  addCssFile(themeCssMap[Theme.activeTheme]);
   for (const preNode of document.getElementsByTagName("pre")) {
     const fileSource = preNode.getAttribute("data-src");
-    fetch(fileSource).then((response) => {
-      response.text().then((code) => {
-        const language =
-          preNode.getAttribute("data-language") ||
-          langMap[fileSource.split(".")[1]];
-        loadCodeBlock(preNode, code, language);
-      });
-    });
-  }
-  try {
-    hljs.addPlugin(new CopyButtonPlugin());
-  } catch (error) {
-    console.error(error);
+    const resp = await fetch(fileSource);
+    if (!resp.ok) throw new Error(`fetching ${fileSource}: ${resp.status}`);
+    loadCodeBlock(
+      preNode,
+      await resp.text(),
+      preNode.getAttribute("data-language") || langMap[fileSource.split(".")[1]]
+    );
+    try {
+      hljs.addPlugin(new CopyButtonPlugin());
+    } catch (error) {
+      console.error(error);
+    }
   }
 });
 // /**
@@ -50,7 +56,7 @@ window.addEventListener("load", () => {
 function loadCodeBlock(id, code, language = null) {
   const preNode = typeof id === "string" ? document.getElementById(id) : id;
   if (!preNode || preNode.tagName !== "PRE") {
-    console.error("Invalid ID or element");
+    console.error("invalid id or element");
     return;
   }
   const codeNode = document.createElement("code");

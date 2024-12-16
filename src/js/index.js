@@ -7,11 +7,14 @@
 "use strict";
 
 /**
+ * class for theme management
  * @template {"dark" | "light"} T
  */
 class Theme {
   /**
+   * manually create a new theme.
    * @param {T} theme "dark" or "light"
+   * @typedef {T extends "dark" ? Theme<"light"> : Theme<"dark">} OppTheme
    */
   constructor(theme) {
     if (!["light", "dark"].includes(theme)) {
@@ -64,28 +67,37 @@ class Theme {
         "light"
     );
   }
+  /**
+   * opposite theme object without setting
+   * @returns {OppTheme}
+   */
+  get opposite() {
+    return new Theme(this.theme === "dark" ? "light" : "dark");
+  }
 
   /**
    * sets <html data-mode="this.theme"> and saves it to session storage
-   * @param {"session" | "local" | null} [save = "session"] by default saves to `sessionStorage`
+   * @param {Storage} storage storage to save to, default doesn't save
+   * @param {(theme: this) => null} [onSave = null] callback that executes after save.
    * @returns {this}
    */
-  set(save = "session") {
+  set(storage, onSave = null) {
     document.documentElement.setAttribute("data-mode", this.theme);
-    if (save === "session") sessionStorage.setItem("theme", this.theme);
-    if (save === "local") localStorage.setItem("theme", this.theme);
+    if (storage) storage.setItem("_theme", this.theme);
+    if (onSave) onSave(this);
     return this;
   }
   /**
    * reverses the theme (if dark -> light)
-   * @param {"session" | "local" | null} [save = "session"] by default saves to `sessionStorage`
-   * @returns {T extends "dark" ? Theme<"light"> : Theme<"dark">}
+   * @param {Storage?} storage storage to save to, default doesn't save
+   * @param {(theme: OppTheme) => null} [onSave = null] executed callback function when changing; `theme` is the NEW theme
+   * @returns {OppTheme}
    * @example
    * const theme = new Theme.fromExisting().reverse()
    */
-  reverse(save = "session") {
+  reverse(storage, onSave = null) {
     if (!this.theme) throw new Error("must set theme to reverse it");
-    return new Theme(this.theme === "dark" ? "light" : "dark").set(save);
+    return this.opposite.set(storage, onSave);
   }
 }
 
@@ -119,9 +131,9 @@ const digitToWord = [
  */
 function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
-    Theme.fromExisting().set(null);
+    Theme.fromExisting().set();
   } else {
-    new Theme("dark").set(null);
+    new Theme("dark").set();
   }
 
   document.addEventListener("scroll", () => {
@@ -556,4 +568,37 @@ async function fetchCatch(url, fetchParams, cache = "session") {
   } catch {
     return await resp.text();
   }
+}
+
+/**
+ * adds a css file to the header given that it doesn't exist
+ * @param {string} src
+ * @param {boolean} [force=true] force the change if it exists, default `true`
+ * @returns {HTMLLinkElement} link el created
+ */
+function addCssFile(src, force = true) {
+  const matching = [...document.head.children].filter(
+    (e) => e.tagName === "LINK" && e?.href?.includes(src)
+  );
+  if (matching.length && !force) return matching[0];
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = src;
+  link.media = "all";
+  document.head.appendChild(link);
+  return link;
+}
+
+/**
+ * removes link from css head
+ * @param {string} src
+ * @returns  {HTMLElement[]}
+ */
+function removeFileFromHead(src) {
+  const matching = [...document.head.children].filter(
+    (e) => e.tagName === "LINK" && e?.href?.includes(src)
+  );
+  for (const el of matching) document.head.removeChild(el);
+  return matching;
 }

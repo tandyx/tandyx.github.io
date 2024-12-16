@@ -95,7 +95,7 @@ function addProjectEvents(projectWrapper) {
 
   if (!projectWrapper) return;
   projectWrapper.addEventListener("click", function (event) {
-    console.log(event.target);
+    // console.log(event.target);
     if (
       ["A", "IMG"].includes(event.target.tagName) ||
       event.target.classList.contains("fa")
