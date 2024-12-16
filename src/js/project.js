@@ -109,16 +109,16 @@ function addProjectEvents(projectWrapper) {
       if (checkParent(event.target, e) && selectionInElement(e)) return;
       if (getStyle(e.id, "display") === "none") {
         e.style.display = "block";
-      } else {
-        e.style.display = "none";
+        continue;
       }
+      e.style.display = "none";
     }
     for (const bar of projectWrapper.getElementsByClassName("norepo")) {
       if (getStyle(bar.id, "visibility") === "hidden") {
         bar.style.visibility = "visible";
-      } else {
-        bar.style.visibility = "hidden";
+        continue;
       }
+      bar.style.visibility = "hidden";
     }
   });
 }
