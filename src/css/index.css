@@ -4,7 +4,7 @@
   --accent-color-alt: #d000ff;
   --northeastern-red: #c8102e;
   --grey-text: #262626;
-  --font-family: "fira-code", monospace, ui-monospace;
+  --font-family: "hack", monospace, ui-monospace;
   --bg-photo: url("../img/boston_vector.png");
 }
 
@@ -31,15 +31,20 @@
   font-family: "cascadia-mono";
   src: url("../font/CascadiaMono.woff2") format("woff2");
 }
-
-@font-face {
+*/
+/* @font-face {
   font-family: "noto-sans";
   src: url("../font/noto-sans-mono-v30-latin-regular.woff2") format("woff2");
 } */
 @font-face {
+  font-family: "hack";
+  src: url("../font/hack-regular.woff2") format("woff2");
+}
+
+/* @font-face {
   font-family: "fira-code";
   src: url("../font/FiraCode-Regular.woff2") format("woff2");
-}
+} */
 
 @font-face {
   font-family: "FontAwesome";

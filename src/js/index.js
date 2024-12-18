@@ -71,7 +71,6 @@ class Theme {
   /**
    * manually create a new theme object.
    * @param {T} theme "dark" or "light"; will throw error if not
-   * @typedef {T extends "dark" ? Theme<"light"> : Theme<"dark">} OppTheme
    */
   constructor(theme) {
     if (!["light", "dark"].includes(theme)) throw new Error("only light||dark");
@@ -80,6 +79,7 @@ class Theme {
 
   /**
    * opposite theme object without setting
+   * @typedef {T extends "dark" ? Theme<"light"> : Theme<"dark">} OppTheme
    * @returns {OppTheme}
    */
   get opposite() {
