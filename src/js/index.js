@@ -6,147 +6,31 @@
 
 "use strict";
 
-/**
- * class for theme management
- * @template {"dark" | "light"} T
- */
-class Theme {
-  /**
-   * where the theme key is stored
-   */
-  static THEME_STORAGE_KEY = "_theme";
-
-  /**
-   * gets the system theme through window.watchMedia
-   * @returns {"dark" | "light"}
-   */
-  static get systemTheme() {
-    for (const scheme of ["dark", "light"]) {
-      if (window.matchMedia(`(prefers-color-scheme: ${scheme})`).matches) {
-        return scheme;
-      }
-    }
-    // if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
-    //   return "dark";
-    // }
-    return "light";
-  }
-  /**
-   * gets the active theme from either the html element or system theme
-   * @returns {"dark" | "light"}
-   */
-  static get activeTheme() {
-    return document.documentElement.dataset.mode || this.systemTheme;
-  }
-
-  /**
-   * returns unicode icon from sys active theme
-   */
-  static get unicodeIcon() {
-    return this.activeTheme === "dark" ? "\uf186" : "\uf185";
-  }
-
-  /**
-   * returns unicode icon from sys active theme
-   */
-  get unicodeIcon() {
-    return this.theme === "dark" ? "\uf186" : "\uf185";
-  }
-
-  /**
-   * factory; creates new `Theme` from existing settings
-   * @param {Storage?} [storagePriorty=null] pointer to first storage to use default sessionStorage before local.
-   */
-  static fromExisting(storagePriorty = null) {
-    const pStore = storagePriorty || sessionStorage || localStorage;
-    const secStore = pStore === sessionStorage ? localStorage : sessionStorage;
-    return new this(
-      document.documentElement.dataset.mode ||
-        pStore.getItem(this.THEME_STORAGE_KEY) ||
-        secStore.getItem(this.THEME_STORAGE_KEY) ||
-        this.systemTheme ||
-        "light"
-    );
-  }
-  /**
-   * manually create a new theme object.
-   * @param {T} theme "dark" or "light"; will throw error if not
-   */
-  constructor(theme) {
-    if (!["light", "dark"].includes(theme)) throw new Error("only light||dark");
-    this.theme = theme;
-  }
-
-  /**
-   * opposite theme object without setting
-   * @typedef {T extends "dark" ? Theme<"light"> : Theme<"dark">} OppTheme
-   * @returns {OppTheme}
-   */
-  get opposite() {
-    return new Theme(this.theme === "dark" ? "light" : "dark");
-  }
-
-  /**
-   * sets <html data-mode="this.theme"> and saves it to session storage
-   * @param {Storage?} storage storage to save to, default doesn't save
-   * @param {((theme: this) => null)?} onSave callback that executes after save.
-   * @returns {this}
-   */
-  set(storage = null, onSave = null) {
-    document.documentElement.setAttribute("data-mode", this.theme);
-    if (storage) storage.setItem(Theme.THEME_STORAGE_KEY, this.theme);
-    if (onSave) onSave(this);
-    return this;
-  }
-  /**
-   * reverses the theme (if dark -> light)
-   * this is the same as new `Theme().opposite.set()`
-   * @param {Storage?} storage storage to save to, default doesn't save
-   * @param {((theme: OppTheme) => null)?} onSave executed callback function when changing; `theme` is the NEW theme
-   * @returns {OppTheme}
-   * @example
-   * const theme = Theme.fromExisting().reverse()
-   */
-  reverse(storage = null, onSave = null) {
-    return this.opposite.set(storage, onSave);
-  }
-}
-
-main();
-
 window.addEventListener("load", function () {
   const localHosts = ["localhost", "", "127.0.0.1"];
   if (!localHosts.includes(window.location.hostname)) {
     removeHTMLFrom(...localHosts);
   }
   document.querySelectorAll("*[data-copy]").forEach((el) => addCopyEvent(el));
-});
+  document.addEventListener("scroll", () => {
+    const back2top = document.getElementById("back2top");
+    if (!back2top) return;
+    back2top.style.display = window.scrollY > 100 ? "block" : "none";
+  });
 
-/**
- * The main function -- executed for every page load, typically before the DOM is loaded
- * @returns {void}
- * @example window.addEventListener("load", main);
- * @example main();
- */
-function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
     Theme.fromExisting().set();
-    document.addEventListener("scroll", () => {
-      const back2top = document.getElementById("back2top");
-      if (!back2top) return;
-      back2top.style.display = window.scrollY > 100 ? "block" : "none";
-    });
-    return;
+  } else {
+    new Theme("dark").set();
+    if (Math.random() < 0.2) {
+      document.documentElement.style.setProperty(
+        "--bg-photo",
+        "url('../img/alt_background.png')"
+      );
+    }
   }
-  // index.html
-  new Theme("dark").set();
-  if (Math.random() > 0.2) {
-    document.documentElement.style.setProperty(
-      "--bg-photo",
-      "url('../img/alt_background.png')"
-    );
-  }
-}
+});
+
 /**
  * cleans the github language name
  * @param {string} lang name of lang from github api
@@ -359,44 +243,6 @@ function checkParent(element, parent) {
   return false;
 }
 
-/**
- * sets a cookie to a value
- * @param {string} name - The name of the cookie
- * @param {string} value - The value of the cookie
- * @param {number | null} exdays - The number of days until the cookie expires or null if it never expires
- * @returns {void}
- * @example setCookie("username", "johan", 10);
- */
-
-function setCookie(name, value, exdays = null) {
-  if (!exdays) {
-    document.cookie = `${name}=${value};path=/`;
-    return;
-  }
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};${"expires=" + d.toUTCString()};path=/`;
-}
-
-/**
- * fetches a cookie
- * @param {string} name - the name of the cookie to fetch
- * @returns {string} - the value of the cookie
- * @example let user = getCookie("username");
- */
-function getCookie(name) {
-  name += "=";
-  for (let cookie of decodeURIComponent(document.cookie).split(";")) {
-    while (cookie.charAt(0) == " ") {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(name) == 0) {
-      return cookie.substring(name.length, cookie.length);
-    }
-  }
-  return "";
-}
-
 /** Title case a string
  * @param {string} str - string to title case
  * @param {string} split - character to split string on
@@ -605,4 +451,110 @@ function removeFileFromHead(src) {
   );
   for (const el of matching) document.head.removeChild(el);
   return matching;
+}
+
+/**
+ * class for theme management
+ * @template {"dark" | "light"} T
+ */
+class Theme {
+  /**
+   * where the theme key is stored
+   */
+  static THEME_STORAGE_KEY = "_theme";
+
+  /**
+   * gets the system theme through window.watchMedia
+   * @returns {"dark" | "light"}
+   */
+  static get systemTheme() {
+    for (const scheme of ["dark", "light"]) {
+      if (window.matchMedia(`(prefers-color-scheme: ${scheme})`).matches) {
+        return scheme;
+      }
+    }
+    // if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+    //   return "dark";
+    // }
+    return "light";
+  }
+  /**
+   * gets the active theme from either the html element or system theme
+   * @returns {"dark" | "light"}
+   */
+  static get activeTheme() {
+    return document.documentElement.dataset.mode || this.systemTheme;
+  }
+
+  /**
+   * returns unicode icon from sys active theme
+   */
+  static get unicodeIcon() {
+    return this.activeTheme === "dark" ? "\uf186" : "\uf185";
+  }
+
+  /**
+   * returns unicode icon from sys active theme
+   */
+  get unicodeIcon() {
+    return this.theme === "dark" ? "\uf186" : "\uf185";
+  }
+
+  /**
+   * factory; creates new `Theme` from existing settings
+   * @param {Storage?} [storagePriorty=null] pointer to first storage to use default sessionStorage before local.
+   */
+  static fromExisting(storagePriorty = null) {
+    const pStore = storagePriorty || sessionStorage || localStorage;
+    const secStore = pStore === sessionStorage ? localStorage : sessionStorage;
+    return new this(
+      document.documentElement.dataset.mode ||
+        pStore.getItem(this.THEME_STORAGE_KEY) ||
+        secStore.getItem(this.THEME_STORAGE_KEY) ||
+        this.systemTheme ||
+        "light"
+    );
+  }
+  /**
+   * manually create a new theme object.
+   * @param {T} theme "dark" or "light"; will throw error if not
+   */
+  constructor(theme) {
+    if (!["light", "dark"].includes(theme)) throw new Error("only light||dark");
+    this.theme = theme;
+  }
+
+  /**
+   * opposite theme object without setting
+   * @typedef {T extends "dark" ? Theme<"light"> : Theme<"dark">} OppTheme
+   * @returns {OppTheme}
+   */
+  get opposite() {
+    return new Theme(this.theme === "dark" ? "light" : "dark");
+  }
+
+  /**
+   * sets <html data-mode="this.theme"> and saves it to session storage
+   * @param {Storage?} storage storage to save to, default doesn't save
+   * @param {((theme: this) => null)?} onSave callback that executes after save.
+   * @returns {this}
+   */
+  set(storage = null, onSave = null) {
+    document.documentElement.setAttribute("data-mode", this.theme);
+    if (storage) storage.setItem(Theme.THEME_STORAGE_KEY, this.theme);
+    if (onSave) onSave(this);
+    return this;
+  }
+  /**
+   * reverses the theme (if dark -> light)
+   * this is the same as new `Theme().opposite.set()`
+   * @param {Storage?} storage storage to save to, default doesn't save
+   * @param {((theme: OppTheme) => null)?} onSave executed callback function when changing; `theme` is the NEW theme
+   * @returns {OppTheme}
+   * @example
+   * const theme = Theme.fromExisting().reverse()
+   */
+  reverse(storage = null, onSave = null) {
+    return this.opposite.set(storage, onSave);
+  }
 }
