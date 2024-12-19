@@ -121,18 +121,6 @@ window.addEventListener("load", function () {
   }
   document.querySelectorAll("*[data-copy]").forEach((el) => addCopyEvent(el));
 });
-const digitToWord = [
-  "zero",
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-];
 
 /**
  * The main function -- executed for every page load, typically before the DOM is loaded
@@ -143,37 +131,65 @@ const digitToWord = [
 function main() {
   if (!["/index.html", "/"].includes(window.location.pathname)) {
     Theme.fromExisting().set();
-  } else {
-    new Theme("dark").set();
+    document.addEventListener("scroll", () => {
+      const back2top = document.getElementById("back2top");
+      if (!back2top) return;
+      back2top.style.display = window.scrollY > 100 ? "block" : "none";
+    });
+    return;
   }
-
-  document.addEventListener("scroll", () => {
-    const back2top = document.getElementById("back2top");
-    if (!back2top) return;
-    back2top.style.display = window.scrollY > 100 ? "block" : "none";
-  });
+  // index.html
+  new Theme("dark").set();
+  if (Math.random() > 0.2) {
+    document.documentElement.style.setProperty(
+      "--bg-photo",
+      "url('../img/alt_background.png')"
+    );
+  }
+}
+/**
+ * cleans the github language name
+ * @param {string} lang name of lang from github api
+ * @returns {string} cleaned name matching css class
+ */
+function cleanCssGithubLang(lang) {
+  const digitToWord = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+  ];
+  return lang
+    .replaceAll("+", "P")
+    .replaceAll("#", "-Sharp")
+    .replace(/\s/g, "-")
+    .replaceAll(".", "-")
+    .replace(/["'()]/g, "")
+    .replace(/^\d/, (m) => digitToWord[m]);
 }
 
 /**
  * Gets a c style property from an element
  * @param {string | HTMLElement} id - The element to get the style from
  * @param {string} styleProp - The style property to get
- * @returns {string | void} - The value of the style property or undefined if it doesn't exist
+ * @returns {string?} - The value of the style property or undefined if it doesn't exist
  */
 function getStyle(id, styleProp) {
   const x = typeof id === "string" ? document.getElementById(id) : id;
   if (!x) return;
-  if (x.style[styleProp]) {
-    return x.style[styleProp];
-  }
+  if (x.style[styleProp]) return x.style[styleProp];
   if (window.getComputedStyle) {
     return document.defaultView
       .getComputedStyle(x, null)
       .getPropertyValue(styleProp);
   }
-  if (x.currentStyle) {
-    return x.currentStyle[styleProp];
-  }
+  if (x.currentStyle) return x.currentStyle[styleProp];
 }
 
 /**
@@ -198,7 +214,7 @@ function removeHTMLFrom(...hostnames) {
  * @param {string} username - The username of the repo owner
  * @param {string} reponame - The name of the repo
  * @param {string} key - The github api key
- * @returns {Promise} - A promise that resolves to an object of languages and their percentages
+ * @returns {Promise<{string: number}>} - A promise that resolves to an object of languages and their percentages
  */
 async function getRepoLangs(username, reponame, key = null) {
   {
@@ -227,7 +243,7 @@ async function getRepoLangs(username, reponame, key = null) {
  * @param {string} style - The style to get
  * @param {string} selector - The selector to get the style from
  * @param {CSSStyleSheet} sheet - The stylesheet to get the style from
- * @returns {string | null} - The value of the style
+ * @returns {string?} - The value of the style
  */
 function getStyleRuleValue(style, selector, sheet = undefined) {
   const sheets = typeof sheet !== "undefined" ? [sheet] : document.styleSheets;
@@ -239,22 +255,18 @@ function getStyleRuleValue(style, selector, sheet = undefined) {
       }
     }
   }
-  return null;
 }
 
 /**
  * Gets a stylesheet by name
  * @param {string} sheetName - The name of the stylesheet to get
- * @returns {CSSStyleSheet | null} - The stylesheet
+ * @returns {CSSStyleSheet?} - The stylesheet
  * @example getStylesheet("nav");
  */
 function getStylesheet(sheetName) {
   for (const sheet of document.styleSheets) {
-    if (sheet.href?.includes(sheetName)) {
-      return sheet;
-    }
+    if (sheet.href?.includes(sheetName)) return sheet;
   }
-  return null;
 }
 
 /**
@@ -274,25 +286,6 @@ function elementIsVisibleInViewport(id, partiallyVisible = false) {
         (bottom > 0 && bottom < innerHeight)) &&
         ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
-}
-
-/**
- * checks to see if the element is overflowing
- * @param {HTMLElement | string} el - The element to check
- * @returns {boolean} - Whether the element is overflowing
- * @example checkOverflow(document.getElementById("element"));
- */
-function checkOverflow(el) {
-  if (typeof el === "string") el = document.getElementById(el);
-  let curOverflow;
-  if (!curOverflow || curOverflow === "visible") el.style.overflow = "hidden";
-
-  let isOverflowing =
-    el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
-
-  el.style.overflow = curOverflow;
-
-  return isOverflowing;
 }
 
 /**

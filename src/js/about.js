@@ -16,13 +16,7 @@ window.addEventListener("load", () => {
   const username = "tandyx";
   getUserLanguages(username).then((data) => {
     Object.keys(data).forEach((key) => {
-      const newKey = key
-        .replaceAll("+", "P")
-        .replaceAll("#", "-Sharp")
-        .replace(/\s/g, "-")
-        .replaceAll(".", "-")
-        .replace(/["'()]/g, "")
-        .replace(/^\d/, (match) => digitToWord[match]);
+      const newKey = cleanCssGithubLang(key);
       data[newKey] = data[key];
       if (newKey !== key) delete data[key];
     });

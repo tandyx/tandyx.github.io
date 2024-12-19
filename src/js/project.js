@@ -31,16 +31,14 @@ window.addEventListener("hashchange", () => {
 
 /**
  * Creates a bar chart of the languages used in a repo
- * @param {HTMLElement | string} containerId - The id of the element to put the bar chart in
+ * @param {HTMLElement | string} contId - The id of the element to put the bar chart in
  * @param {string} username - The username of the repo owner
  * @param {string} reponame - The name of the repo
  * @returns {void}
  */
-async function createBar(containerId, username, reponame) {
+async function createBar(contId, username, reponame) {
   const container =
-    typeof containerId === "string"
-      ? document.getElementById(containerId)
-      : containerId;
+    typeof contId === "string" ? document.getElementById(contId) : contId;
   const languages = await getRepoLangs(username, reponame);
   let zIndex =
     Object.keys(languages).length +
@@ -48,7 +46,7 @@ async function createBar(containerId, username, reponame) {
     Number(
       (
         getStyle(
-          containerId,
+          contId,
           typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
         ) || "0"
       )
@@ -58,18 +56,9 @@ async function createBar(containerId, username, reponame) {
   let totalWidth = 0;
   Object.keys(languages).forEach((lang) => {
     const bar = document.createElement("div");
-    zIndex -= 1;
+    zIndex--;
     totalWidth += languages[lang];
-    bar.classList.add(
-      `${lang
-        .replaceAll("+", "P")
-        .replaceAll("#", "-Sharp")
-        .replace(/\s/g, "-")
-        .replaceAll(".", "-")
-        .replace(/["'()]/g, "")
-        .replace(/^\d/, (match) => digitToWord[match])}-bg`,
-      "bar"
-    );
+    bar.classList.add(`${cleanCssGithubLang(lang)}-bg`, "bar");
     bar.style.width = `${languages[lang]}%`;
     bar.style.left = `${totalWidth - languages[lang]}%`;
     // bar.style.backgroundColor = colorJson[lang] || "#474747";
@@ -97,7 +86,7 @@ function addProjectEvents(projectWrapper) {
   projectWrapper.addEventListener("click", function (event) {
     // console.log(event.target);
     if (
-      ["A", "IMG"].includes(event.target.tagName) ||
+      ["A"].includes(event.target.tagName) ||
       event.target.classList.contains("fa")
     ) {
       return;
