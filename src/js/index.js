@@ -443,7 +443,7 @@ function addCssFile(src, force = true) {
 /**
  * removes link from css head
  * @param {string} src
- * @returns  {HTMLElement[]}
+ * @returns {HTMLElement[]} any matching src's
  */
 function removeFileFromHead(src) {
   const matching = [...document.head.children].filter(
