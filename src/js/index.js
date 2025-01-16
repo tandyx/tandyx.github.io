@@ -17,19 +17,24 @@ window.addEventListener("load", function () {
     if (!back2top) return;
     back2top.style.display = window.scrollY > 100 ? "block" : "none";
   });
-
-  if (!["/index.html", "/"].includes(window.location.pathname)) {
-    Theme.fromExisting().set();
-  } else {
-    new Theme("dark").set();
-    if (Math.random() < 0.2) {
-      document.documentElement.style.setProperty(
-        "--bg-photo",
-        "url('../img/alt_background.png')"
-      );
-    }
-  }
 });
+
+/**
+ * loads before `window.addEventListener("load", () => {})`
+ * @returns {void}
+ */
+function preLoad() {
+  if (!["/index.html", "/"].includes(window.location.pathname)) {
+    return Theme.fromExisting().set();
+  }
+  new Theme("dark").set();
+  if (Math.random() < 0.2) {
+    document.documentElement.style.setProperty(
+      "--bg-photo",
+      "url('../img/alt_background.png')"
+    );
+  }
+}
 
 /**
  * cleans the github language name
@@ -558,3 +563,5 @@ class Theme {
     return this.opposite.set(storage, onSave);
   }
 }
+
+preLoad();
