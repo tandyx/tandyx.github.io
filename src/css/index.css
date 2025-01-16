@@ -235,6 +235,10 @@ h2 {
     text-decoration: none;
     color: var(--accent-color-dark) !important;
   }
+  a:active,
+  a:active > * {
+    text-decoration: underline;
+  }
 }
 
 .mainContainer section {
