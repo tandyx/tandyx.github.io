@@ -127,11 +127,14 @@ h3 {
     text-align: center;
   }
 }
+#about_me,
+#software-list,
+#_certifications,
+#_caption {
+  font-size: 13pt !important;
+}
 
 @media screen and (max-width: 524px) {
-  #about_me {
-    font-size: 15pt;
-  }
   .about_header {
     display: inline-block;
     align-items: center;

@@ -5,7 +5,7 @@ class Footer extends HTMLElement {
     super();
   }
   connectedCallback() {
-    this.innerHTML = `
+    this.innerHTML /* HTML */ = `
     <footer>
       <div>
         designed by me and hosted in
@@ -17,7 +17,7 @@ class Footer extends HTMLElement {
         >.
       </div>
       <div class="fa links-wrapper">
-        <a href="mailto:cho.joh@northeastern.edu" target="_blank" rel="noopener"
+        <a href="mailto:johan@tandy.xyz" target="_blank" rel="noopener"
           >&#xf0e0;</a
         ><a
           href="https://www.linkedin.com/in/chojohan/"
@@ -35,7 +35,7 @@ class Footer extends HTMLElement {
           href="https://open.spotify.com/user/31rmddg3bkfj4gl56uvbw7225t3y?si=313276f3aff34fc2"
           target="_blank"
           rel="noopener"
-          >&#xf1bc; </a
+          >&#xf1bc;</a
         >
       </div>
     </footer>
