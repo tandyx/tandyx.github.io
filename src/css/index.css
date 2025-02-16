@@ -4,7 +4,9 @@
   --accent-color-alt: #d000ff;
   --northeastern-red: #c8102e;
   --grey-text: #6d6d6d;
-  --font-family: "hack", monospace, ui-monospace;
+  --font-family: "jetbrains-mono", "hack", monospace, ui-monospace;
+  /* --font-family: "hack", monospace, ui-monospace; */
+
   --bg-photo: url("../img/boston_vector.png");
 }
 
@@ -39,6 +41,11 @@
 @font-face {
   font-family: "hack";
   src: url("../font/hack-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "jetbrains-mono";
+  src: url("../font/JetBrainsMono-Regular.woff2") format("woff2");
 }
 
 /* @font-face {
