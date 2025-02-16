@@ -398,6 +398,9 @@ a:visited {
   color: var(--subheader-text) !important;
   margin: 5px 0px;
 }
+.mtneg15 {
+  margin-top: -15px !important;
+}
 
 .tooltip::after {
   content: attr(data-tooltip);
