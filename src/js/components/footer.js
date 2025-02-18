@@ -20,7 +20,7 @@ class Footer extends HTMLElement {
         <a href="mailto:johan@tandy.xyz" target="_blank" rel="noopener"
           >&#xf0e0;</a
         ><a
-          href="https://www.linkedin.com/in/chojohan/"
+          href="https://www.linkedin.com/in/tandyy/"
           target="_blank"
           rel="noopener"
           >&#xf08c;</a
