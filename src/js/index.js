@@ -367,9 +367,7 @@ async function plotTimeSeries(
   /**@type {SCHMData[]} */
   const data = [];
   for (const src of srcs) {
-    const resp = await fetchCache(src);
-    if (!resp.ok) throw new Error(`${await resp.text()}: ${resp.status}`);
-    data.push(await resp.json());
+    data.push(await fetchCache(src, {}, { storage: localStorage }));
   }
 
   const font = getStyleRuleValue("font-family", "body", getStylesheet("index"));
