@@ -107,7 +107,7 @@ function removeHTMLFrom(...hostnames) {
  */
 async function getRepoLangs(username, reponame, key = null) {
   {
-    const ls = await fetchCatch(
+    const ls = await fetchCache(
       `https://api.github.com/repos/${username}/${reponame}/languages`,
       key ? { headers: { Authorization: "token " + key } } : {}
     );
@@ -323,7 +323,7 @@ function addCopyEvent(el) {
   el.addEventListener("click", function () {
     const src = this.getAttribute("data-copy");
     if (src !== "_src") return _addCopyEvent(this, src);
-    fetch(this.getAttribute("data-copy-src")).then((response) => {
+    fetchCache(this.getAttribute("data-copy-src")).then((response) => {
       response.text().then((code) => {
         _addCopyEvent(this, code);
       });
@@ -367,7 +367,7 @@ async function plotTimeSeries(
   /**@type {SCHMData[]} */
   const data = [];
   for (const src of srcs) {
-    const resp = await fetch(src);
+    const resp = await fetchCache(src);
     if (!resp.ok) throw new Error(`${await resp.text()}: ${resp.status}`);
     data.push(await resp.json());
   }
@@ -406,23 +406,33 @@ async function plotTimeSeries(
  *
  * auto assumes json but will default to text if failed
  *
+ * @template {"text" | "json"} T
+ *
  * @param {string} url
  * @param {RequestInit} fetchParams
- * @param {("local" | "session")?} [cache = "session"]
- * @returns {Promise<any | Response>}
+ * @param {{storage: Storage?, out: T}} options
+ * @returns {Promise<T extends "json" ? any : string>}
  */
-async function fetchCatch(url, fetchParams, cache = "session") {
-  // if (!cache) return await fetch(url, fetchParams);
-  const cacheRef = cache === "local" ? localStorage : sessionStorage;
-  const cacheData = cacheRef.getItem(url);
-  if (cacheData && cache) return JSON.parse(cacheData);
+async function fetchCache(url, fetchParams, options = {}) {
+  const { storage = sessionStorage, out = "json" } = options;
+  const cacheData = storage?.getItem(url);
+  if (cacheData && storage) {
+    if (out === "text") return cacheData;
+    return JSON.parse(cacheData);
+  }
   const resp = await fetch(url, fetchParams);
   if (!resp.ok) throw new Error(`${resp.status}: ${await resp.text()}`);
-  try {
-    return await resp.json();
-  } catch {
-    return await resp.text();
+  if (!storage) {
+    return out === "json" ? await resp.json() : await resp.text();
   }
+  if (out === "json") {
+    const data = await resp.json();
+    storage.setItem(url, JSON.stringify(data));
+    return data;
+  }
+  const data = await resp.text();
+  storage.setItem(url, data);
+  return data;
 }
 
 /**

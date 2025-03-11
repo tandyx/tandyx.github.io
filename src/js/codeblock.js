@@ -23,11 +23,14 @@ window.addEventListener("load", async () => {
   addCssFile(themeCssMap[Theme.activeTheme]);
   for (const preNode of document.getElementsByTagName("pre")) {
     const fileSource = preNode.getAttribute("data-src");
-    const resp = await fetch(fileSource);
-    if (!resp.ok) throw new Error(`fetching ${fileSource}: ${resp.status}`);
+    const text = await fetchCache(
+      fileSource,
+      {},
+      { out: "text", storage: localStorage }
+    );
     loadCodeBlock(
       preNode,
-      await resp.text(),
+      text,
       preNode.getAttribute("data-language") || langMap[fileSource.split(".")[1]]
     );
     try {

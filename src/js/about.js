@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
   document.addEventListener("scroll", leftsideSetter);
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   const username = "tandyx";
   getUserLanguages(username).then((data) => {
     Object.keys(data).forEach((key) => {
@@ -48,14 +48,14 @@ function leftsideSetter() {
  */
 async function getUserLanguages(username, key = null) {
   const languagesJson = {};
-  const repos = await fetchCatch(
+  const repos = await fetchCache(
     `https://api.github.com/users/${username}/repos`,
     key ? { headers: { Authorization: "token " + key } } : {}
   );
 
   for (const repo of repos) {
     if (repo.fork) continue;
-    const repoData = await fetchCatch(
+    const repoData = await fetchCache(
       `https://api.github.com/repos/${username}/${repo.name}/languages`,
       key ? { headers: { Authorization: "token " + key } } : {}
     );
