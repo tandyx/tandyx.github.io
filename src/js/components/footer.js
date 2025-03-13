@@ -13,8 +13,8 @@ class Footer extends HTMLElement {
           href="https://github.com/tandyx/tandyx.github.io"
           rel="noopener"
           target="_blank"
-          >this repo</a
-        >.
+          >this repo.</a
+        >
       </div>
       <div class="fa links-wrapper">
         <a href="mailto:johan@tandy.xyz" target="_blank" rel="noopener"
