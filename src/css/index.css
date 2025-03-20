@@ -180,6 +180,10 @@ body.titlepage {
   /* background-image: linear-gradient(to right, #f2f2f2, rgb(0, 0, 0) 90%); */
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .neuAccent,
 .neuAccent:visited {
   color: var(--subheader-text) !important;

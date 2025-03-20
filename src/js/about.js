@@ -10,6 +10,18 @@
 window.addEventListener("load", () => {
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
+
+  /**@type {HTMLImageElement[]} */
+  const _els = document.getElementsByName("johan-img");
+  for (const el of _els) {
+    el.addEventListener("click", () => {
+      if (el.src.endsWith("/src/img/IMG_4155.jpg")) {
+        el.src = `${window.location.origin}/src/img/lucario-alt.png`;
+        return;
+      }
+      el.src = `${window.location.origin}/src/img/IMG_4155.jpg`;
+    });
+  }
 });
 
 window.addEventListener("load", async () => {
