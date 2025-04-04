@@ -64,8 +64,8 @@
         <!-- <h2>personal projects</h2>
         <p class="subheader">projects i've worked on in my free time</p>
         <hr /> -->
-        <div id="mbtamapper" class="project-card-container">
-          <div id="mbtamapper_card" class="project-card no-highlight">
+        <details id="mbtamapper" class="project-card-container">
+          <summary id="mbtamapper_card" class="project-card no-highlight">
             <h1>mbtamapper</h1>
             <p class="subheader">realtime mbta tracking</p>
             <span class="link-wrapper"
@@ -85,22 +85,9 @@
               >
             </span>
             <div id="mbtab" class="bar-wrapper" data-repo="mbtamapper"></div>
-          </div>
-          <div id="mbtamapper_content" class="project-card-content">
-            <!-- <p>
-              I used to work for Keolis; our team developed the backend of
-              <a
-                href="https://www.bowst.com/work/keolis/"
-                target="_blank"
-                rel="noopener"
-                >a web app</a
-              >
-              that mapped out the MBTA's Commuter Rail service that the company
-              runs in real-time. It was an internal app that I became reliant on
-              to commute into Boston, and I knew that I'd lose access to it when
-              I left the company, so I made my own public-facing version that I
-              use every day.
-            </p> -->
+          </summary>
+          <!-- <div id="mbtamapper_content" class="project-card-content"> -->
+          <div class="project-card-content" id="mbtamapper_content">
             <p>
               realtime mbta tracking site made with
               <a
@@ -132,13 +119,15 @@
                 >keolis vehicle locator</a
               >.
             </p>
+            <div class="iframe-wrapper">
+              <iframe
+                src="https://mbtamapper.com/commuter_rail/"
+                loading="lazy"
+                class="centered"
+                title="mbta mapper site"
+              ></iframe>
+            </div>
 
-            <iframe
-              src="https://mbtamapper.com/commuter_rail/"
-              loading="lazy"
-              class="centered"
-              title="mbta mapper site"
-            ></iframe>
             <p class="caption">
               preview for the commuter rail, click
               <a href="https://mbtamapper.com" target="_blank" rel="noopener"
@@ -147,10 +136,12 @@
               for the full site.
             </p>
           </div>
-        </div>
 
-        <div id="ampl-vscode" class="project-card-container">
-          <div id="ampl-vscode_card" class="project-card no-highlight">
+          <!-- </div> -->
+        </details>
+
+        <details id="ampl-vscode" class="project-card-container">
+          <summary id="ampl-vscode_card" class="project-card no-highlight">
             <h1>ampl vscode</h1>
             <p class="subheader">ampl language extentsion for vscode</p>
             <span class="link-wrapper"
@@ -174,7 +165,7 @@
               class="bar-wrapper"
               data-repo="ampl-vscode"
             ></div>
-          </div>
+          </summary>
           <div id="ampl-vscode_content" class="project-card-content">
             <p>
               created vscode extentsion that adds syntax highlighting, snippets,
@@ -191,7 +182,7 @@
             />
             <p class="caption">the extension in action</p>
           </div>
-        </div>
+        </details>
       </section>
     </main>
     <x-footer></x-footer>

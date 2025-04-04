@@ -14,7 +14,14 @@ window.addEventListener("load", () => {
   }
 
   if (window.location.hash) {
-    document.getElementById(window.location.hash.slice(1))?.click();
+    const details = document.getElementById(window.location.hash.slice(1));
+    if (details) {
+      if (details.tagName !== "DETAILS") {
+        details.click();
+      } else {
+        details.open = true;
+      }
+    }
   }
 });
 
@@ -76,38 +83,29 @@ async function createBar(contId, username, reponame) {
  * @returns {void}
  */
 function addProjectEvents(projectWrapper) {
-  /** @type {HTMLElement} */
+  /** @type {HTMLDetailsElement} */
   projectWrapper =
     typeof projectWrapper === "string"
       ? document.getElementById(projectWrapper)
       : projectWrapper;
 
-  if (!projectWrapper) return;
-  projectWrapper.addEventListener("click", function (event) {
-    // console.log(event.target);
-    if (
-      ["A"].includes(event.target.tagName) ||
-      event.target.classList.contains("fa")
-    ) {
-      return;
-    }
+  if (!projectWrapper || typeof projectWrapper === "string") return;
 
-    for (const e of projectWrapper.getElementsByClassName(
-      "project-card-content"
-    )) {
-      if (checkParent(event.target, e) && selectionInElement(e)) return;
-      if (getStyle(e.id, "display") === "none") {
-        e.style.display = "block";
-        continue;
+  for (const bar of projectWrapper.getElementsByClassName("norepo")) {
+    bar.style.visibility =
+      getStyle(bar, "visibility") === "hidden" ? "visible" : "hidden";
+  }
+
+  for (const innerdiv of projectWrapper.getElementsByClassName(
+    "project-card-content"
+  )) {
+    if (innerdiv.tagName === "SUMMARY") continue;
+    innerdiv.addEventListener("click", (event) => {
+      if (["A"].includes(event.target?.tagName)) return;
+      if (checkParent(event.target, innerdiv) && selectionInElement(innerdiv)) {
+        return;
       }
-      e.style.display = "none";
-    }
-    for (const bar of projectWrapper.getElementsByClassName("norepo")) {
-      if (getStyle(bar.id, "visibility") === "hidden") {
-        bar.style.visibility = "visible";
-        continue;
-      }
-      bar.style.visibility = "hidden";
-    }
-  });
+      projectWrapper.open = !projectWrapper.open;
+    });
+  }
 }
