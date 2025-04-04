@@ -13,13 +13,26 @@ window.addEventListener("load", () => {
 
   /**@type {HTMLImageElement[]} */
   const _els = document.getElementsByName("johan-img");
+
+  const firstImgSrc = `${window.location.origin}/src/img/IMG_4155.jpg`;
+  /** @type {(_to: string) => void} */
+  const changeImgFile = (imgFileSrc) => {
+    localStorage.setItem("imgFile", imgFileSrc);
+    for (const el of _els) {
+      if (el.src === imgFileSrc) continue;
+      el.src = imgFileSrc;
+    }
+  };
+
+  changeImgFile(localStorage.getItem("imgFile") || firstImgSrc);
+
   for (const el of _els) {
     el.addEventListener("click", () => {
-      if (el.src.endsWith("/src/img/IMG_4155.jpg")) {
-        el.src = `${window.location.origin}/src/img/lucario-alt.png`;
-        return;
-      }
-      el.src = `${window.location.origin}/src/img/IMG_4155.jpg`;
+      changeImgFile(
+        el.src === firstImgSrc
+          ? `${window.location.origin}/src/img/lucario-alt.png`
+          : firstImgSrc
+      );
     });
   }
 });
