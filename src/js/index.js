@@ -518,21 +518,31 @@ class Theme {
    * @param {Storage?} [storagePriorty=null] pointer to first storage to use default sessionStorage before local.
    */
   static fromExisting(storagePriorty = null) {
+    return new this(this.#fromExisting(storagePriorty));
+  }
+
+  /**
+   * @param {Storage?} [storagePriorty=null] pointer to first storage to use default sessionStorage before local.
+   * @returns {"dark" | "light"}
+   */
+  static #fromExisting = (storagePriorty = null) => {
     const pStore = storagePriorty || sessionStorage || localStorage;
     const secStore = pStore === sessionStorage ? localStorage : sessionStorage;
-    return new this(
+    return (
       document.documentElement.dataset.mode ||
-        pStore.getItem(this.THEME_STORAGE_KEY) ||
-        secStore.getItem(this.THEME_STORAGE_KEY) ||
-        this.systemTheme ||
-        "light"
+      pStore.getItem(this.THEME_STORAGE_KEY) ||
+      secStore.getItem(this.THEME_STORAGE_KEY) ||
+      this.systemTheme ||
+      "light"
     );
-  }
+  };
+
   /**
    * manually create a new theme object.
-   * @param {T} theme "dark" or "light"; will throw error if not
+   * @param {T?} theme "dark" or "light"; will throw error if not
    */
   constructor(theme) {
+    theme = theme || Theme.#fromExisting();
     if (!["light", "dark"].includes(theme)) throw new Error("only light||dark");
     this.theme = theme;
   }
@@ -549,7 +559,7 @@ class Theme {
   /**
    * sets <html data-mode="this.theme"> and saves it to session storage
    * @param {Storage?} storage storage to save to, default doesn't save
-   * @param {((theme: this) => null)?} onSave callback that executes after save.
+   * @param {((theme: this) => void)?} onSave callback that executes after save.
    * @returns {this}
    */
   set(storage = null, onSave = null) {
@@ -562,7 +572,7 @@ class Theme {
    * reverses the theme (if dark -> light)
    * this is the same as new `Theme().opposite.set()`
    * @param {Storage?} storage storage to save to, default doesn't save
-   * @param {((theme: OppTheme) => null)?} onSave executed callback function when changing; `theme` is the NEW theme
+   * @param {((theme: OppTheme) => void)?} onSave executed callback function when changing; `theme` is the NEW theme
    * @returns {OppTheme}
    * @example
    * const theme = Theme.fromExisting().reverse()
