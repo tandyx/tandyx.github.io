@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
   /**@type {HTMLImageElement[]} */
   const _els = document.getElementsByName("johan-img");
 
-  const firstImgSrc = `${window.location.origin}/src/img/IMG_4155.jpg`;
+  const firstImgSrc = `${window.location.origin}/src/img/IMG_4500.png`;
   /** @type {(_to: string) => void} */
   const changeImgFile = (imgFileSrc) => {
     localStorage.setItem("imgFile", imgFileSrc);

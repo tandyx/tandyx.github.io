@@ -1,24 +1,30 @@
 {
-    "extends": [
-        "development"
-    ],
-    "hints": {
-        "compat-api/html": [
-            "default",
-            {
-                "ignore": [
-                    "iframe[loading]",
-                    "iframe[allow]"
-                ]
-            }
-        ],
-        "compat-api/css": [
-            "default",
-            {
-                "ignore": [
-                    "backdrop-filter"
-                ]
-            }
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "iframe[loading]",
+          "iframe[allow]"
         ]
-    }
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backdrop-filter"
+        ]
+      }
+    ],
+    "axe/keyboard": [
+      "default",
+      {
+        "nested-interactive": "off"
+      }
+    ]
+  }
 }
