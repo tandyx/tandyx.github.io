@@ -404,15 +404,17 @@ async function plotTimeSeries(
  *
  * auto assumes json but will default to text if failed
  *
+ * `out` defaults to json, `storage` defaults to sessionStorage, `clearAfter` defaults to indefinite (ms)
+ *
  * @template {"text" | "json"} T
  *
  * @param {string} url
  * @param {RequestInit} fetchParams
- * @param {{storage: Storage?, out: T}} options
+ * @param {{storage?: Storage, out?: T, clearAfter?: number}} options
  * @returns {Promise<T extends "json" ? any : string>}
  */
 async function fetchCache(url, fetchParams, options = {}) {
-  const { storage = sessionStorage, out = "json" } = options;
+  const { storage = sessionStorage, out = "json", clearAfter } = options;
   const cacheData = storage?.getItem(url);
   if (cacheData && storage) {
     if (out === "text") return cacheData;
@@ -423,13 +425,18 @@ async function fetchCache(url, fetchParams, options = {}) {
   if (!storage) {
     return out === "json" ? await resp.json() : await resp.text();
   }
+  let data;
   if (out === "json") {
-    const data = await resp.json();
+    data = await resp.json();
     storage.setItem(url, JSON.stringify(data));
-    return data;
+  } else {
+    data = await resp.text();
+    storage.setItem(url, data);
   }
-  const data = await resp.text();
-  storage.setItem(url, data);
+  if (clearAfter) {
+    setTimeout(() => storage.removeItem(url), clearAfter);
+  }
+
   return data;
 }
 
