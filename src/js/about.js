@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
     el.addEventListener("click", () => {
       changeImgFile(
         el.src === firstImgSrc
-          ? `${window.location.origin}/src/img/lucario-alt.png`
+          ? `${window.location.origin}/src/img/lucario.png`
           : firstImgSrc
       );
     });
