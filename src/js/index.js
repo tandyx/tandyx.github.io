@@ -533,8 +533,11 @@ class Theme {
    * @returns {"dark" | "light"}
    */
   static #fromExisting = (storagePriorty = null) => {
-    const pStore = storagePriorty || sessionStorage || localStorage;
-    const secStore = pStore === sessionStorage ? localStorage : sessionStorage;
+    const pStore = storagePriorty || localStorage || sessionStorage;
+    const secStore =
+      JSON.stringify(pStore) === JSON.stringify(sessionStorage)
+        ? localStorage
+        : sessionStorage;
     return (
       document.documentElement.dataset.mode ||
       pStore.getItem(this.THEME_STORAGE_KEY) ||

@@ -49,7 +49,7 @@ window.addEventListener("load", () => {
       const anchor = child.getElementsByTagName("a")[0];
       anchor.text = Theme.unicodeIcon;
       child.addEventListener("click", () => {
-        anchor.text = Theme.fromExisting().reverse(sessionStorage, (theme) => {
+        anchor.text = Theme.fromExisting().reverse(localStorage, (theme) => {
           if (typeof themeCssMap === "undefined") return;
           removeFileFromHead(themeCssMap[theme.opposite.theme]);
           addCssFile(themeCssMap[theme.theme]);
