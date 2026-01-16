@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
   /**@type {HTMLImageElement[]} */
   const _els = document.getElementsByName("johan-img");
 
-  const firstImgSrc = `${window.location.origin}/src/img/IMG_4500.png`;
+  const firstImgSrc = `${window.location.origin}/src/img/lucario.png`;
   /** @type {(_to: string) => void} */
   const changeImgFile = (imgFileSrc) => {
     localStorage.setItem("imgFile", imgFileSrc);
@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
     el.addEventListener("click", () => {
       changeImgFile(
         el.src === firstImgSrc
-          ? `${window.location.origin}/src/img/lucario.png`
+          ? `${window.location.origin}/src/img/IMG_4500.png`
           : firstImgSrc
       );
     });
