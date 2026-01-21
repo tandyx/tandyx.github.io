@@ -12,22 +12,22 @@ class Navbar extends HTMLElement {
    */
   connectedCallback() {
     this.id = "_navbar";
-    this.innerHTML = `
-    <link rel="stylesheet" href="/src/css/navbar.css" />
-    <nav class="nav">
-    <div class="titleLogo"><a href="../index.html">johan cho</a></div>
-    <input id="menu-toggle" type="checkbox" title="menutoggle" />
-    <label class="menu-button-container" for="menu-toggle">
-        <div class="menu-button"></div>
-    </label>
-    <ul class="menu" id="navmenu">
-        <li id="modeToggle" class="fa"><a>&#xF186;</a></li>
-        <li><a href="/about.html">about</a></li>
-        <li><a href="/projects/index.html">projects</a></li>
-        <li><a href="/etc/index.html">etc</a></li>
-    </ul>
-    </nav>
-  `;
+    this.innerHTML = /* HTML */ `
+      <link rel="stylesheet" href="/src/css/navbar.css" />
+      <nav class="nav">
+        <div class="titleLogo"><a href="../index.html">johan cho</a></div>
+        <input id="menu-toggle" type="checkbox" title="menutoggle" />
+        <label class="menu-button-container" for="menu-toggle">
+          <div class="menu-button"></div>
+        </label>
+        <div id="modeToggle" class="fa"><a>&#xF186;</a></div>
+        <ul class="menu" id="navmenu">
+          <li><a href="/about.html">about</a></li>
+          <li><a href="/projects/index.html">projects</a></li>
+          <li><a href="/etc/index.html">etc</a></li>
+        </ul>
+      </nav>
+    `;
   }
 }
 
@@ -42,27 +42,30 @@ document.addEventListener("click", (event) => {
 });
 
 window.addEventListener("load", () => {
-  const _custNav = document.getElementById("_navbar");
-  const _menu = _custNav.getElementsByClassName("menu")[0];
-  for (const child of _menu.children) {
-    if (child.id === "modeToggle") {
-      const anchor = child.getElementsByTagName("a")[0];
-      anchor.text = Theme.unicodeIcon;
-      child.addEventListener("click", () => {
-        anchor.text = Theme.fromExisting().reverse(localStorage, (theme) => {
-          if (typeof themeCssMap === "undefined") return;
-          removeFileFromHead(themeCssMap[theme.opposite.theme]);
-          addCssFile(themeCssMap[theme.theme]);
-        }).unicodeIcon;
-      });
-      continue;
-    }
+  const _menu = document
+    .getElementById("_navbar")
+    .getElementsByClassName("menu")[0];
 
+  const modeToggle = document.getElementById("modeToggle");
+  const modeToggleAnchor = modeToggle.getElementsByTagName("a")[0];
+  modeToggleAnchor.text = Theme.unicodeIcon;
+  modeToggle.addEventListener("click", () => {
+    modeToggleAnchor.text = Theme.fromExisting().reverse(
+      localStorage,
+      (theme) => {
+        if (typeof themeCssMap === "undefined") return;
+        removeFileFromHead(themeCssMap[theme.opposite.theme]);
+        addCssFile(themeCssMap[theme.theme]);
+      },
+    ).unicodeIcon;
+  });
+
+  for (const child of _menu.children) {
     for (const anchor of child.getElementsByTagName("a")) {
       if (anchor.href === window.location.href) anchor.href = "#";
       if (
         window.location.pathname.startsWith(
-          anchor.pathname.split(".")[0].replace("index", "") || "/"
+          anchor.pathname.split(".")[0].replace("index", "") || "/",
         )
       ) {
         anchor.style.color = "var(--accent-color)";
