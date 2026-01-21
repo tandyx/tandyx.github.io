@@ -134,7 +134,8 @@
 #mbtamapper_card {
   /* margin-top: -5px; */
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -146,7 +147,8 @@
 
 [data-mode="dark"] #mbtamapper_card {
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -158,7 +160,8 @@
 
 #tandypack_card {
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -170,7 +173,8 @@
 
 #meie4702_card {
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -182,7 +186,8 @@
 
 #ie3425_card {
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -194,7 +199,8 @@
 
 #ie4510_card {
   margin-top: -5px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       var(--project-card-background) 50%,
       rgba(0, 0, 0, 0)
@@ -237,7 +243,8 @@
 }
 
 .project-card-content {
-  padding: var(--margin-left);
+  padding-right: var(--margin-left);
+  padding-left: var(--margin-left);
   font-size: 14pt;
   background-color: var(--project-card-background);
 

@@ -2,12 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Browser:8080",
+            "name": "Browser:3000",
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceRoot}/views"
-        },
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/views",
+            "pathMappings": [
+                {
+                    "url": "http://localhost:3000/src",
+                    "path": "${workspaceFolder}/src"
+                }
+            ]
+        }
     ]
 }

@@ -1,8 +1,9 @@
 {
   "dependencies": {
     "@types/plotly.js-basic-dist": "^1.54.4",
-    "highlight.js": "^11.9.0",
+    "highlight.js": "^11.11.1",
     "plotly": "^1.0.6",
-    "wrangler": "4.13.2"
+    "ua-parser-js": "^2.0.8",
+    "wrangler": "4.59.3"
   }
 }

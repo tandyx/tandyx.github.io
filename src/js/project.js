@@ -2,13 +2,14 @@
  * @file project.js
  * @fileoverview This file contains the code for the project cards
  * @typedef {import("./index.js")}
+ * @import { IResult, UAParser} from "ua-parser-js".
  */
 
 "use strict";
 
 window.addEventListener("load", () => {
   for (const proj of document.getElementsByClassName(
-    "project-card-container"
+    "project-card-container",
   )) {
     addProjectEvents(proj);
   }
@@ -30,6 +31,21 @@ window.addEventListener("load", async () => {
   document
     .querySelectorAll("[data-repo]")
     .forEach(async (el) => createBar(el, username, el.dataset.repo));
+});
+
+window.addEventListener("load", () => {
+  /**@type {IResult} */
+  const userAgent = new UAParser().getResult();
+  if (
+    userAgent.engine.name === "WebKit" &&
+    userAgent.engine.version >= "605.1.15"
+  ) {
+    document
+      .querySelectorAll("summary.project-card")
+      .forEach((el) => (el.querySelector("h1").style.marginTop = "-5px"));
+  }
+
+  console.log();
 });
 
 window.addEventListener("hashchange", () => {
@@ -54,11 +70,11 @@ async function createBar(contId, username, reponame) {
       (
         getStyle(
           contId,
-          typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex"
+          typeof InstallTrigger !== "undefined" ? "z-index" : "zIndex",
         ) || "0"
       )
         .replace("auto", "")
-        .replace("px", "")
+        .replace("px", ""),
     );
   let totalWidth = 0;
   Object.keys(languages).forEach((lang) => {
@@ -71,7 +87,7 @@ async function createBar(contId, username, reponame) {
     // bar.style.backgroundColor = colorJson[lang] || "#474747";
     bar.style.zIndex = zIndex;
     bar.dataset.tooltip = `${lang.toLowerCase()} ${languages[lang].toFixed(
-      2
+      2,
     )}%`;
     container.appendChild(bar);
   });
@@ -97,7 +113,7 @@ function addProjectEvents(projectWrapper) {
   }
 
   for (const innerdiv of projectWrapper.getElementsByClassName(
-    "project-card-content"
+    "project-card-content",
   )) {
     if (innerdiv.tagName === "SUMMARY") continue;
     innerdiv.addEventListener("click", (event) => {
