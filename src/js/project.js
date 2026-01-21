@@ -42,7 +42,7 @@ window.addEventListener("load", () => {
   ) {
     document
       .querySelectorAll("summary.project-card")
-      .forEach((el) => (el.querySelector("h1").style.marginTop = "-5px"));
+      .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
   }
 
   console.log();
