@@ -39,7 +39,7 @@ window.addEventListener("load", () => {
   if (
     userAgent.engine.name === "WebKit" &&
     userAgent.os.name === "iOS" &&
-    browser.major === "26"
+    browser.major >= "26"
   ) {
     document
       .querySelectorAll("summary.project-card")
