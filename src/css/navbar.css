@@ -211,7 +211,7 @@ nav {
   #menu-toggle:checked ~ .menu li {
     /* border: 1px solid var(--grey-accent); */
     height: 2.5em;
-    padding: var(--menubar-padding);
+    /* padding: var(--menubar-padding); */
     border-top: 2px solid var(--grey-accent);
   }
 

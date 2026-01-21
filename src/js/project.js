@@ -36,13 +36,6 @@ window.addEventListener("load", async () => {
 window.addEventListener("load", () => {
   /**@type {IResult} */
   const userAgent = new UAParser().getResult();
-  //     userAgent.engine.name === "WebKit" &&
-  //   userAgent.os.name === "iOS" &&
-  //   ((userAgent.browser.name === "Mobile Safari" &&
-  //     userAgent.browser.major >= "26") ||
-  //     (userAgent.browser.name === "Mobile Firefox" &&
-  //       userAgent.browser.major >= "26"))
-  // ) {
   if (userAgent.engine.name === "WebKit" && "onscrollend" in window) {
     document
       .querySelectorAll("summary.project-card")
