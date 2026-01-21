@@ -82,7 +82,7 @@ body {
   overflow-x: hidden;
   color: var(--text-color);
   font-size: 16pt;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
 }
 
 table,

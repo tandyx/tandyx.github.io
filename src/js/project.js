@@ -34,12 +34,8 @@ window.addEventListener("load", async () => {
 });
 
 window.addEventListener("load", () => {
-  /**@type {IResult} */
   const userAgent = new UAParser().getResult();
-  if (
-    userAgent.engine.name === "WebKit" &&
-    userAgent.engine.version >= "605.1.15"
-  ) {
+  if (userAgent.engine.name === "WebKit" && !CSS.supports("height", "100dvh")) {
     document
       .querySelectorAll("summary.project-card")
       .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
