@@ -11,30 +11,30 @@ window.addEventListener("load", () => {
   leftsideSetter();
   document.addEventListener("scroll", leftsideSetter);
 
-  /**@type {HTMLImageElement[]} */
-  const _els = document.getElementsByName("johan-img");
+  // /**@type {HTMLImageElement[]} */
+  // const _els = document.getElementsByName("johan-img");
 
-  const firstImgSrc = `${window.location.origin}/src/img/lucario.png`;
-  /** @type {(_to: string) => void} */
-  const changeImgFile = (imgFileSrc) => {
-    localStorage.setItem("imgFile", imgFileSrc);
-    for (const el of _els) {
-      if (el.src === imgFileSrc) continue;
-      el.src = imgFileSrc;
-    }
-  };
+  // const firstImgSrc = `${window.location.origin}/src/img/lucario.png`;
+  // /** @type {(_to: string) => void} */
+  // const changeImgFile = (imgFileSrc) => {
+  //   localStorage.setItem("imgFile", imgFileSrc);
+  //   for (const el of _els) {
+  //     if (el.src === imgFileSrc) continue;
+  //     el.src = imgFileSrc;
+  //   }
+  // };
 
-  changeImgFile(localStorage.getItem("imgFile") || firstImgSrc);
+  // changeImgFile(localStorage.getItem("imgFile") || firstImgSrc);
 
-  for (const el of _els) {
-    el.addEventListener("click", () => {
-      changeImgFile(
-        el.src === firstImgSrc
-          ? `${window.location.origin}/src/img/IMG_4500.png`
-          : firstImgSrc
-      );
-    });
-  }
+  // for (const el of _els) {
+  //   el.addEventListener("click", () => {
+  //     changeImgFile(
+  //       el.src === firstImgSrc
+  //         ? `${window.location.origin}/src/img/IMG_4500.png`
+  //         : firstImgSrc
+  //     );
+  //   });
+  // }
 });
 
 window.addEventListener("load", async () => {
