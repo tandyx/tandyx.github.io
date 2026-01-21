@@ -36,11 +36,14 @@ window.addEventListener("load", async () => {
 window.addEventListener("load", () => {
   /**@type {IResult} */
   const userAgent = new UAParser().getResult();
-  if (
-    userAgent.engine.name === "WebKit" &&
-    userAgent.os.name === "iOS" &&
-    userAgent.browser.major >= "26"
-  ) {
+  //     userAgent.engine.name === "WebKit" &&
+  //   userAgent.os.name === "iOS" &&
+  //   ((userAgent.browser.name === "Mobile Safari" &&
+  //     userAgent.browser.major >= "26") ||
+  //     (userAgent.browser.name === "Mobile Firefox" &&
+  //       userAgent.browser.major >= "26"))
+  // ) {
+  if ("scrollend" in window && userAgent.engine.name === "WebKit") {
     document
       .querySelectorAll("summary.project-card")
       .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
