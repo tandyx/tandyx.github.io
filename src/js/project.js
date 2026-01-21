@@ -44,8 +44,6 @@ window.addEventListener("load", () => {
       .querySelectorAll("summary.project-card")
       .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
   }
-
-  console.log();
 });
 
 window.addEventListener("hashchange", () => {
