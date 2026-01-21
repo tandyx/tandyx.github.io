@@ -82,6 +82,7 @@ body {
   overflow-x: hidden;
   color: var(--text-color);
   font-size: 16pt;
+  overscroll-behavior-y: contain;
 }
 
 table,
@@ -123,7 +124,8 @@ li {
 }
 
 body.titlepage {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       rgba(0, 0, 0, 0.1) 0%,
       rgba(0, 0, 0, 0.1) 5%,
       rgb(0, 0, 0) 90%
@@ -237,8 +239,8 @@ h2 {
 }
 
 .code-font {
-  font-family: "cascadia-code", "cascadia-mono", "Consolas", "Courier New",
-    monospace;
+  font-family:
+    "cascadia-code", "cascadia-mono", "Consolas", "Courier New", monospace;
   font-size: 10pt;
 }
 
