@@ -43,7 +43,11 @@ window.addEventListener("load", () => {
   //     (userAgent.browser.name === "Mobile Firefox" &&
   //       userAgent.browser.major >= "26"))
   // ) {
-  if ("scrollend" in window && userAgent.engine.name === "WebKit") {
+  if (
+    userAgent.engine.name === "WebKit" &&
+    (window.AppleLiquid !== undefined ||
+      CSS.supports("margin-bottom", "env(glass-safe-inset-bottom)"))
+  ) {
     document
       .querySelectorAll("summary.project-card")
       .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
