@@ -20,7 +20,7 @@
   text-align: left;
   font-size: 14pt;
   color: #a1a1a1;
-  margin: 5px 0 10px var(--margin-left);
+  margin: 5px var(--margin-left) 10px var(--margin-left);
 }
 
 .project-card p,
