@@ -36,10 +36,11 @@ window.addEventListener("load", async () => {
 window.addEventListener("load", () => {
   /**@type {IResult} */
   const userAgent = new UAParser().getResult();
+  // if the engine is webkit and on a newer version (ios >= 26) fuck you apple
   if (userAgent.engine.name === "WebKit" && "onscrollend" in window) {
     document
       .querySelectorAll("summary.project-card")
-      .forEach((el) => (el.querySelector("h1").style.marginTop = "-20px"));
+      .forEach((el) => (el.querySelector("h1").style.marginTop = "-25px"));
   }
 });
 
