@@ -127,7 +127,7 @@ h3 {
     text-align: center;
   }
 }
-#about_me,
+#about_me > p,
 #software-list,
 #_certifications,
 #_caption {
