@@ -2,14 +2,6 @@
   --margin-left: 10px;
 }
 
-.project-card {
-  background-color: var(--project-card-background);
-  /* margin-top: -5px; */
-  /* list-style: none; */
-
-  /* border-bottom: 2px solid #8d8d8d; */
-}
-
 .project-card h1 {
   margin: 5px 0 -5px var(--margin-left);
   text-align: left;
@@ -135,11 +127,7 @@
   /* margin-top: -5px; */
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/mbtamapper_light.png") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -148,11 +136,7 @@
 [data-mode="dark"] #mbtamapper_card {
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/mbtamapper_dark.png") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -161,11 +145,7 @@
 #tandypack_card {
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/tandypack.png") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -174,11 +154,7 @@
 #meie4702_card {
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/parachutes.jpg") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -187,11 +163,7 @@
 #ie3425_card {
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/heavy_like_a_brinks_truck.jpg") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -200,11 +172,7 @@
 #ie4510_card {
   margin-top: -5px;
   background:
-    linear-gradient(
-      to right,
-      var(--project-card-background) 50%,
-      rgba(0, 0, 0, 0)
-    ),
+    linear-gradient(to right, var(--background-color) 50%, rgba(0, 0, 0, 0)),
     url("../img/bus.jpg") right center no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -219,6 +187,7 @@
   overflow: hidden;
   margin-bottom: 30px;
   position: relative;
+  /* background-color: var(--background-color); */
 }
 .project-card-container > ::marker,
 .project-card-container > ::-webkit-details-marker {
@@ -246,10 +215,13 @@
   padding-right: var(--margin-left);
   padding-left: var(--margin-left);
   font-size: 14pt;
-  background-color: var(--project-card-background);
-
-  /* display: none; */
 }
+
+/* 
+.project-card-content > p {
+  margin-left: var(--margin-left);
+  margin-right: var(--margin-left);
+} */
 
 .reducedleft {
   margin-left: -20px;
